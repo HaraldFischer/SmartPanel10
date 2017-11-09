@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"     
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:head>
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="javascript.js">
+            
+        </script>
+    </h:head>
+    <h:body>
+        <script> window.addEventListener("load",startUp,true); </script>
+        <h:form>
+            
+            <p:panelGrid columns="4" styleClass="grid">
+                    <p:column>
+                        <input type="color" id="colorWell0" style="width:200px;height:50px;margin:10px" ></input>
+                        <br></br>
+                        <p:button value="Scene 1" styleClass="buttonStyle"></p:button>
+                    </p:column>
+
+                    <p:column>
+                        <input type="color" id="colorWell1" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 2" styleClass="buttonStyle"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <input type="color" id="colorWell2" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 3" styleClass="buttonStyle"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <input type="color" id="colorWell3" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 4" styleClass="buttonStyle"/>
+                    </p:column>
+                    <p:column>
+                        <input type="color" id="colorWell4" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 5" styleClass="buttonStyle"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <input type="color" id="colorWell5" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 6" styleClass="buttonStyle"/>
+                    </p:column>
+
+
+                    <p:column>
+                        <input type="color" id="colorWell6" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 7" styleClass="buttonStyle"/>
+                    </p:column>
+
+                    <p:column>
+                        <input type="color" id="colorWell7" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 8" styleClass="buttonStyle"/>
+                    </p:column>
+                    <p:column>
+                        <input type="color" id="colorWell8" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button value="Scene 9" styleClass="buttonStyle"/>
+                    </p:column>
+
+                    <p:column>
+                        <input type="color" id="colorWell9" style="width:200px;height:50px;margin:10px"></input>
+                        <br></br>
+                        <p:button onclick="javascript:check();" value="Scene 10" styleClass="buttonStyle"/>
+                    </p:column>
+
+            </p:panelGrid>
+            <p:panelGrid columns ="3" styleClass="gridCommand">
+            
+                        <h:button value="On" styleClass="buttonStyle" />
+                        <h:button value="Off" styleClass="buttonStyle"/>
+                        <h:button value="Up" styleClass="buttonStyle"/>
+                        <h:button value="Down" styleClass="buttonStyle"/>
+                        <h:button value="Save" styleClass="buttonStyle"/>
+                        <h:button value="Load" styleClass="buttonStyle"/>
+                        <h:button value="Timer" styleClass="buttonStyle"/>
+                        <h:button value="Pir" styleClass="buttonStyle"/>
+                        <h:button value="White" styleClass="buttonStyle"/>
+            </p:panelGrid> 
+            <!--
+            -->
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 21, 2017, 9:17:37 AM
+    Author     : hfischer
+*/
+.grid{
+    width: 80%;
+    
+}
+
+.gridcommand{
+    width: 35%;
+    text-align: right;
+}
+
+.panelgroup{
+    width: 80%;
+    text-align:  right;
+    display:block;
+}
+
+.picker{
+    margin:0px;
+    width: 100px;
+}
+
+.pegasus{
+    margin: 60px;
+}
+
+.buttonStyle{
+    width:  200px;
+    height:  50px;
+    margin: 20px;
+}
+
+.commandbuttonstyle{
+    width: 300px;
+    height: 50px;
+    margin: 20px
+}
+.colorPickerStyle{
+    
+}
+

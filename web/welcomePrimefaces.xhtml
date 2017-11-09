@@ -10,7 +10,7 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title></title>
+                <title>GreenControl</title>
             </f:facet>
         </h:head>
 
@@ -19,28 +19,36 @@
             <p:layout fullPage="true">
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
+                    Pegasus Systems GmbH
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
+                    GreenControl v1_7
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <p:layoutUnit position="west" size="275" header="Hide" collapsible="true">
+                    <h:form>
                     <p:menu>
                         <p:submenu label="Resources">
-                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
-
+                            
+                            <p:menuitem value="Home" url = "home.xhtml" />
+                            <p:menuitem value="Settings" url = "settings.xhtml" />
+                            <p:menuitem value="Log"  url = "log.xhtml"/>
+                            
                         </p:submenu>
-
+                        
                     </p:menu>
+                    <img src="pegasus.png" style="margin-top: 30%"/>
+                    </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
+                    <p:imageSwitch effect="shuffle" id="fadeEffect" style="border: 100px solid transparent">
+                    <ui:repeat value="#{imagesView.images}" var="image">
+                        <img src="#{image}" style="height:200%;width:100%" />
+                    </ui:repeat>                       
+                    </p:imageSwitch>
+
                 </p:layoutUnit>
 
             </p:layout>
