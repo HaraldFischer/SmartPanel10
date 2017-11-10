@@ -17,6 +17,19 @@ and open the template in the editor.
     text-align: right;
 }
 
+.inputfield{
+    width:200px;
+}
+
+.settingsgrid{
+    width: 30%;
+    height:40%;
+}
+
+.addresssize{
+    width:20px;
+}
+
 .panelgroup{
     width: 80%;
     text-align:  right;
@@ -47,3 +60,8 @@ and open the template in the editor.
     
 }
 
+
+.h_inputTextid{
+    width:20%;
+    height:20px;
+}

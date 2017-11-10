@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-            Component.utils.import("java.io.*");
-            Components.utils.import("resource://gre/modules/FileUtils.jsm");
+            //Component.utils.import("java.io.*");
+            //Components.utils.import("resource://gre/modules/FileUtils.jsm");
 
             var color;
             var defaultColor = "#0000FF";

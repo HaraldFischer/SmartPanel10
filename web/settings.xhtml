@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+    <h:head>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+        <title>Settings</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <div>
+            <p:panelGrid columns ="2" styleClass = "settingsgrid">
+            
+                <h:outputText  value="Node:" styleClass = "inputfield" />
+                <h:inputText   value = "#{data.getNode()}" styleClass = "inputfield" />
+          
+                <h:outputText value = "Port:" styleClass = "inputfield" />
+                <h:inputText value = "#{data.getPort()}" styleClass = "inputfield"/>
+          
+          
+                <h:outputText value = "Address:" styleClass="inputfield" />
+                <p:spinner size = "2" min = "1" max="10" styleClass="addresssize" />
+          
+                <h:outputText value = "Timer:" styleClass = "inputfield" />
+                <h:inputText value = "#{data.getTimer()}" styleClass="inputfield" />
+                
+                <h:outputText value = "Pir" styleClass="inputfield" />
+                <h:inputText value = "#{data.getPir()}" styleClass = "inputfield" />
+                
+                <h:outputText value = "White" styleClass="inputfield" />
+                <h:inputText value = "#{data.getWhite()}" styleClass="inputfield" />
+                
+            </p:panelGrid>
+        </div>
+    </h:body>
+</html>
