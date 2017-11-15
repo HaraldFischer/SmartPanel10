@@ -10,6 +10,7 @@ import java.io.*;
 import javax.annotation.PreDestroy;
 import javax.annotation.PostConstruct;
 import org.primefaces.event.CloseEvent;
+
 import javax.swing.JOptionPane;
 import org.primefaces.context.RequestContext;
 import javax.faces.application.FacesMessage;
@@ -256,6 +257,10 @@ public class DataBean implements Serializable {
         Scene7 = "#000000";
         Scene8 = "#000000";
         Scene9 = "#000000";
+    }
+    
+    public void changeSettings(){
+        showMessage("Change");
     }
     
     public void showMessage(String msg){

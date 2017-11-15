@@ -16,11 +16,21 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
+        <script>
+            /*
+            jQuery(window).unload(function() {
+              //send an ajax request to check a flag which returns false if user has not saved changes and show an alert box if that is the case.
+              alert("unload");
+            });
+            */
+        </script>
         <div>
             <p:panelGrid columns ="2" styleClass = "settingsgrid">
             
                 <h:outputText  value="Node:" styleClass = "inputfield" />
-                <h:inputText   value = "#{data.getNode()}" styleClass = "inputfield" />
+                <h:inputText   value = "#{data.getNode()}" valueChangeListener="#{data.changeSettings()}" styleClass = "inputfield">
+                    <p:ajax />
+                </h:inputText>
           
                 <h:outputText value = "Port:" styleClass = "inputfield" />
                 <h:inputText value = "#{data.getPort()}" styleClass = "inputfield"/>
@@ -37,6 +47,7 @@ and open the template in the editor.
                 
                 <h:outputText value = "White" styleClass="inputfield" />
                 <h:inputText value = "#{data.getWhite()}" styleClass="inputfield" />
+                
                 
             </p:panelGrid>
         </div>
