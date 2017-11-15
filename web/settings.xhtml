@@ -27,11 +27,11 @@ and open the template in the editor.
         <div>
             <p:panelGrid columns ="2" styleClass = "settingsgrid">
             
-                <h:outputText  value="Node:" styleClass = "inputfield" />
-                <h:inputText   value = "#{data.getNode()}" valueChangeListener="#{data.changeSettings()}" styleClass = "inputfield">
-                    <p:ajax />
+                <h:outputText value="Node:" styleClass = "inputfield" />
+                <h:inputText onchange = "#{data.changeSettings()}" value = "#{data.getNode()}" styleClass = "inputfield">
+                    
                 </h:inputText>
-          
+                              
                 <h:outputText value = "Port:" styleClass = "inputfield" />
                 <h:inputText value = "#{data.getPort()}" styleClass = "inputfield"/>
           
