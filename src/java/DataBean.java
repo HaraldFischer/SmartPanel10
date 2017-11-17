@@ -261,7 +261,7 @@ public class DataBean implements Serializable {
     }
     
     public void changeSettings(ValueChangeEvent e){
-        showMessage(e.getNewValue().toString());
+        showMessage("changeSettings");
     }
     
     public void showMessage(String msg){

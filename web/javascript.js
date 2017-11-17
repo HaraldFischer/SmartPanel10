@@ -57,5 +57,12 @@
                 alert("Check");
             };
        
-
+            function submit(){
+                alert("Submit");
+            }
+            
+            function initHandler(){
+                var input = document.getElementById('idNode');
+                alert(input.toString());
+            }
 

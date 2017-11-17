@@ -14,39 +14,95 @@ and open the template in the editor.
 
         <title>Settings</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="javascript.js"/>
     </h:head>
     <h:body>
         <script>
-            /*
-            jQuery(window).unload(function() {
-              //send an ajax request to check a flag which returns false if user has not saved changes and show an alert box if that is the case.
-              alert("unload");
-            });
-            */
+            var node,port,address,timer,pir,white;
+            window.onload = function(){
+                try{
+                    node = document.getElementById('idnode');
+                    node.addEventListener('blur',function(){
+                       alert("Node");
+                    });
+                    
+                }
+                catch(e){
+                    alert("Exception:" + e);
+                }
+                
+                try{
+                    port = document.getElementById('idport');
+                    port.addEventListener('blur',function(){
+                        alert("Port");
+                    });
+                }
+                catch(e){
+                    alert("Exception:" + e);
+                }
+                
+                try{
+                    address = document.getElementById('idaddress');
+                    address.addEventListener('blur',function(){
+                       alert("Address"); 
+                    });
+                }
+                catch(e){
+                    alert("Address");
+                }
+                
+                try{
+                    timer = document.getElementById('idtimer');
+                    timer.addEventListener('blur',function(){
+                        alert("Timer");
+                    });                
+                }
+                catch(e){
+                    alert("Exception:" + e);
+                }
+               
+                try{
+                    pir = document.getElementById('idpir');
+                    pir.addEventListener('blur',function(){
+                        alert("Pir");
+                    });                    
+                }
+                catch(e){
+                    alert("Exception:" + e);
+                }
+                try{
+                    white = document.getElementById('idwhite');
+                    white.addEventListener('blur',function(){
+                        alert("White")  ;
+                    });                  
+                }
+                catch(e){
+                    alert("Exception:" + e);
+                }
+            };
         </script>
         <div>
             <p:panelGrid columns ="2" styleClass = "settingsgrid">
-            
+                
                 <h:outputText value="Node:" styleClass = "inputfield" />
-                <h:inputText onchange = "#{data.changeSettings()}" value = "#{data.getNode()}" styleClass = "inputfield">
-                    
+                <h:inputText id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield">
                 </h:inputText>
-                              
-                <h:outputText value = "Port:" styleClass = "inputfield" />
-                <h:inputText value = "#{data.getPort()}" styleClass = "inputfield"/>
+                
+                <h:outputText  value = "Port:" styleClass = "inputfield" />
+                <h:inputText id = "idport" value = "#{data.getPort()}" styleClass = "inputfield"/>
           
           
                 <h:outputText value = "Address:" styleClass="inputfield" />
-                <p:spinner size = "2" min = "1" max="10" styleClass="addresssize" />
+                <p:spinner id = "idaddress" size = "2" min = "1" max="10" styleClass="addresssize" />
           
                 <h:outputText value = "Timer:" styleClass = "inputfield" />
-                <h:inputText value = "#{data.getTimer()}" styleClass="inputfield" />
+                <h:inputText id = "idtimer" value = "#{data.getTimer()}" styleClass="inputfield" />
                 
                 <h:outputText value = "Pir" styleClass="inputfield" />
-                <h:inputText value = "#{data.getPir()}" styleClass = "inputfield" />
+                <h:inputText id = "idpir" value = "#{data.getPir()}" styleClass = "inputfield" />
                 
                 <h:outputText value = "White" styleClass="inputfield" />
-                <h:inputText value = "#{data.getWhite()}" styleClass="inputfield" />
+                <h:inputText id = "idwhite" value = "#{data.getWhite()}" styleClass="inputfield" />
                 
                 
             </p:panelGrid>
