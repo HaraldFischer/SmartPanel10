@@ -87,8 +87,8 @@ and open the template in the editor.
             <p:panelGrid columns ="2" styleClass = "settingsgrid">
                 
                 <h:outputText value="Node:" styleClass = "inputfield" />
-                <h:inputText id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" validator="#{data.validateIp}" >
-                    
+                <h:inputText id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" >
+                    <f:validateRegex pattern = "^(([01]?\d\d?|2[0-4]\d|25[0-5]).){3}([01]?\d\d?|2[0-4]\d|25[0-5])$" />
                 </h:inputText>
                 
                 <h:outputText  value = "Port:" styleClass = "inputfield" />
