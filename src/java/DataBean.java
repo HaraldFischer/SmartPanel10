@@ -276,6 +276,10 @@ public class DataBean implements Serializable {
     public void destroy(CloseEvent event){
     }
     
+    public void validateIp(){
+        showMessage("Validate");
+    }
+    
     public void writeToFile(){
        Writer os = null;
         try{

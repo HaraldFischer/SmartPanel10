@@ -15,6 +15,8 @@ and open the template in the editor.
         <title>Settings</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="javascript.js"/>
+        
+        
     </h:head>
     <h:body>
         <script>
@@ -23,7 +25,7 @@ and open the template in the editor.
                 try{
                     node = document.getElementById('idnode');
                     node.addEventListener('blur',function(){
-                       alert("Node");
+                    
                     });
                     
                 }
@@ -48,7 +50,7 @@ and open the template in the editor.
                     });
                 }
                 catch(e){
-                    alert("Address");
+                    alert("Exception:" + e);
                 }
                 
                 try{
@@ -85,7 +87,8 @@ and open the template in the editor.
             <p:panelGrid columns ="2" styleClass = "settingsgrid">
                 
                 <h:outputText value="Node:" styleClass = "inputfield" />
-                <h:inputText id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield">
+                <h:inputText id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" validator="#{data.validateIp}" >
+                    
                 </h:inputText>
                 
                 <h:outputText  value = "Port:" styleClass = "inputfield" />
