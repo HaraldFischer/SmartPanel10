@@ -4,60 +4,49 @@
  * and open the template in the editor.
  */
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import java.util.Map;
-import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.FacesValidator;
-import javax.faces.validator.Validator;
-import javax.faces.validator.ValidatorException;
-import org.primefaces.validate.ClientValidator;
 /**
  *
  * @author hfischer
  */
-//@ManagedBean
-//@RequestScoped
-@FacesValidator("custom.nodeValidator")
-public class NodeValidator implements Validator, ClientValidator {
+@ManagedBean
+
+public class NodeValidator {
     
-    private Pattern pattern;
+    //private Pattern pattern;
   
-    private static final String NODE_PATTERN = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
+    //private static final String NODE_PATTERN = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
   
     /**
      * Creates a new instance of NodeValidator
      */
+    
+    private String firstname;
+    private String lastname;
+ 
+    public String getFirstname() {
+        return firstname;
+    }
+ 
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+ 
+    public String getLastname() {
+        return lastname;
+    }
+ 
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+ 
     public NodeValidator() {
-        pattern = Pattern.compile(NODE_PATTERN);
+        //pattern = Pattern.compile(NODE_PATTERN);
     }
-    
-    public boolean test(String str){
-        return true;
-    }
-    
-    @Override
-    public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-        if(value == null) {
-            return;
-        }
-         
-        if(!pattern.matcher(value.toString()).matches()) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Validation Error", 
-                        value + " is not a valid node"));
-        }
-    }    
-    
-    @Override
-    public String getValidatorId() {
-        return "custom.nodeValidator";
-    }
-    
-    @Override
-    public Map<String, Object> getMetadata() {
-        return null;
-    }
-}
+    public void save() {
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Welcome"));
+    }   
+ }
