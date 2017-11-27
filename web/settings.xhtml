@@ -24,9 +24,16 @@ and open the template in the editor.
             var i;
             window.onload = function(){
                 try{
-                    childNode = document.getElementById('idform:idnode');                    
+                    childNode = document.getElementById('idform:idnode');
                     childNode.addEventListener('blur',function(){
-                      alert("Node");
+                      var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
+                      var match = testNode.test(this.value);
+                      if (match == true){
+                            alert("Node:" + "match");
+                      }
+                      else{
+                          alert("Pattern does not match");
+                      }
                     });
                 }
                 catch(e){
@@ -36,6 +43,7 @@ and open the template in the editor.
                 try{
                     childNode = document.getElementById('idform:idport');
                     childNode.addEventListener('blur',function(){
+                        
                         alert("Port");
                     });
                 }
@@ -85,32 +93,45 @@ and open the template in the editor.
         </script>
         <div>
             <h:form id = "idform">
-            <p:panelGrid id = "idpanelgrid" columns ="2" styleClass = "settingsgrid">
+            <p:messages id = "msgs" />
+            <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                 
-                <h:outputText value="Node:" styleClass = "inputfield" />
-                <h:inputText class = "nodeclass" id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" validatorMessage="Value does not match pattern.">
-                    <f:validateRegex pattern = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$" />
+                <h:outputText value="Node:" styleClass = "inputfield" /> 
+                <h:inputText  class = "nodeclass" id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" validatorMessage="Value does not match pattern.">
+                    <script>
+                        
+                    </script>
+                    <!-- <f:validateRegex pattern = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$" /> -->
+                    <!-- <f:validateLength minimum = "2" /> -->
                 </h:inputText>
+                <p:message for = "idnode" display = "icon" />
                 
+                <h:outputText  value = "Port:" styleClass = "inputfield" /> 
+                <h:inputText  id = "idport" value = "#{data.getPort()}" required = "true" styleClass = "inputfield">
+                    <f:validateRegex pattern = "" />
+                </h:inputText>
+                <p:message for = "idport" display = "icon" />
+          
+                <h:outputText  value = "Address:" styleClass="inputfield" />
+                <p:spinner id = "idaddress" size = "2" min = "1" max="10" styleClass="addresssize">
+                </p:spinner>
+                <p:message for = "idaddress" display = "icon" />
                 
-                <h:outputText  value = "Port:" styleClass = "inputfield" />
-                <h:inputText id = "idport" value = "#{data.getPort()}" styleClass = "inputfield"/>
-          
-          
-                <h:outputText value = "Address:" styleClass="inputfield" />
-                <p:spinner id = "idaddress" size = "2" min = "1" max="10" styleClass="addresssize" />
-          
                 <h:outputText value = "Timer:" styleClass = "inputfield" />
-                <h:inputText id = "idtimer" value = "#{data.getTimer()}" styleClass="inputfield" />
+                <h:inputText  id = "idtimer" value = "#{data.getTimer()}" styleClass="inputfield" >
+                </h:inputText>
+                <p:message for = "idtimer" display = "icon" />
                 
                 <h:outputText value = "Pir" styleClass="inputfield" />
-                <h:inputText id = "idpir" value = "#{data.getPir()}" styleClass = "inputfield" />
+                <h:inputText id = "idpir" value = "#{data.getPir()}" styleClass = "inputfield" >
+                </h:inputText>
+                <p:message for = "idpir" display = "icon" />
                 
-                <h:outputText value = "White" styleClass="inputfield" />
-                <h:inputText id = "idwhite" value = "#{data.getWhite()}" styleClass="inputfield" />
+                <h:outputText value = "White" styleClass="inputfield" /> 
+                <h:inputText  id = "idwhite" value = "#{data.getWhite()}" styleClass="inputfield" >
+                </h:inputText>
+                <p:message for = "idwhite" display = "icon" />
                 
-                <p:message for="idnode" display="icon" />
-                <p:messages id="msgs" />
             </p:panelGrid>
             
             <p:commandButton value = "Save" update = "idpanelgrid" actionListener= "#{nodeValidator.save}" icon="ui-icon-check" />        
