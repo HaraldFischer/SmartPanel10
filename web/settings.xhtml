@@ -29,26 +29,36 @@ and open the template in the editor.
                       var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
                       var match = testNode.test(this.value);
                       if (match == true){
-                            alert("Node:" + "match");
+                            alert("Node:" + "match " + this.value);
                       }
                       else{
-                          alert("Pattern does not match");
+                          alert("Node not valid");                          
+                          $(this).focus();
                       }
                     });
                 }
                 catch(e){
                     alert("Exception:" + e);
+                    $(this).focus().select();
                 }
                 
                 try{
                     childNode = document.getElementById('idform:idport');
                     childNode.addEventListener('blur',function(){
-                        
-                        alert("Port");
+                        var testPort = new RegExp("^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$");
+                        var match = testPort.test(this.value);
+                        if (match == true){
+                            alert("Port Valid");
+                        }
+                        else{
+                            alert("Port Invalid");
+                            document.getElementById('idform:idport').focus();
+                        }
                     });
                 }
                 catch(e){
                     alert("Exception:" + e);
+                    document.getElementById('idform:idport').focus();
                 }
                 
                 try{
@@ -98,11 +108,6 @@ and open the template in the editor.
                 
                 <h:outputText value="Node:" styleClass = "inputfield" /> 
                 <h:inputText  class = "nodeclass" id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" validatorMessage="Value does not match pattern.">
-                    <script>
-                        
-                    </script>
-                    <!-- <f:validateRegex pattern = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$" /> -->
-                    <!-- <f:validateLength minimum = "2" /> -->
                 </h:inputText>
                 <p:message for = "idnode" display = "icon" />
                 
