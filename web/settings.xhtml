@@ -29,7 +29,7 @@ and open the template in the editor.
                     childNode.addEventListener('blur',function(){
                       var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
                       var match = testNode.test(this.value);
-                      if (match == true){
+                      if (match === true){
                             //alert("Node:" + "match " + this.value);
                       }
                       else{
@@ -51,7 +51,7 @@ and open the template in the editor.
                     childNode.addEventListener('blur',function(){
                         var testPort = new RegExp("^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$");
                         var match = testPort.test(this.value);
-                        if (match == true){
+                        if (match === true){
                             
                         }
                         else{
@@ -73,7 +73,7 @@ and open the template in the editor.
                     childNode.addEventListener('blur',function(){
                        var testAddress = new RegExp("^(([0-9][1-9])|([1-9][0-9])|[0-9])$");
                        var match = testAddress.test(this.value);
-                       if (match == true){
+                       if (match === true){
                            
                        }
                        else{
@@ -93,13 +93,13 @@ and open the template in the editor.
                 try{
                     childNode = document.getElementById('idform:idtimer');
                     childNode.addEventListener('blur',function(){
-                        var testTimer = new RegExp("[0-9]{0,4}");
+                        var testTimer = new RegExp("^[0-9]{1,4}$");
                         var match = testTimer.test(this.value);
-                        if (match == true){
+                        if (match === true){
                             
                         }
                         else{
-                          alert("Timer not Valid");
+                          alert("Timer not Valid:" + this.value);
                           $(this).val(prevVal);
                         }
                     });
@@ -115,9 +115,9 @@ and open the template in the editor.
                 try{
                     childNode = document.getElementById('idform:idpir');
                     childNode.addEventListener('blur',function(){
-                        var testPir = new RegExp("[0-9]{0,4}");
+                        var testPir = new RegExp("^[0-9]{1,4}$");
                         var match = testPir.test(this.value);
-                        if (match == true){
+                        if (match === true){
                             
                         }
                         else{
@@ -138,7 +138,7 @@ and open the template in the editor.
                     childNode.addEventListener('blur',function(){
                         var testWhite = new RegExp("([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])");
                         var match = testWhite.test(this.value);
-                        if (match == true){
+                        if (match === true){
                             
                         }
                         else{
@@ -173,7 +173,7 @@ and open the template in the editor.
                 
           
                 <h:outputText  value = "Address:" styleClass="inputfield" />
-                <p:inputText id = "idaddress" size = "2"  styleClass="addresssize">
+                <p:inputText id = "idaddress" value = "#{data.getAddress()}"  styleClass="addresssize">
                 </p:inputText>
                 
                 
