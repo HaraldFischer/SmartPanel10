@@ -85,6 +85,12 @@ public class DataBean implements Serializable {
     
     public void setNode(String node){
         Node=node;
+        /*
+        FacesContext fc = FacesContext.getCurrentInstance();
+        params = fc.getExternalContext().getRequestParameterMap();
+        String str = params.get("Node");
+        */
+        showMessage(node);
     }
     
     public String getPort(){
