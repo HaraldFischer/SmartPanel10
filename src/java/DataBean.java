@@ -39,7 +39,7 @@ public class DataBean implements Serializable {
     //@ManagedProperty("#{param.name}");
     
     private static final long serialVersionUID = 0L;
-    
+    @ManagedProperty("#{param.node}")
     private String Node="192.168.0.12";
     private String Port="2048";
     private String Address = "0";
@@ -84,13 +84,18 @@ public class DataBean implements Serializable {
     }
     
     public void setNode(String node){
-        Node=node;
-        /*
+       Node=node;
+       
+       showMessage("Message");
+    }
+    
+    public void test(){
+        //showMessage("Called");
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
-        String str = params.get("Node");
-        */
-        showMessage(node);
+        String str0 = params.get("Node");
+        showMessage(str0);
+        
     }
     
     public String getPort(){

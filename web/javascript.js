@@ -6,6 +6,7 @@
             //Component.utils.import("java.io.*");
             //Components.utils.import("resource://gre/modules/FileUtils.jsm");
 
+            var colorList = [];
             var color;
             var defaultColor = "#0000FF";
             
@@ -16,12 +17,13 @@
             }            
             function startUp(){ 
                 alert("StartUp");
-                
+                colorList[0] = '#00FF00';
+                alert(colorList[0]);
                 try{
                     for (i=0;i<10;i++){
                         str = "colorWell"+i;   
                         color = document.querySelector("#" + str);                   
-                        color.value = defaultColor;
+                        color.value = colorList[i];
                         color.addEventListener("input", updateFirst, false);
                         color.addEventListener("change", updateAll, false);
                         color.select();
@@ -34,11 +36,20 @@
             }
 
             function updateFirst(event){
-                colorWell0 = event.target.value;
+                colorWell0 = (event.target.value);
             }
             
             function updateAll(event){
+                
+                for (var i = 0; i<10;i++){
+                    color[i] = event.target.value;
+                }
+                /*
+                document.querySelectorAll("p").forEach(function(){
+                    color = event.target.value;
+                });
                 colorWell0 = event.target.value;
+                */
             }
 
             function onClick(){
