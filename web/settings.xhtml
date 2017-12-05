@@ -85,7 +85,7 @@ and open the template in the editor.
                     childNode.addEventListener("focus", function(){
                        prevVal = this.value; 
                     });
-                }
+                }String action = request.getAttribute("");
                 catch(e){
                     alert("Exception:" + e);
                     $(this).val(prevVal);
@@ -161,9 +161,9 @@ and open the template in the editor.
             <h:form id = "idform">
             
             <p:panelGrid id = "idpanelgrid" columns ="2" styleClass = "settingsgrid">
-                <p:remoteCommand name ="rcnode" actionListener = "#{data.test}" />
-                <f:attribute name="Node" value = "Attribute" />
-                
+                <p:remoteCommand name ="rcnode" process = "@this" partialSubmit = "true" action = "#{data.test(event)}" >
+                    <f:attribute name="Node" value = "Attribute" />
+                </p:remoteCommand>
                 <h:outputText value="Node:" styleClass = "inputfield" /> 
                 <h:inputText  class = "nodeclass" id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" validatorMessage="Value does not match pattern.">
                 </h:inputText>
@@ -171,7 +171,7 @@ and open the template in the editor.
                 
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idport" value = "#{data.getPort()}" required = "true" styleClass = "inputfield">
-                    <f:validateRegex pattern = "" />
+                    
                 </h:inputText>
                 
           

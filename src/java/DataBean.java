@@ -17,6 +17,7 @@ import org.primefaces.context.RequestContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.event.ActionEvent;
 
 /**RequestContext.getCurrentInstance().execute("alert('Construct')");
  *Map<String,String> params =
@@ -39,7 +40,7 @@ public class DataBean implements Serializable {
     //@ManagedProperty("#{param.name}");
     
     private static final long serialVersionUID = 0L;
-    @ManagedProperty("#{param.node}")
+    //@ManagedProperty("#{param.Node}")
     private String Node="192.168.0.12";
     private String Port="2048";
     private String Address = "0";
@@ -89,13 +90,21 @@ public class DataBean implements Serializable {
        showMessage("Message");
     }
     
-    public void test(){
-        //showMessage("Called");
+    public void test(ActionEvent event){
+        showMessage("Called");
+        /*
+        event.getComponent().getAttributes().get("Node");
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
         String str0 = params.get("Node");
         showMessage(str0);
         
+        FacesContext fc = FacesContext.getCurrentInstance();
+        params = fc.getExternalContext().getRequestParameterMap();
+        String action = params.get("Node");
+        */
+        String action = (String)event.getComponent().getAttributes().get("Node");
+        showMessage(action);
     }
     
     public String getPort(){
