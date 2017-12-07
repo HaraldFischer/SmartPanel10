@@ -86,30 +86,44 @@ public class DataBean implements Serializable {
     
     public void setNode(String node){
        Node=node;
-       
-       showMessage("Message");
     }
     
-    public void test(ActionEvent event){
-        showMessage("Called");
-        /*
-        event.getComponent().getAttributes().get("Node");
-        FacesContext fc = FacesContext.getCurrentInstance();
-        params = fc.getExternalContext().getRequestParameterMap();
-        String str0 = params.get("Node");
-        showMessage(str0);
+    public void setParams(){
         
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
-        String action = params.get("Node");
-        */
-        String action = (String)event.getComponent().getAttributes().get("Node");
-        showMessage(action);
+        String node = params.get("Node");
+        if (node!= null){
+            Node = node;
+        }
+        
+        String port = params.get("Port");
+        if (port!=null){
+            Port = port;
+        }
+        String address = params.get("Address");
+        if (address!=null){
+            Address = address;
+        }
+        String timer = params.get("Timer");
+        if (timer!=null){
+            Timer = timer;
+        }
+        String pir = params.get("Pir");
+        if (pir!=null){
+            Pir = pir;
+        }
+        String white = params.get("White");
+        if (white!=null){
+            White = white;
+        }
+        
     }
     
     public String getPort(){
         return Port;
     }
+    
     
     public void setPort(String port){         
         Port=port;
@@ -227,28 +241,31 @@ public class DataBean implements Serializable {
     }
     
     public void colorParams(){
-        
+        /*
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
         String str0 = params.get("X0");
         String str1 = params.get("X1");
         
         showMessage(str0 + ":colorParams:" + str1);        
+        */
     }
-
+    /*
     public void setParams(){
-       
+      
        showMessage("setParams");
        FacesContext fc = FacesContext.getCurrentInstance();
        params = fc.getExternalContext().getRequestParameterMap();
-       String str = params.get("node");
+       String str = params.get("Node");
        Node = str;
+       showMessage(str);
+       
        str = params.get("port");
        Port = str;
-       /*
+       
        str = params.get("address");
        Address = str;
-       */
+       
        str = params.get("timer");
        Timer = str;
        str = params.get("pir");
@@ -257,8 +274,9 @@ public class DataBean implements Serializable {
        White = str;
        showMessage(Node + Port + Timer + Pir + White);
        writeToFile();
+      
     }
-    
+    */
     
     
     public void loadDefaults(){

@@ -24,14 +24,18 @@ and open the template in the editor.
             var childNode;
             var i;
             window.onload = function(){
+                alert("OnLoad");
+           
+                
                 try{
                     childNode = document.getElementById('idform:idnode');
                     childNode.addEventListener('blur',function(){
                       var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
                       var match = testNode.test(this.value);
                       if (match === true){
-                          alert("Node match");
-                          rcnode([{name:'Node',value:this.value}]);
+                          alert("Node match:" + this.value);
+                          rcnode([{name:"Node",value:this.value}]);
+                         
                       }
                       else{
                           alert("Node not valid");
@@ -46,14 +50,15 @@ and open the template in the editor.
                     alert("Exception:" + e);
                     $(this).val(prevVal);
                 }
-                
+            
+            
                 try{
                     childNode = document.getElementById('idform:idport');
                     childNode.addEventListener('blur',function(){
                         var testPort = new RegExp("^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$");
                         var match = testPort.test(this.value);
                         if (match === true){
-                            
+                            rcport([{name:"Port",value:this.value}]);
                         }
                         else{
                             alert("Port Invalid");
@@ -68,14 +73,14 @@ and open the template in the editor.
                     alert("Exception:" + e);
                     $(this).val(prevVal);
                 }
-                
+           
                 try{
                     childNode = document.getElementById('idform:idaddress');
                     childNode.addEventListener('blur',function(){
                        var testAddress = new RegExp("^(([0-9][1-9])|([1-9][0-9])|[0-9])$");
                        var match = testAddress.test(this.value);
                        if (match === true){
-                           
+                           rcaddress([{name:"Address",value:this.value}]);
                        }
                        else{
                            alert("Address not Valid");
@@ -85,7 +90,7 @@ and open the template in the editor.
                     childNode.addEventListener("focus", function(){
                        prevVal = this.value; 
                     });
-                }String action = request.getAttribute("");
+                }
                 catch(e){
                     alert("Exception:" + e);
                     $(this).val(prevVal);
@@ -97,7 +102,7 @@ and open the template in the editor.
                         var testTimer = new RegExp("^[0-9]{1,4}$");
                         var match = testTimer.test(this.value);
                         if (match === true){
-                            
+                           rctimer([{name:"Timer",value:this.value}]) ;
                         }
                         else{
                           alert("Timer not Valid:" + this.value);
@@ -119,7 +124,7 @@ and open the template in the editor.
                         var testPir = new RegExp("^[0-9]{1,4}$");
                         var match = testPir.test(this.value);
                         if (match === true){
-                            
+                            rcpir([{name:"Pir",value:this.value}]);
                         }
                         else{
                             alert("Pir not Valid");
@@ -133,14 +138,15 @@ and open the template in the editor.
                 catch(e){
                     alert("Exception:" + e);
                     $(this).val(prevVal);
-                }
+                }  
+
                 try{
                     childNode = document.getElementById('idform:idwhite');
                     childNode.addEventListener('blur',function(){
                         var testWhite = new RegExp("([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])");
                         var match = testWhite.test(this.value);
                         if (match === true){
-                            
+                            rcwhite([{name:"White",value:this.value}]);
                         }
                         else{
                             alert("White not Valid");
@@ -156,40 +162,38 @@ and open the template in the editor.
                     $(this).val(prevVal);
                 }
             };
+            
         </script>
         <div>
             <h:form id = "idform">
             
-            <p:panelGrid id = "idpanelgrid" columns ="2" styleClass = "settingsgrid">
-                <p:remoteCommand name ="rcnode" process = "@this" partialSubmit = "true" action = "#{data.test(event)}" >
-                    <f:attribute name="Node" value = "Attribute" />
-                </p:remoteCommand>
+            <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
+                <p:remoteCommand name = "rcnode" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText value="Node:" styleClass = "inputfield" /> 
-                <h:inputText  class = "nodeclass" id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" validatorMessage="Value does not match pattern.">
+                <h:inputText  id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" >
                 </h:inputText>
                 
-                
+                <p:remoteCommand name = "rcport" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idport" value = "#{data.getPort()}" required = "true" styleClass = "inputfield">
-                    
                 </h:inputText>
                 
-          
+                <p:remoteCommand name = "rcaddress" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText  value = "Address:" styleClass="inputfield" />
                 <p:inputText id = "idaddress" value = "#{data.getAddress()}"  styleClass="addresssize">
                 </p:inputText>
                 
-                
+                <p:remoteCommand name = "rctimer" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText value = "Timer:[s]" styleClass = "inputfield" />
                 <h:inputText  id = "idtimer" value = "#{data.getTimer()}" styleClass="inputfield" >
                 </h:inputText>
                 
-                
+                <p:remoteCommand name = "rcpir" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText value = "Pir:[s]" styleClass="inputfield" />
                 <h:inputText id = "idpir" value = "#{data.getPir()}" styleClass = "inputfield" >
                 </h:inputText>
                 
-                
+                <p:remoteCommand name = "rcwhite" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText value = "White" styleClass="inputfield" /> 
                 <h:inputText  id = "idwhite" value = "#{data.getWhite()}" styleClass="inputfield" >
                 </h:inputText>
