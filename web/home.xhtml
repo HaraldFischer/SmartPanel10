@@ -27,6 +27,7 @@ and open the template in the editor.
             
             <p:panelGrid columns="4" styleClass="grid">
                     <p:column>
+                        <p:remoteCommand name = "rcscene0" action = "#{data.getScene0()}" process = "@this" />
                         <input type="color" id="colorWell0" style="width:200px;height:50px;margin:10px" ></input>
                         <br></br>
                         <p:button value="Scene 1" styleClass="buttonStyle"></p:button>

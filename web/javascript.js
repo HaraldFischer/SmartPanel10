@@ -14,10 +14,19 @@
 
             function saveData(){
                
-            }            
+            }           
+            
+            function loadData(){
+                   rcscene0();
+                   //colorList[0] = #{data.getScene0};
+                   //alert(retVal);
+                   //colorList[0] = rcscene0();
+                   //alert(String.valueOf(colorList[0]));
+            }
+            
             function startUp(){ 
                 alert("StartUp");
-                colorList[0] = '#00FF00';
+                //colorList[0] = rcscene0();
                 alert(colorList[0]);
                 try{
                     for (i=0;i<10;i++){

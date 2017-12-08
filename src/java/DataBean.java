@@ -64,7 +64,9 @@ public class DataBean implements Serializable {
     Map<String,String> params = new HashMap();
     
     public DataBean() {
-        this.Id = "databean";
+        this.Id                    var x = $(this).data();
+                   alert(x);
+= "databean";
     }
   
     @PostConstruct
@@ -74,6 +76,7 @@ public class DataBean implements Serializable {
             showMessage("Error Reading Configuration File\n Loading Defaults");
             loadDefaults();
         }
+        //RequestContext.getCurrentInstance().execute("colorList[0]='#FF0000'");
     }
     
     public void updateValues(){
@@ -81,6 +84,7 @@ public class DataBean implements Serializable {
     }
     
     public String getNode(){
+        showMessage(Node);
         return Node;
     }
     
