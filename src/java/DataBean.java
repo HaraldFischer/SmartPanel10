@@ -64,9 +64,6 @@ public class DataBean implements Serializable {
     Map<String,String> params = new HashMap();
     
     public DataBean() {
-        this.Id                    var x = $(this).data();
-                   alert(x);
-= "databean";
     }
   
     @PostConstruct
@@ -243,44 +240,6 @@ public class DataBean implements Serializable {
     public void setScene9(String scene9){
         Scene9 = scene9;
     }
-    
-    public void colorParams(){
-        /*
-        FacesContext fc = FacesContext.getCurrentInstance();
-        params = fc.getExternalContext().getRequestParameterMap();
-        String str0 = params.get("X0");
-        String str1 = params.get("X1");
-        
-        showMessage(str0 + ":colorParams:" + str1);        
-        */
-    }
-    /*
-    public void setParams(){
-      
-       showMessage("setParams");
-       FacesContext fc = FacesContext.getCurrentInstance();
-       params = fc.getExternalContext().getRequestParameterMap();
-       String str = params.get("Node");
-       Node = str;
-       showMessage(str);
-       
-       str = params.get("port");
-       Port = str;
-       
-       str = params.get("address");
-       Address = str;
-       
-       str = params.get("timer");
-       Timer = str;
-       str = params.get("pir");
-       Pir = str;
-       str = params.get("white");
-       White = str;
-       showMessage(Node + Port + Timer + Pir + White);
-       writeToFile();
-      
-    }
-    */
     
     
     public void loadDefaults(){
