@@ -76,12 +76,15 @@ public class DataBean implements Serializable {
         //RequestContext.getCurrentInstance().execute("colorList[0]='#FF0000'");
     }
     
+    public String complete(){
+        return "Complete";
+    }
+    
     public void updateValues(){
         
     }
     
     public String getNode(){
-        showMessage(Node);
         return Node;
     }
     

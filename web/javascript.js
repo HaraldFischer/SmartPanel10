@@ -3,36 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-            //Component.utils.import("java.io.*");
-            //Components.utils.import("resource://gre/modules/FileUtils.jsm");
 
             var colorList = [];
             var color;
             var defaultColor = "#0000FF";
             
-            //window.addEventListener("load",startUp,true);
-
             function saveData(){
                
             }           
             
+            
             function loadData(){
-                   rcscene0();
-                   //colorList[0] = #{data.getScene0};
+                
+                   //var x = rcscene0();
+                   
+                   //alert(x);
+                   //colorList[0] = #{data.getScene0()};
                    //alert(retVal);
                    //colorList[0] = rcscene0();
                    //alert(String.valueOf(colorList[0]));
             }
             
             function startUp(){ 
-                alert("StartUp");
+                loadData();
                 //colorList[0] = rcscene0();
-                alert(colorList[0]);
+                //alert(colorList[0]);
                 try{
                     for (i=0;i<10;i++){
                         str = "colorWell"+i;   
                         color = document.querySelector("#" + str);                   
-                        color.value = colorList[i];
+                        color.value = defaultColor;
                         color.addEventListener("input", updateFirst, false);
                         color.addEventListener("change", updateAll, false);
                         color.select();
