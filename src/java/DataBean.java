@@ -73,7 +73,6 @@ public class DataBean implements Serializable {
             showMessage("Error Reading Configuration File\n Loading Defaults");
             loadDefaults();
         }
-        //RequestContext.getCurrentInstance().execute("colorList[0]='#FF0000'");
     }
     
     public String complete(){
@@ -166,6 +165,9 @@ public class DataBean implements Serializable {
     }
     
     public String getScene0(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 0);
+        context.addCallbackParam("Scene0",Scene0);
         return  Scene0;
     }
     
@@ -174,6 +176,9 @@ public class DataBean implements Serializable {
     }
 
     public String getScene1(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 1);
+        context.addCallbackParam("Scene1",Scene1);        
         return Scene1;
     }
     
@@ -182,6 +187,10 @@ public class DataBean implements Serializable {
     }
     
     public String getScene2(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 2);
+        context.addCallbackParam("Scene2",Scene2);        
+        
         return Scene2;
     }
     
@@ -189,6 +198,10 @@ public class DataBean implements Serializable {
         Scene2 = scene2;
     }
     public String getScene3(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 3);
+        context.addCallbackParam("Scene3",Scene3);        
+        
         return Scene3;
     }
     
@@ -197,6 +210,10 @@ public class DataBean implements Serializable {
     }
     
     public String getScene4(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 4);
+        context.addCallbackParam("Scene4",Scene4);        
+        
         return Scene4;
     }
 
@@ -205,6 +222,10 @@ public class DataBean implements Serializable {
     }
     
     public String getScene5(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 5);
+        context.addCallbackParam("Scene5",Scene5);        
+        
         return Scene5;
     }
 
@@ -213,6 +234,10 @@ public class DataBean implements Serializable {
     }
     
     public String getScene6(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 6);
+        context.addCallbackParam("Scene6",Scene6);        
+        
         return Scene6;
     }
     
@@ -221,6 +246,10 @@ public class DataBean implements Serializable {
     }
     
     public String getScene7(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 7);
+        context.addCallbackParam("Scene7",Scene7);        
+        
         return Scene7;
     }
 
@@ -229,6 +258,10 @@ public class DataBean implements Serializable {
     }
     
     public String getScene8(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 8);
+        context.addCallbackParam("Scene8",Scene8);        
+        
         return Scene8;
     }
     
@@ -237,6 +270,10 @@ public class DataBean implements Serializable {
     }
     
     public String getScene9(){
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.addCallbackParam("What", 9);
+        context.addCallbackParam("Scene9",Scene9);        
+        
         return Scene9;
     }
     
