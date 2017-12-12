@@ -6,7 +6,6 @@
 
             var colorList = [];
             var color;
-            var defaultColor = "#0000FF";
             
             function saveData(){
                
@@ -54,12 +53,12 @@
             
             function startUp(){ 
                 loadData();
+                alert(colorList[0]);
                 try{
                     for (i=0;i<10;i++){
                         str = "colorWell"+i;   
                         color = document.querySelector("#" + str);                   
                         color.value = colorList[i];
-                        alert(colorList[i] + " " + i);
                         color.addEventListener("input", updateFirst, false);
                         color.addEventListener("change", updateAll, false);
                         color.select();
@@ -73,19 +72,17 @@
 
             function updateFirst(event){
                 //colorWell0 = (event.target.value);
+                var p = document.querySelector("p");
+                alert(p);
+                if (p){
+                    p.style.color = event.target.value;
+                }
             }
             
             function updateAll(event){
-                
-                for (var i = 0; i<10;i++){
-                    //colorList[i] = event.target.value;
-                }
-                /*
-                document.querySelectorAll("p").forEach(function(){
-                    color = event.target.value;
+                document.querySelectorAll("p").forEach(function(p) {
+                    p.style.color = event.target.value;
                 });
-                colorWell0 = event.target.value;
-                */
             }
 
             function onClick(){
