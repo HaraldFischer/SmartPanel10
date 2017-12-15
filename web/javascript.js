@@ -46,19 +46,22 @@
             
             function loadData(){
                 for (var i = 0;i < 10;i++){
-                    var str = "rcscene" + i + "()";
+                    var str = "rcgetscene" + i + "()";
                     eval(str);
                 }
             }
             
             function startUp(){ 
                 loadData();
-                alert(colorList[0]);
+                for (var i = 0;i<10;i++){
+                    alert(colorList[i]);
+                }
                 try{
                     for (i=0;i<10;i++){
                         str = "colorWell"+i;   
                         color = document.querySelector("#" + str);                   
                         color.value = colorList[i];
+                        alert(colorList[i]);
                         color.addEventListener("input", updateFirst, false);
                         color.addEventListener("change", updateAll, false);
                         color.select();
@@ -71,18 +74,14 @@
             }
 
             function updateFirst(event){
+                //alert("UpdateFirst:" + colorList[0]);
+                
                 //colorWell0 = (event.target.value);
-                var p = document.querySelector("p");
-                alert(p);
-                if (p){
-                    p.style.color = event.target.value;
-                }
             }
             
             function updateAll(event){
-                document.querySelectorAll("p").forEach(function(p) {
-                    p.style.color = event.target.value;
-                });
+                //alert("UpdateAll:" + colorList[0]);
+                
             }
 
             function onClick(){
