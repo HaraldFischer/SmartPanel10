@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-            var colorList = [];
+            var colorList = new Array();
             var color;
             
             function saveData(){
@@ -53,9 +53,10 @@
             
             function startUp(){ 
                 loadData();
+                //alert(colorList[0]);
                 try{
                     for (i=0;i<10;i++){
-                        if (typeof colorList[i] === "undefined") colorList[i] = "#FF00FF";
+                        if (typeof colorList[i] === "undefined") colorList[i] = "#FFFFFF";
                         str = "colorWell"+i;   
                         color = document.querySelector("#" + str);                   
                         color.value = colorList[i];
