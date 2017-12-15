@@ -53,11 +53,9 @@
             
             function startUp(){ 
                 loadData();
-                for (var i = 0;i<10;i++){
-                    alert(colorList[i]);
-                }
                 try{
                     for (i=0;i<10;i++){
+                        if (typeof colorList[i] === "undefined") colorList[i] = "#FF00FF";
                         str = "colorWell"+i;   
                         color = document.querySelector("#" + str);                   
                         color.value = colorList[i];

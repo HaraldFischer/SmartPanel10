@@ -165,7 +165,6 @@ public class DataBean implements Serializable {
     }
     
     public String getScene0(){
-        showMessage("Scene0");
         RequestContext context = RequestContext.getCurrentInstance();
         context.addCallbackParam("What", 0);
         context.addCallbackParam("Scene0",Scene0);
@@ -222,7 +221,7 @@ public class DataBean implements Serializable {
         Scene4 = scene4;
     }
     
-    public String getScene5(){alert(colorList[0]);
+    public String getScene5(){
         RequestContext context = RequestContext.getCurrentInstance();
         context.addCallbackParam("What", 5);
         context.addCallbackParam("Scene5",Scene5);        
