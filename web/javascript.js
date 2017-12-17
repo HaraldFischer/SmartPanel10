@@ -42,6 +42,7 @@
                 if (args.What === 9){
                     colorList[9] = args.Scene9;
                 }
+                
             }
             
             function loadData(){
@@ -51,16 +52,21 @@
                 }
             }
             
-            function startUp(){ 
+            function startUp(){
                 loadData();
-                //alert(colorList[0]);
+                
+                var checkExist = setInterval(function() {
+                   if (colorList.length>0) {
+                      alert("Exists!");
+                      clearInterval(checkExist);
+                   }
+                }, 100);
+                
                 try{
                     for (i=0;i<10;i++){
-                        if (typeof colorList[i] === "undefined") colorList[i] = "#FFFFFF";
                         str = "colorWell"+i;   
                         color = document.querySelector("#" + str);                   
                         color.value = colorList[i];
-                        alert(colorList[i]);
                         color.addEventListener("input", updateFirst, false);
                         color.addEventListener("change", updateAll, false);
                         color.select();
