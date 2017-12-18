@@ -6,6 +6,7 @@
 
             var colorList = new Array();
             var color;
+            var lock = new Lock();
             
             function saveData(){
                
@@ -53,15 +54,20 @@
             }
             
             function startUp(){
+                
                 loadData();
                 
                 var checkExist = setInterval(function() {
-                   if (colorList.length>0) {
+                   if (colorList.length>=10) {
                       alert("Exists!");
                       clearInterval(checkExist);
                    }
-                }, 100);
-                
+                }, 1000);
+               
+                $(document).ready(function(){
+                    alert(colorList.length);
+                });
+                /*
                 try{
                     for (i=0;i<10;i++){
                         str = "colorWell"+i;   
@@ -75,7 +81,7 @@
                 catch(ident){
                     alert(ident);
                 }
-                
+                */
             }
 
             function updateFirst(event){
