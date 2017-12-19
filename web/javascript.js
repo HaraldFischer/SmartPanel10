@@ -54,20 +54,26 @@
             }
             
             function startUp(){
-                
+
                 loadData();
-                
+                /*
+                var p = new Promise(resolve,reject);
+                Promise.all([p])
+                .then(values => {
+                    //console.log(values);
+                });                
+                */
+                /*
                 var checkExist = setInterval(function() {
                    if (colorList.length>=10) {
-                      alert("Exists!");
+                      //alert("Exists!");
+                      flag = true;
+                      alert(colorList.length);
                       clearInterval(checkExist);
                    }
                 }, 1000);
-               
-                $(document).ready(function(){
-                    alert(colorList.length);
-                });
-                /*
+                */
+                
                 try{
                     for (i=0;i<10;i++){
                         str = "colorWell"+i;   
@@ -81,7 +87,7 @@
                 catch(ident){
                     alert(ident);
                 }
-                */
+                
             }
 
             function updateFirst(event){
