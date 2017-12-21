@@ -6,8 +6,19 @@
 
             var colorList = new Array();
             var color;
-            var lock = new Lock();
+            var lock = false;
             
+            var lock = function(object,functionName,lockFunction){
+                'use strict';
+                if (object[functionName].locked) return false;
+                var old = object[functionName];
+                object[functionName] = lockFunction;
+                object[functionName].locked = true;
+                return function(){
+                    object[functionName] = old;
+                }
+            }
+
             function saveData(){
                
             }           
@@ -52,27 +63,34 @@
                     eval(str);
                 }
             }
-            
-            function startUp(){
 
-                loadData();
-                /*
-                var p = new Promise(resolve,reject);
-                Promise.all([p])
-                .then(values => {
-                    //console.log(values);
-                });                
-                */
-                /*
-                var checkExist = setInterval(function() {
-                   if (colorList.length>=10) {
-                      //alert("Exists!");
-                      flag = true;
-                      alert(colorList.length);
-                      clearInterval(checkExist);
-                   }
-                }, 1000);
-                */
+            function startUp(){
+                
+                var p = new Promise(function(resolve,reject){
+                    this.loadData();
+                    window.setTimeout(function(){
+                        alert("Timed Out");
+                        resolve();
+                    },3000);                    
+                    
+                    /*
+                    if (typeof colorList[0] !== 'undefined'){
+                        resolve();
+                    }
+                    else{
+                        reject();
+                    }
+                    */
+                    /*
+                    window.setTimeout(function(){
+                        alert("Function Timed out");
+                        resolve();
+                    },3000);
+                    */
+                    
+                });
+                
+                alert(colorList[0]);
                 
                 try{
                     for (i=0;i<10;i++){
