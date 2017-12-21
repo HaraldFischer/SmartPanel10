@@ -90,7 +90,14 @@
                     
                 });
                 
-                alert(colorList[0]);
+                p.then(function(v){
+                    alert(colorList);
+                }
+                ,function(e){
+                    alert("E");
+                }
+                );
+                
                 
                 try{
                     for (i=0;i<10;i++){
