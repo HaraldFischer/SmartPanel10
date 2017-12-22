@@ -6,18 +6,6 @@
 
             var colorList = new Array();
             var color;
-            var lock = false;
-            
-            var lock = function(object,functionName,lockFunction){
-                'use strict';
-                if (object[functionName].locked) return false;
-                var old = object[functionName];
-                object[functionName] = lockFunction;
-                object[functionName].locked = true;
-                return function(){
-                    object[functionName] = old;
-                }
-            }
 
             function saveData(){
                
@@ -66,59 +54,44 @@
 
             function startUp(){
                 
-                var p = new Promise(function(resolve,reject){
+                var p = new Promise(function(resolve){
                     this.loadData();
                     window.setTimeout(function(){
-                        alert("Timed Out");
-                        resolve();
-                    },3000);                    
-                    
-                    /*
-                    if (typeof colorList[0] !== 'undefined'){
-                        resolve();
+                        if (colorList.length >= 10) resolve();
+                        else{
+                            clearTimeout();
+                            setTimeout(100);
+                            reject();
+                        }
+                    },100);                    
+                                        
+                });
+                
+                p.then(function(){
+                    try{
+                        for (i=0;i<10;i++){
+                            str = "colorWell"+i;   
+                            color = document.querySelector("#" + str);                   
+                            color.value = colorList[i];
+                            color.addEventListener("input", updateFirst, false);
+                            color.addEventListener("change", updateAll, false);
+                            color.select();
+                        }
                     }
-                    else{
-                        reject();
+                    catch(ident){
+                        alert(ident);
                     }
-                    */
-                    /*
-                    window.setTimeout(function(){
-                        alert("Function Timed out");
-                        resolve();
-                    },3000);
-                    */
                     
                 });
                 
-                p.then(function(v){
-                    alert(colorList);
-                }
-                ,function(e){
-                    alert("E");
-                }
-                );
-                
-                
-                try{
-                    for (i=0;i<10;i++){
-                        str = "colorWell"+i;   
-                        color = document.querySelector("#" + str);                   
-                        color.value = colorList[i];
-                        color.addEventListener("input", updateFirst, false);
-                        color.addEventListener("change", updateAll, false);
-                        color.select();
-                    }
-                }
-                catch(ident){
-                    alert(ident);
-                }
-                
             }
 
+            
             function updateFirst(event){
-                //alert("UpdateFirst:" + colorList[0]);
-                
-                //colorWell0 = (event.target.value);
+                alert(event.data.object);
+                //alert("UpdateFirst:" + event.target.value +" " );
+                colorList[0] = event.target.value;
+                colorWell0 = (event.target.value);
             }
             
             function updateAll(event){
