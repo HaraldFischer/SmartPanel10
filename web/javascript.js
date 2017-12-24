@@ -53,14 +53,19 @@
             }
 
             function startUp(){
-                
-                var p = new Promise(function(resolve){
+                var count = 0;
+                var p = new Promise(function(resolve,reject){
                     this.loadData();
-                    window.setTimeout(function(){
-                        if (colorList.length >= 10) resolve();
-                        else{
-                            clearTimeout();
-                            setTimeout(100);
+                    var interval = window.setInterval(function(){
+                        count++;
+                        if (colorList.length >= 10){
+                            clearInterval(interval);
+                            resolve();
+                        }
+                        if (count > 20){
+                            clearInterval(interval);
+                            count = 0;
+                            alert("ColorList Timed Out");
                             reject();
                         }
                     },100);                    
@@ -88,10 +93,41 @@
 
             
             function updateFirst(event){
-                alert(event.data.object);
-                //alert("UpdateFirst:" + event.target.value +" " );
-                colorList[0] = event.target.value;
-                colorWell0 = (event.target.value);
+                
+                var what = event.target.getAttribute('id');
+                                
+                if (what === "colorWell0"){
+                    colorList[0] = event.target.value;
+                }
+                else if (what === "colorWell1"){
+                    colorList[1] = event.target.value;
+                }
+                else if (what === "colorWell2"){
+                    colorList[2] = event.target.value;
+                }
+                else if (what === "colorWell3"){
+                    colorList[3] = event.target.value;
+                }
+                else if (what === "colorWell4"){
+                    colorList[4] = event.target.value;
+                }
+                else if (what === "colorWell5"){
+                    colorList[5] = event.target.value;
+                }
+                else if (what === "colorWell6"){
+                    colorList[6] = event.target.value;
+                }
+                else if (what === "colorWell7"){
+                    colorList[7] = event.target.value;
+                }
+                else if (what === "colorWell8"){
+                    colorList[8] = event.target.value;
+                }
+                else if (what === "colorWell9"){
+                    colorList[9] = event.target.value;
+                }
+                else alert("Color Selection Failed");
+                
             }
             
             function updateAll(event){
