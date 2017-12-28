@@ -171,8 +171,11 @@ public class DataBean implements Serializable {
         return  Scene0;
     }
     
-    public void setScene0(String scene0){
-        this.Scene0  = scene0;
+    public void setScene0(){
+        //this.Scene0  = scene0;
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene0");
+        Scene0 = str;
+        showMessage(str);
     }
 
     public String getScene1(){
@@ -182,8 +185,10 @@ public class DataBean implements Serializable {
         return Scene1;
     }
     
-    public void setScene1(String scene1){
-        this.Scene1 = scene1;
+    public void setScene1(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene1");
+        Scene1 = str;
+        showMessage(str);
     }
     
     public String getScene2(){
@@ -194,8 +199,10 @@ public class DataBean implements Serializable {
         return Scene2;
     }
     
-    public void setScene2(String scene2){
-        Scene2 = scene2;
+    public void setScene2(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene2");
+        Scene2 = str;
+        showMessage(str);
     }
     public String getScene3(){
         RequestContext context = RequestContext.getCurrentInstance();
@@ -205,8 +212,10 @@ public class DataBean implements Serializable {
         return Scene3;
     }
     
-    public void setScene3(String scene3){
-        Scene3 = scene3;
+    public void setScene3(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene3");
+        Scene3 = str;
+        showMessage(str);
     }
     
     public String getScene4(){
@@ -217,8 +226,10 @@ public class DataBean implements Serializable {
         return Scene4;
     }
 
-    public void setScene4(String scene4){
-        Scene4 = scene4;
+    public void setScene4(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene4");
+        Scene4 = str;
+        showMessage(str);
     }
     
     public String getScene5(){
@@ -229,8 +240,10 @@ public class DataBean implements Serializable {
         return Scene5;
     }
 
-    public void setScene5(String scene5){
-        Scene5 = scene5;
+    public void setScene5(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene5");
+        Scene5 = str;
+        showMessage(str);
     }
     
     public String getScene6(){
@@ -241,8 +254,10 @@ public class DataBean implements Serializable {
         return Scene6;
     }
     
-    public void setScene6(String scene6){
-        Scene6 = scene6;
+    public void setScene6(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene6");
+        Scene6 = str;
+        showMessage(str);
     }
     
     public String getScene7(){
@@ -253,8 +268,10 @@ public class DataBean implements Serializable {
         return Scene7;
     }
 
-    public void setScene7(String scene7){
-        Scene7 = scene7;
+    public void setScene7(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene7");
+        Scene7 = str;
+        showMessage(str);
     }
     
     public String getScene8(){
@@ -265,8 +282,10 @@ public class DataBean implements Serializable {
         return Scene8;
     }
     
-    public void setScene8(String scene8){
-        Scene8 = scene8;
+    public void setScene8(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene8");
+        Scene8 = str;
+        showMessage(str);
     }
     
     public String getScene9(){
@@ -277,8 +296,10 @@ public class DataBean implements Serializable {
         return Scene9;
     }
     
-    public void setScene9(String scene9){
-        Scene9 = scene9;
+    public void setScene9(){
+        String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene9");
+        Scene9 = str;
+        showMessage(str);
     }
     
     
