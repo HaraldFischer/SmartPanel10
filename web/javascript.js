@@ -154,6 +154,17 @@
                 //alert("UpdateAll:" + colorList[0]);
                 
             }
+            
+            function checkWhite(str){
+                var retVal = false;
+                if (isNaN(str) === false){
+                    var number = Number(str);
+                    if (number>=0 && number <=255){
+                        retVal = true;
+                    }
+                }
+                return retVal;
+            }
 
             function onClick(){
                 //RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity."));
