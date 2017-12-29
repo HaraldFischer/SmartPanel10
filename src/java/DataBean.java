@@ -75,6 +75,13 @@ public class DataBean implements Serializable {
         }
     }
     
+    
+    @PreDestroy
+    public void saveBean(CloseEvent event){
+        writeToFile();
+    }
+    
+    
     public String complete(){
         return "Complete";
     }
@@ -324,12 +331,29 @@ public class DataBean implements Serializable {
         //loadFromFile();
     }
     
-    @PreDestroy
-    public void destroy(CloseEvent event){
-    }
-    
     public void validateIp(){
         showMessage("Validate");
+    }
+    
+    public void dumpData(){
+        /*
+        showMessage(Node);
+        showMessage(Port);
+        showMessage(Address);
+        showMessage(Timer);
+        showMessage(Pir);
+        showMessage(White);
+        showMessage(Scene0);
+        showMessage(Scene1);
+        showMessage(Scene2);
+        showMessage(Scene3);
+        showMessage(Scene4);
+        showMessage(Scene5);
+        showMessage(Scene6);
+        showMessage(Scene7);
+        showMessage(Scene8);
+        showMessage(Scene9);
+        */
     }
     
     public void writeToFile(){
@@ -353,6 +377,7 @@ public class DataBean implements Serializable {
            os.write("Scene8:" + Scene8 + "\n");
            os.write("Scene9:" + Scene9 + "\n");
            os.flush();
+
         }
         catch(Exception e){
           showMessage(e.getMessage());
@@ -395,6 +420,7 @@ public class DataBean implements Serializable {
                 if (line[0].equalsIgnoreCase("Scene9")) Scene9=line[1];
                 str = buffReader.readLine();
             }
+
         }
         catch(IOException ioe){
             success = false;
