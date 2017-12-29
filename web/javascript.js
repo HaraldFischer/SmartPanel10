@@ -59,12 +59,6 @@
                if (what === 7) rcsetscene7([{name:'rcsetscene7',value:colorList[7]}]);
                if (what === 8) rcsetscene8([{name:'rcsetscene8',value:colorList[8]}]);
                if (what === 9) rcsetscene9([{name:'rcsetscene9',value:colorList[9]}]);
-               /*
-               for (var i = 0; i < 10; i++){
-                   var str = "rcsetscene" + i + "([{name:'rcsetscene',value:" + colorList[i] + "}])";
-                   eval(str);
-               }
-               */
             }           
             
 
