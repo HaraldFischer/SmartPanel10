@@ -81,15 +81,7 @@ public class DataBean implements Serializable {
         writeToFile();
     }
     
-    
-    public String complete(){
-        return "Complete";
-    }
-    
-    public void updateValues(){
         
-    }
-    
     public String getNode(){
         return Node;
     }
@@ -319,47 +311,16 @@ public class DataBean implements Serializable {
         Scene9 = "#000000";
     }
     
-    public void changeSettings(ValueChangeEvent e){
-        showMessage("changeSettings");
-    }
     
     public void showMessage(String msg){
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Message", msg));
     }
-    
-    public void reload(){
-        //loadFromFile();
-    }
-    
-    public void validateIp(){
-        showMessage("Validate");
-    }
-    
-    public void dumpData(){
-        /*
-        showMessage(Node);
-        showMessage(Port);
-        showMessage(Address);
-        showMessage(Timer);
-        showMessage(Pir);
-        showMessage(White);
-        showMessage(Scene0);
-        showMessage(Scene1);
-        showMessage(Scene2);
-        showMessage(Scene3);
-        showMessage(Scene4);
-        showMessage(Scene5);
-        showMessage(Scene6);
-        showMessage(Scene7);
-        showMessage(Scene8);
-        showMessage(Scene9);
-        */
-    }
+          
     
     public void writeToFile(){
        Writer os = null;
         try{
-           os = new FileWriter("GreenControl.cfg");
+           os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/GreenControl.cfg");
            os.write("Node:" + Node + "\n");
            os.write("Port:" + Port + "\n");
            os.write("Address:" + Address + "\n");
@@ -398,7 +359,7 @@ public class DataBean implements Serializable {
         boolean success = true;
         BufferedReader buffReader = null;
         try{
-            buffReader= new BufferedReader(new FileReader("GreenControl.cfg"));
+            buffReader= new BufferedReader(new FileReader("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/GreenControl.cfg"));
             String str = buffReader.readLine();
             while(str != null){
                 String[] line = str.split(":");

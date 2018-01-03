@@ -1,0 +1,16 @@
+Node:192.168.0.17
+Port:8000
+Address:66
+Timer:2400
+Pir:230
+White:130
+Scene0:#FF00FF
+Scene1:#FF00FF
+Scene2:#FFF0FF
+Scene3:#FF00FF
+Scene4:#FFFF00
+Scene5:#FFFF00
+Scene6:#FFFF00
+Scene7:#FF00FF
+Scene8:#FFFF00
+Scene9:#FF00FF
