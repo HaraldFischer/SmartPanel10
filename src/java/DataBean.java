@@ -60,6 +60,8 @@ public class DataBean implements Serializable {
     private String Scene8 = "#000000";
     private String Scene9 = "#000000";
     
+    private String AbsolutePath = "";
+    
     private String Id     = "";
     Map<String,String> params = new HashMap();
     
@@ -68,6 +70,7 @@ public class DataBean implements Serializable {
   
     @PostConstruct
     public void postConstruct(){
+        //System.out.println(new File("SmartPanel10.cfg").getAbsolutePath());
         boolean success = loadFromFile();
         if (success==false){
             showMessage("Error Reading Configuration File\n Loading Defaults");
@@ -320,7 +323,7 @@ public class DataBean implements Serializable {
     public void writeToFile(){
        Writer os = null;
         try{
-           os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/GreenControl.cfg");
+           os = new FileWriter("SmartPanel10.cfg");
            os.write("Node:" + Node + "\n");
            os.write("Port:" + Port + "\n");
            os.write("Address:" + Address + "\n");
@@ -359,7 +362,7 @@ public class DataBean implements Serializable {
         boolean success = true;
         BufferedReader buffReader = null;
         try{
-            buffReader= new BufferedReader(new FileReader("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/GreenControl.cfg"));
+            buffReader= new BufferedReader(new FileReader("SmartPanel10.cfg"));
             String str = buffReader.readLine();
             while(str != null){
                 String[] line = str.split(":");
