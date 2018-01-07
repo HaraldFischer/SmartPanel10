@@ -30,6 +30,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ApplicationScoped;
 import java.util.*;
+import java.net.Socket;
+
 
 @ManagedBean(name = "data")
 @SessionScoped
@@ -60,6 +62,8 @@ public class DataBean implements Serializable {
     private String Scene8 = "#000000";
     private String Scene9 = "#000000";
     
+    private Socket ClientSocket = null;
+    
     private String AbsolutePath = "";
     
     private String Id     = "";
@@ -76,14 +80,35 @@ public class DataBean implements Serializable {
             showMessage("Error Reading Configuration File\n Loading Defaults");
             loadDefaults();
         }
+        try{
+            ClientSocket = new Socket(Node,Integer.parseInt(Port));
+        }
+        catch (Exception e){
+            
+        }
     }
     
     
     @PreDestroy
     public void saveBean(CloseEvent event){
         writeToFile();
+        if (ClientSocket != null){
+            try{
+                ClientSocket.close();
+            }
+            catch(Exception e){
+                
+            }
+        }
     }
     
+    public Socket getSocket(){
+        return ClientSocket;
+    }
+    
+    public void setSocket(Socket s){
+        ClientSocket = s;
+    }
         
     public String getNode(){
         return Node;

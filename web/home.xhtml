@@ -21,17 +21,17 @@ and open the template in the editor.
         </script>
         
     </h:head>
-    <h:body>
+    <h:body id = "idbody" >
         <script> window.addEventListener("load",startUp,true); </script>
-        <h:form>
+        <h:form id = "idform" >
             
-            <p:panelGrid columns="5" styleClass="grid">
-                    <p:column>
+            <p:panelGrid id = "idpanelgrid" columns="5" styleClass="grid">
+                    <p:column id = "idcolumn0" >
                         <p:remoteCommand id = "idrcgetscene0" name = "rcgetscene0" action = "#{data.getScene0()}" process = "@this" oncomplete = "handleComplete(xhr,status,args)" />
                         <p:remoteCommand id = "idrcsetscene0" name = "rcsetscene0" action = "#{data.setScene0()}" process = "@this" />
                         <input type="color" id="colorWell0" style="width:80%;height:50px;margin:10px" ></input>
                         <br></br>
-                        <p:button value="Scene 1" styleClass="buttonStyle"></p:button>
+                        <p:button id = "idbtnscene0" value="Scene 1" styleClass="buttonStyle" onclick = "buttonClicked(event)" ></p:button>
                     </p:column>
 
                     <p:column>

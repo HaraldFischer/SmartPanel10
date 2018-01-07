@@ -72,7 +72,7 @@
                             clearInterval(interval);
                             resolve();
                         }
-                        if (count > 20){
+                        if (count > 40){
                             clearInterval(interval);
                             count = 0;
                             alert("ColorList Timed Out");
@@ -166,11 +166,9 @@
                 return retVal;
             }
 
-            function onClick(){
-                //RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "What we do in life", "Echoes in eternity."));
-                //var context = RequestContext.getCurrentInstance();
-                //context.execute("PrimeFaces.info('Hello from the Backing Bean');");
-                
+            function buttonClicked(event){
+                var id = event.target.getAttribute('id');
+                alert(id);
             }
             
             function refresh(){
