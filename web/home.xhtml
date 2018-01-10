@@ -32,6 +32,7 @@ and open the template in the editor.
                         <input type="color" id="colorWell0" style="width:80%;height:50px;margin:10px" ></input>
                         <br></br>
                         <p:button id = "idbtnscene0" value="Scene 1" styleClass="buttonStyle" onclick = "buttonClicked(event)" ></p:button>
+                        <p:remoteCommand id = "idscene0clicked" name = "rcscene0clicked" action = "#{data.scene0Clicked()}" process = "@this" oncomplete="sceneComplete(xhr,status,args)" />
                     </p:column>
 
                     <p:column>
@@ -39,7 +40,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene1" name = "rcsetscene1" action = "#{data.setScene1()}" process = "@this" />
                         <input type="color" id="colorWell1" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 2" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene1" value="Scene 2" styleClass="buttonStyle" onclick = "buttonClicked(event)"/>
                     </p:column>
 
 
@@ -48,7 +49,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene2" name = "rcsetscene2" action = "#{data.setScene2()}" process = "@this" />
                         <input type="color" id="colorWell2" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 3" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene2" value="Scene 3" styleClass="buttonStyle" onclick = "buttonClicked(event)" />
                     </p:column>
 
 
@@ -57,7 +58,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene3" name = "rcsetscene3" action = "#{data.setScene3()}" process = "@this" />
                         <input type="color" id="colorWell3" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 4" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene3" value="Scene 4" styleClass="buttonStyle" onclick = "buttonClicked(event)"/>
                     </p:column>
                 
                     <p:column>
@@ -65,7 +66,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene4" name = "rcsetscene4" action = "#{data.setScene4()}" process = "@this" />
                         <input type="color" id="colorWell4" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 5" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene4" value="Scene 5" styleClass="buttonStyle" onclick = "buttonClicked(event)" />
                     </p:column>
 
 
@@ -74,7 +75,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene5" name = "rcsetscene5" action = "#{data.setScene5()}" process = "@this" />
                         <input type="color" id="colorWell5" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 6" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene5" value="Scene 6" styleClass="buttonStyle" onclick = "buttonClicked(event)" />
                     </p:column>
 
 
@@ -83,7 +84,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene6" name = "rcsetscene6" action = "#{data.setScene6()}" process = "@this" />
                         <input type="color" id="colorWell6" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 7" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene6" value="Scene 7" styleClass="buttonStyle" onclick = "buttonClicked(event)" />
                     </p:column>
 
                     <p:column>
@@ -91,7 +92,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene7" name = "rcsetscene7" action = "#{data.setScene7()}" process = "@this" />
                         <input type="color" id="colorWell7" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 8" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene7" value="Scene 8" styleClass="buttonStyle" onclick = "buttonClicked(event)" />
                     </p:column>
                 
                     <p:column>
@@ -99,7 +100,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene8" name = "rcsetscene8" action = "#{data.setScene8()}" process = "@this" />
                         <input type="color" id="colorWell8" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button value="Scene 9" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene8" value="Scene 9" styleClass="buttonStyle" onclick = "buttonClicked(event)" />
                     </p:column>
 
                     <p:column>
@@ -107,7 +108,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene9" name = "rcsetscene9" action = "#{data.setScene9()}" process = "@this" />
                         <input type="color" id="colorWell9" style="width:80%;height:50px;margin:10px"></input>
                         <br></br>
-                        <p:button onclick="javascript:check();" value="Scene 10" styleClass="buttonStyle"/>
+                        <p:button id = "idbtnscene9" value="Scene 10" styleClass="buttonStyle" onclick = "buttonClicked(event)"/>
                     </p:column>
 
             </p:panelGrid>

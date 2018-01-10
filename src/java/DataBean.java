@@ -344,11 +344,15 @@ public class DataBean implements Serializable {
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Message", msg));
     }
           
+
+    public void scene0Clicked(){
+        //showMessage("Scene 1 clicked");
+    }
     
     public void writeToFile(){
        Writer os = null;
         try{
-           os = new FileWriter("SmartPanel10.cfg");
+           os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg");
            os.write("Node:" + Node + "\n");
            os.write("Port:" + Port + "\n");
            os.write("Address:" + Address + "\n");
@@ -387,7 +391,7 @@ public class DataBean implements Serializable {
         boolean success = true;
         BufferedReader buffReader = null;
         try{
-            buffReader= new BufferedReader(new FileReader("SmartPanel10.cfg"));
+            buffReader= new BufferedReader(new FileReader("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg"));
             String str = buffReader.readLine();
             while(str != null){
                 String[] line = str.split(":");

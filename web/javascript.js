@@ -72,7 +72,7 @@
                             clearInterval(interval);
                             resolve();
                         }
-                        if (count > 40){
+                        if (count > 50){
                             clearInterval(interval);
                             count = 0;
                             alert("ColorList Timed Out");
@@ -168,24 +168,38 @@
 
             function buttonClicked(event){
                 var id = event.target.getAttribute('id');
-                alert(id);
+                if (id === "idform:idbtnscene0"){
+                    rcscene0clicked();
+                }
+                if (id === "idform:idbtnscene1"){
+                    
+                }
+                if (id === "idform:idbtnscene2"){
+                    
+                }
+                if (id === "idform:idbtnscene3"){
+                    
+                }
+                if (id === "idform:idbtnscene4"){
+                    
+                }
+                if (id === "idform:idbtnscene5"){
+                    
+                }
+                if (id === "idform:idbtnscene6"){
+                    
+                }
+                if (id === "idform:idbtnscene7"){
+                    
+                }
+                if (id === "idform:idbtnscene8"){
+                    
+                }
+                if (id === "idform:idbtnscene9"){
+                    
+                }
             }
             
-            function refresh(){
-                alert("Refresh");
+            function sceneComplete(xhr,status,args){
+                alert ("Scene Complete");
             }
-            
-            
-            function check(){
-                alert("Check");
-            };
-       
-            function submit(){
-                alert("Submit");
-            }
-            
-            function initHandler(){
-                var input = document.getElementById('idNode');
-                alert(input.toString());
-            }
-
