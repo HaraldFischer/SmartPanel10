@@ -203,3 +203,39 @@
             function sceneComplete(xhr,status,args){
                 alert ("Scene Complete");
             }
+            
+            function clickBtnOn(){
+                alert("On");
+            }
+            
+            function clickBtnOff(){
+                alert("Off");
+            }
+            
+            function clickBtnUp(){
+                alert("Up");
+            }
+
+            function clickBtnDown(){
+                alert("Down");
+            }
+            
+            function clickBtnSave(){
+                alert("Save");
+            }
+            
+            function clickBtnLoad(){
+                alert("Load");
+            }
+            
+            function clickBtnTimer(){
+                alert("Timer");
+            }
+            
+            function clickBtnPir(){
+                alert("Pir");
+            }
+            
+            function clickBtnWhite(){
+                alert("White");
+            }
