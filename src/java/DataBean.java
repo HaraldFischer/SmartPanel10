@@ -346,7 +346,48 @@ public class DataBean implements Serializable {
           
 
     public void scene0Clicked(){
-        //showMessage("Scene 1 clicked");
+        try{
+            ObjectOutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
+        }
+        catch(Exception e){
+            showMessage(e.getMessage());
+        }
+    }
+    
+    public void scene1Clicked(){
+        
+    }
+    
+    public void scene2Clicked(){
+        
+    }
+    
+    public void scene3Clicked(){
+        
+    }
+    
+    public void scene4Clicked(){
+        
+    }
+    
+    public void scene5Clicked(){
+        
+    }
+    
+    public void scene6Clicked(){
+        
+    }
+    
+    public void scene7Clicked(){
+        
+    }
+    
+    public void scene8Clicked(){
+        
+    }
+    
+    public void scene9Clicked(){
+        
     }
     
     public void writeToFile(){

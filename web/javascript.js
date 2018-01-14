@@ -168,39 +168,41 @@
 
             function buttonClicked(event){
                 var id = event.target.getAttribute('id');
+                
                 if (id === "idform:idbtnscene0"){
                     rcscene0clicked();
                 }
                 if (id === "idform:idbtnscene1"){
-                    
+                    rcscene1clicked();
                 }
                 if (id === "idform:idbtnscene2"){
-                    
+                    rcscene2clicked();
                 }
                 if (id === "idform:idbtnscene3"){
-                    
+                    rcscene3clicked();
                 }
                 if (id === "idform:idbtnscene4"){
-                    
+                    rcscene4clicked();
                 }
                 if (id === "idform:idbtnscene5"){
-                    
+                    rcscene5clicked();
                 }
                 if (id === "idform:idbtnscene6"){
-                    
+                    rcscene6clicked();
                 }
                 if (id === "idform:idbtnscene7"){
-                    
+                    rcscene7clicked();
                 }
                 if (id === "idform:idbtnscene8"){
-                    
+                    rcscene8clicked();
                 }
                 if (id === "idform:idbtnscene9"){
-                    
+                    rcscene9clicked();
                 }
             }
             
             function sceneComplete(xhr,status,args){
+                
                 alert ("Scene Complete");
             }
             
