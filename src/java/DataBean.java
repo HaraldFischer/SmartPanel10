@@ -81,7 +81,15 @@ public class DataBean implements Serializable {
             loadDefaults();
         }
         try{
-            ClientSocket = new Socket(Node,Integer.parseInt(Port));
+            ClientSocket = new Socket("127.0.0.1",7070);
+            if (ClientSocket != null){
+                ObjectOutputStream out = new ObjectOutputStream(ClientSocket.getOutputStream());
+                out.writeChars("Data Written");
+                out.flush();
+            }
+            else{
+                showMessage("ClientSocket is null");
+            }
         }
         catch (Exception e){
             
@@ -348,6 +356,8 @@ public class DataBean implements Serializable {
     public void scene0Clicked(){
         try{
             ObjectOutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
+            os.writeChars("Data to Server");
+            os.flush();
         }
         catch(Exception e){
             showMessage(e.getMessage());
