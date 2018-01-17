@@ -42,6 +42,7 @@ public class DataBean implements Serializable {
     //@ManagedProperty("#{param.name}");
     
     private static final long serialVersionUID = 0L;
+    BufferedReader InReader = null;
     //@ManagedProperty("#{param.Node}")
     private String Node="192.168.0.12";
     private String Port="2048";
@@ -81,15 +82,9 @@ public class DataBean implements Serializable {
             loadDefaults();
         }
         try{
-            ClientSocket = new Socket("127.0.0.1",7070);
-            if (ClientSocket != null){
-                ObjectOutputStream out = new ObjectOutputStream(ClientSocket.getOutputStream());
-                out.writeChars("Data Written");
-                out.flush();
-            }
-            else{
-                showMessage("ClientSocket is null");
-            }
+            ClientSocket = new Socket("127.0.0.1",7070); 
+            InReader = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
+            
         }
         catch (Exception e){
             
@@ -355,9 +350,20 @@ public class DataBean implements Serializable {
 
     public void scene0Clicked(){
         try{
+            String str = "Data To Server\r\n";
             ObjectOutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
-            os.writeChars("Data to Server");
+            os.writeChars(str);
             os.flush();
+            String in = null;
+            while ((in = InReader.readLine()) != null){
+                showMessage(in);
+            }
+            
+            /*
+            String str = "Data To Server";
+            ClientSocket.getOutputStream().write(str.getBytes("US-ASCII"));
+            ClientSocket.getOutputStream().flush();
+            */
         }
         catch(Exception e){
             showMessage(e.getMessage());
