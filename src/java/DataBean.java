@@ -82,7 +82,9 @@ public class DataBean implements Serializable {
             loadDefaults();
         }
         try{
-            ClientSocket = new Socket("127.0.0.1",7070); 
+            if (ClientSocket != null) ClientSocket.close();
+            ClientSocket = new Socket(Node,Integer.parseInt(Port));
+            ClientSocket.setSoTimeout(1000);
             InReader = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
             
         }
@@ -349,16 +351,14 @@ public class DataBean implements Serializable {
           
 
     public void scene0Clicked(){
+        ArrayList<String>  strArray = new ArrayList();
         try{
-            String str = "Data To Server\r\n";
-            ObjectOutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
-            os.writeChars(str);
+            String str = ":Data To Server\r\n";
+            OutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
+            os.write(str.getBytes());
             os.flush();
-            String in = null;
-            while ((in = InReader.readLine()) != null){
-                showMessage(in);
-            }
-            
+            String in = InReader.readLine();
+            System.out.println("");
             /*
             String str = "Data To Server";
             ClientSocket.getOutputStream().write(str.getBytes("US-ASCII"));
@@ -367,6 +367,7 @@ public class DataBean implements Serializable {
         }
         catch(Exception e){
             showMessage(e.getMessage());
+            strArray.forEach((a)-> System.out.println(a));
         }
     }
     
