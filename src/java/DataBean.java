@@ -81,33 +81,39 @@ public class DataBean implements Serializable {
             showMessage("Error Reading Configuration File\n Loading Defaults");
             loadDefaults();
         }
+        closeSocket();
+        initSocket();
+    }
+    
+    @PreDestroy
+    public void saveBean(CloseEvent event){
+        writeToFile();
+        closeSocket();
+    }
+
+    public void initSocket(){
         try{
-            if (ClientSocket != null) ClientSocket.close();
+            closeSocket();
             ClientSocket = new Socket(Node,Integer.parseInt(Port));
-            ClientSocket.setSoTimeout(1000);
             InReader = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
-            
+            ClientSocket.setSoTimeout(1000);
         }
         catch (Exception e){
             
         }
     }
     
-    
-    @PreDestroy
-    public void saveBean(CloseEvent event){
-        writeToFile();
-        if (ClientSocket != null){
-            try{
-                ClientSocket.close();
-                ClientSocket = null;
-            }
-            catch(Exception e){
-                
-            }
+    public void closeSocket(){
+        try{
+            if (ClientSocket != null) ClientSocket.close();
+            ClientSocket = null;
+        }
+        catch (Exception e){
+            
         }
     }
     
+        
     public Socket getSocket(){
         return ClientSocket;
     }
@@ -153,7 +159,8 @@ public class DataBean implements Serializable {
         if (white!=null){
             White = white;
         }
-        
+        closeSocket();
+        initSocket();
     }
     
     public String getPort(){
