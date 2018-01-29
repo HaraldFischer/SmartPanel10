@@ -99,17 +99,23 @@ public class DataBean implements Serializable {
             ClientSocket.setSoTimeout(1000);
         }
         catch (Exception e){
-            
+            e.printStackTrace();
         }
     }
     
     public void closeSocket(){
         try{
-            if (ClientSocket != null) ClientSocket.close();
-            ClientSocket = null;
+            if (InReader != null){
+                InReader.close();
+                InReader = null;
+            }
+            if (ClientSocket != null){ 
+                ClientSocket.close();
+                ClientSocket = null;
+            }
         }
         catch (Exception e){
-            
+            e.printStackTrace();
         }
     }
     
@@ -359,33 +365,35 @@ public class DataBean implements Serializable {
           
 
     public void scene0Clicked(){
-        ArrayList<String>  strArray = new ArrayList();
         String in = null;
         try{
-            String str = ":Data To Server\r\n";
+            String str = ":" + Scene0 + "\r\n";
             OutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
             os.write(str.getBytes());
             os.flush();
             in = InReader.readLine();
-            if (in == null){
-                System.out.println("null");
-            }
-            
-            /*
-            String str = "Data To Server";
-            ClientSocket.getOutputStream().write(str.getBytes("US-ASCII"));
-            ClientSocket.getOutputStream().flush();
-            */
+            System.out.println(in);
         }
         catch(Exception e){
             e.printStackTrace();
             showMessage(e.getMessage());
-            strArray.forEach((a)-> System.out.println(a));
         }
+        
     }
     
     public void scene1Clicked(){
-        
+        String in = null;
+        try{
+            String str = ":" + Scene1 + "\r\n";
+            OutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
+            os.write(str.getBytes());
+            os.flush();
+            in = InReader.readLine();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene2Clicked(){
