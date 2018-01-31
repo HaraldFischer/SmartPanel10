@@ -39,11 +39,11 @@ public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
      */
-    //@ManagedProperty("#{param.name}");
     
     private static final long serialVersionUID = 0L;
-    BufferedReader InReader = null;
-    //@ManagedProperty("#{param.Node}")
+    private BufferedReader      InReader = null;
+    private ObjectOutputStream  OutWriter= null;
+    
     private String Node="192.168.0.12";
     private String Port="2048";
     private String Address = "0";
@@ -96,6 +96,7 @@ public class DataBean implements Serializable {
             closeSocket();
             ClientSocket = new Socket(Node,Integer.parseInt(Port));
             InReader = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
+            OutWriter= new ObjectOutputStream(ClientSocket.getOutputStream());
             ClientSocket.setSoTimeout(1000);
         }
         catch (Exception e){
@@ -108,6 +109,10 @@ public class DataBean implements Serializable {
             if (InReader != null){
                 InReader.close();
                 InReader = null;
+            }
+            if (OutWriter != null){
+                OutWriter.close();
+                OutWriter = null;
             }
             if (ClientSocket != null){ 
                 ClientSocket.close();
@@ -218,7 +223,6 @@ public class DataBean implements Serializable {
     }
     
     public void setScene0(){
-        //this.Scene0  = scene0;
         String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene0");
         Scene0 = str;
     }
@@ -367,10 +371,9 @@ public class DataBean implements Serializable {
     public void scene0Clicked(){
         String in = null;
         try{
-            String str = ":" + Scene0 + "\r\n";
-            OutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
-            os.write(str.getBytes());
-            os.flush();
+            String str = Scene0 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
             in = InReader.readLine();
             System.out.println(in);
         }
@@ -378,16 +381,14 @@ public class DataBean implements Serializable {
             e.printStackTrace();
             showMessage(e.getMessage());
         }
-        
     }
     
     public void scene1Clicked(){
         String in = null;
         try{
-            String str = ":" + Scene1 + "\r\n";
-            OutputStream os = new ObjectOutputStream(ClientSocket.getOutputStream());
-            os.write(str.getBytes());
-            os.flush();
+            String str = Scene1 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
             in = InReader.readLine();
         }
         catch(Exception e){
@@ -397,35 +398,115 @@ public class DataBean implements Serializable {
     }
     
     public void scene2Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene2 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene3Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene3 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene4Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene4 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene5Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene5 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene6Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene6 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene7Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene7 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene8Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene8 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void scene9Clicked(){
-        
+        String in = null;
+        try{
+            String str = Scene9 + "\r\n";
+            OutWriter.write(str.getBytes());
+            OutWriter.flush();
+            in = InReader.readLine();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showMessage(e.getMessage());
+        }
     }
     
     public void writeToFile(){
