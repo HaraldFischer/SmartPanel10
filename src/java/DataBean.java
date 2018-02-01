@@ -42,7 +42,7 @@ public class DataBean implements Serializable {
     
     private static final long serialVersionUID = 0L;
     private BufferedReader      InReader = null;
-    private ObjectOutputStream  OutWriter= null;
+    private DataOutputStream    OutWriter= null;
     
     private String Node="192.168.0.12";
     private String Port="2048";
@@ -96,7 +96,7 @@ public class DataBean implements Serializable {
             closeSocket();
             ClientSocket = new Socket(Node,Integer.parseInt(Port));
             InReader = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
-            OutWriter= new ObjectOutputStream(ClientSocket.getOutputStream());
+            OutWriter= new DataOutputStream(ClientSocket.getOutputStream());
             ClientSocket.setSoTimeout(1000);
         }
         catch (Exception e){
@@ -372,10 +372,9 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene0 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
-            System.out.println(in);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -387,7 +386,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene1 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -401,7 +400,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene2 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -415,7 +414,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene3 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -429,7 +428,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene4 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -443,7 +442,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene5 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -457,7 +456,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene6 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -471,7 +470,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene7 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -485,7 +484,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene8 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }
@@ -499,7 +498,7 @@ public class DataBean implements Serializable {
         String in = null;
         try{
             String str = Scene9 + "\r\n";
-            OutWriter.write(str.getBytes());
+            OutWriter.writeChars(str);
             OutWriter.flush();
             in = InReader.readLine();
         }

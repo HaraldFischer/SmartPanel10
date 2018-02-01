@@ -202,8 +202,7 @@
             }
             
             function sceneComplete(xhr,status,args){
-                
-                alert ("Scene Complete");
+              
             }
             
             function clickBtnOn(){
