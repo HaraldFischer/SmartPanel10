@@ -7,11 +7,12 @@
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.*;
+import java.nio.ByteBuffer;
 import javax.annotation.PreDestroy;
 import javax.annotation.PostConstruct;
 import org.primefaces.event.CloseEvent;
 import javax.faces.event.ValueChangeEvent;
-
+import java.nio.channels.FileChannel;
 import javax.swing.JOptionPane;
 import org.primefaces.context.RequestContext;
 import javax.faces.application.FacesMessage;
@@ -511,6 +512,23 @@ public class DataBean implements Serializable {
     public void writeToFile(){
        Writer os = null;
         try{
+           /*
+           RandomAccessFile aStream = new RandomAccessFile("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg","rw");
+           FileChannel fc = aStream.getChannel();
+           ByteBuffer buff = ByteBuffer.allocate(100);
+           buff.put("Node:".getBytes());
+           buff.put(Node.getBytes());
+           buff.put("\r\n".getBytes());
+           fc.write(buff);
+           buff.clear();
+           buff.put("Port:".getBytes());
+           buff.put(Port.getBytes());
+           buff.put("\r\n".getBytes());
+           fc.write(buff);
+           buff.clear();
+           fc.force(true);
+           fc.close();
+           */
            os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg");
            os.write("Node:" + Node + "\n");
            os.write("Port:" + Port + "\n");
@@ -529,7 +547,7 @@ public class DataBean implements Serializable {
            os.write("Scene8:" + Scene8 + "\n");
            os.write("Scene9:" + Scene9 + "\n");
            os.flush();
-
+           
         }
         catch(Exception e){
           showMessage(e.getMessage());
