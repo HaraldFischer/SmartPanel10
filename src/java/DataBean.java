@@ -76,7 +76,6 @@ public class DataBean implements Serializable {
   
     @PostConstruct
     public void postConstruct(){
-        //System.out.println(new File("SmartPanel10.cfg").getAbsolutePath());
         boolean success = loadFromFile();
         if (success==false){
             showMessage("Error Reading Configuration File\n Loading Defaults");
@@ -87,7 +86,7 @@ public class DataBean implements Serializable {
     }
     
     @PreDestroy
-    public void saveBean(CloseEvent event){
+    public void preDestroy(CloseEvent event){
         writeToFile();
         closeSocket();
     }
@@ -370,6 +369,8 @@ public class DataBean implements Serializable {
           
 
     public void scene0Clicked(){
+        writeToFile();
+        /*
         String in = null;
         try{
             String str = Scene0 + "\r\n";
@@ -381,6 +382,7 @@ public class DataBean implements Serializable {
             e.printStackTrace();
             showMessage(e.getMessage());
         }
+        */
     }
     
     public void scene1Clicked(){
@@ -512,23 +514,6 @@ public class DataBean implements Serializable {
     public void writeToFile(){
        Writer os = null;
         try{
-           /*
-           RandomAccessFile aStream = new RandomAccessFile("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg","rw");
-           FileChannel fc = aStream.getChannel();
-           ByteBuffer buff = ByteBuffer.allocate(100);
-           buff.put("Node:".getBytes());
-           buff.put(Node.getBytes());
-           buff.put("\r\n".getBytes());
-           fc.write(buff);
-           buff.clear();
-           buff.put("Port:".getBytes());
-           buff.put(Port.getBytes());
-           buff.put("\r\n".getBytes());
-           fc.write(buff);
-           buff.clear();
-           fc.force(true);
-           fc.close();
-           */
            os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg");
            os.write("Node:" + Node + "\n");
            os.write("Port:" + Port + "\n");
@@ -547,9 +532,9 @@ public class DataBean implements Serializable {
            os.write("Scene8:" + Scene8 + "\n");
            os.write("Scene9:" + Scene9 + "\n");
            os.flush();
-           
         }
         catch(Exception e){
+          e.printStackTrace();
           showMessage(e.getMessage());
           
         }
@@ -558,6 +543,7 @@ public class DataBean implements Serializable {
                 if (os!=null) os.close();
             }
             catch (IOException ioe){
+                ioe.printStackTrace();
                 showMessage(ioe.getMessage());
             }
         }
@@ -594,6 +580,7 @@ public class DataBean implements Serializable {
         }
         catch(IOException ioe){
             success = false;
+            ioe.printStackTrace();
             showMessage(ioe.getMessage());
         }
         finally{
@@ -601,6 +588,7 @@ public class DataBean implements Serializable {
                 if (buffReader!=null) buffReader.close();
             }
             catch(IOException ioe){
+                ioe.printStackTrace();
                 showMessage(ioe.getMessage());
             }
         }
