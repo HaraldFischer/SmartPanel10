@@ -35,7 +35,7 @@ import java.net.Socket;
 
 
 @ManagedBean(name = "data")
-@SessionScoped
+@ApplicationScoped
 public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
@@ -86,7 +86,8 @@ public class DataBean implements Serializable {
     }
     
     @PreDestroy
-    public void preDestroy(CloseEvent event){
+    public void preDestroy(){
+        //showMessage("preDestroy");
         writeToFile();
         closeSocket();
     }
@@ -369,8 +370,6 @@ public class DataBean implements Serializable {
           
 
     public void scene0Clicked(){
-        writeToFile();
-        /*
         String in = null;
         try{
             String str = Scene0 + "\r\n";
@@ -382,7 +381,6 @@ public class DataBean implements Serializable {
             e.printStackTrace();
             showMessage(e.getMessage());
         }
-        */
     }
     
     public void scene1Clicked(){
@@ -515,22 +513,22 @@ public class DataBean implements Serializable {
        Writer os = null;
         try{
            os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg");
-           os.write("Node:" + Node + "\n");
-           os.write("Port:" + Port + "\n");
-           os.write("Address:" + Address + "\n");
-           os.write("Timer:" + Timer + "\n");
-           os.write("Pir:" + Pir + "\n");
-           os.write("White:" + White + "\n");
-           os.write("Scene0:" + Scene0 + "\n");
-           os.write("Scene1:" + Scene1 + "\n");
-           os.write("Scene2:" + Scene2 + "\n");
-           os.write("Scene3:" + Scene3 + "\n");
-           os.write("Scene4:" + Scene4 + "\n");
-           os.write("Scene5:" + Scene5 + "\n");
-           os.write("Scene6:" + Scene6 + "\n");
-           os.write("Scene7:" + Scene7 + "\n");
-           os.write("Scene8:" + Scene8 + "\n");
-           os.write("Scene9:" + Scene9 + "\n");
+           os.write("Node:" + Node + "\r\n");
+           os.write("Port:" + Port + "\r\n");
+           os.write("Address:" + Address + "\r\n");
+           os.write("Timer:" + Timer + "\r\n");
+           os.write("Pir:" + Pir + "\r\n");
+           os.write("White:" + White + "\r\n");
+           os.write("Scene0:" + Scene0 + "\r\n");
+           os.write("Scene1:" + Scene1 + "\r\n");
+           os.write("Scene2:" + Scene2 + "\r\n");
+           os.write("Scene3:" + Scene3 + "\r\n");
+           os.write("Scene4:" + Scene4 + "\r\n");
+           os.write("Scene5:" + Scene5 + "\r\n");
+           os.write("Scene6:" + Scene6 + "\r\n");
+           os.write("Scene7:" + Scene7 + "\r\n");
+           os.write("Scene8:" + Scene8 + "\r\n");
+           os.write("Scene9:" + Scene9 + "\r\n");
            os.flush();
         }
         catch(Exception e){
