@@ -557,21 +557,22 @@ public class DataBean implements Serializable {
             while(str != null){
                 String[] line = str.split(":");
                 if (line[0].equalsIgnoreCase("Node")) Node=line[1];
-                if (line[0].equalsIgnoreCase("Port")) Port=line[1];
-                if (line[0].equalsIgnoreCase("Address"))Address=line[1];
-                if (line[0].equalsIgnoreCase("Pir")) Pir=line[1];
-                if (line[0].equalsIgnoreCase("Timer"))Timer=line[1];
-                if (line[0].equalsIgnoreCase("White"))White=line[1];
-                if (line[0].equalsIgnoreCase("Scene0")) Scene0=line[1];
-                if (line[0].equalsIgnoreCase("Scene1")) Scene1=line[1];
-                if (line[0].equalsIgnoreCase("Scene2")) Scene2=line[1];
-                if (line[0].equalsIgnoreCase("Scene3")) Scene3=line[1];
-                if (line[0].equalsIgnoreCase("Scene4")) Scene4=line[1];
-                if (line[0].equalsIgnoreCase("Scene5")) Scene5=line[1];
-                if (line[0].equalsIgnoreCase("Scene6")) Scene6=line[1];
-                if (line[0].equalsIgnoreCase("Scene7")) Scene7=line[1];
-                if (line[0].equalsIgnoreCase("Scene8")) Scene8=line[1];
-                if (line[0].equalsIgnoreCase("Scene9")) Scene9=line[1];
+                else if (line[0].equalsIgnoreCase("Port")) Port=line[1];
+                else if (line[0].equalsIgnoreCase("Address"))Address=line[1];
+                else if (line[0].equalsIgnoreCase("Pir")) Pir=line[1];
+                else if (line[0].equalsIgnoreCase("Timer"))Timer=line[1];
+                else if (line[0].equalsIgnoreCase("White"))White=line[1];
+                else if (line[0].equalsIgnoreCase("Scene0")) Scene0=line[1];
+                else if (line[0].equalsIgnoreCase("Scene1")) Scene1=line[1];
+                else if (line[0].equalsIgnoreCase("Scene2")) Scene2=line[1];
+                else if (line[0].equalsIgnoreCase("Scene3")) Scene3=line[1];
+                else if (line[0].equalsIgnoreCase("Scene4")) Scene4=line[1];
+                else if (line[0].equalsIgnoreCase("Scene5")) Scene5=line[1];
+                else if (line[0].equalsIgnoreCase("Scene6")) Scene6=line[1];
+                else if (line[0].equalsIgnoreCase("Scene7")) Scene7=line[1];
+                else if (line[0].equalsIgnoreCase("Scene8")) Scene8=line[1];
+                else if (line[0].equalsIgnoreCase("Scene9")) Scene9=line[1];
+                else;
                 str = buffReader.readLine();
             }
 
