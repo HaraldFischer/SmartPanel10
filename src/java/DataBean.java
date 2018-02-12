@@ -515,7 +515,7 @@ public class DataBean implements Serializable {
            os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg");
            os.write("Node:" + Node + "\n");
            os.write("Port:" + Port + "\n");
-           os.write("Address:" + Address + "\r\n");
+           os.write("Address:" + Address + "\n");
            os.write("Timer:" + Timer + "\n");
            os.write("Pir:" + Pir + "\n");
            os.write("White:" + White + "\n");
