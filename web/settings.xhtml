@@ -31,6 +31,7 @@ and open the template in the editor.
                       var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
                       var match = testNode.test(this.value);
                       if (match === true){
+                          //FacesContext.getCurrentInstance().getMessages().remove();
                           rcnode([{name:"Node",value:this.value}]);                          
                       }
                       else{
@@ -150,17 +151,6 @@ and open the template in the editor.
                             $(this).val(prevVal);                            
                         }
                         
-                        /*
-                        var testWhite = new RegExp("[0-255]");
-                        var match = testWhite.test(this.value);
-                        if (match === true){
-                            rcwhite([{name:"White",value:this.value}]);
-                        }
-                        else{
-                            alert("White must be a Value between 0 and 255");
-                            $(this).val(prevVal);
-                        }
-                        */
                     });
                     childNode.addEventListener("focus", function(){
                         prevVal = this.value;
@@ -175,8 +165,9 @@ and open the template in the editor.
         </script>
         <div>
             <h:form id = "idform">
-            
+                
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
+                
                 <p:remoteCommand name = "rcnode" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText value="Node:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" >

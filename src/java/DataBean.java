@@ -87,7 +87,6 @@ public class DataBean implements Serializable {
     
     @PreDestroy
     public void preDestroy(){
-        //showMessage("preDestroy");
         writeToFile();
         closeSocket();
     }
@@ -142,6 +141,10 @@ public class DataBean implements Serializable {
        Node=node;
     }
     
+    public void clearParams(){
+        FacesContext.getCurrentInstance().getMessages().remove();
+    }
+    
     public void setParams(){
         
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -171,6 +174,16 @@ public class DataBean implements Serializable {
         if (white!=null){
             White = white;
         }
+    
+        /*
+        Iterator<FacesMessage> msgIterator = FacesContext.getCurrentInstance().getMessages();
+        while(msgIterator.hasNext())
+        {
+            msgIterator.next();
+            msgIterator.remove();
+        }        
+        */
+        
         closeSocket();
         initSocket();
     }
