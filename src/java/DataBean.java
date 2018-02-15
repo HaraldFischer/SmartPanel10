@@ -149,41 +149,42 @@ public class DataBean implements Serializable {
         
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
+        
+        
         String node = params.get("Node");
         if (node!= null){
             Node = node;
         }
         
+        
         String port = params.get("Port");
         if (port!=null){
             Port = port;
         }
+        
+
         String address = params.get("Address");
         if (address!=null){
             Address = address;
         }
+        
+
         String timer = params.get("Timer");
         if (timer!=null){
             Timer = timer;
         }
+
+
         String pir = params.get("Pir");
         if (pir!=null){
             Pir = pir;
         }
+
         String white = params.get("White");
         if (white!=null){
             White = white;
         }
-    
-        /*
-        Iterator<FacesMessage> msgIterator = FacesContext.getCurrentInstance().getMessages();
-        while(msgIterator.hasNext())
-        {
-            msgIterator.next();
-            msgIterator.remove();
-        }        
-        */
-        
+
         closeSocket();
         initSocket();
     }
