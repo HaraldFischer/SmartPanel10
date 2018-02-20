@@ -161,10 +161,38 @@ and open the template in the editor.
                 }
             };
             
-            window.onunload = function(){
-                alert("OnUnload");
-            };
-            
+            window.onbeforeunload = function(){
+                //window.event.returnValue = "RetVal";
+                childNode = document.getElementById("idform:idnode");
+                if (childNode !== null){
+                    rcnode([{name:"Node", value:childNode.value}]);
+                }
+                
+                childNode = document.getElementById("idform:idport");
+                if (childNode !== null){
+                    rcport([{name = "Port", value: childNode.value}]);
+                }
+               
+                childNode = document.getElementById("idform:idaddress");
+                if (childNode !== null){
+                    rcaddress([{name:"Address"}, value:childNode.value]);
+                }
+                childNode = document.getElementById("idform:idtimer");
+                if (childNode !== null){
+                    rctimer([{name:"Timer", value: childNode.value}]);
+                }
+                childNode = document.getElementById("idform:idpir");
+                if (childNode !== null){
+                    rcpir([{name:"Pir", value: childNode.value}]);
+                }
+                childNode = document.getElementById("idform:idwhite");
+                if (childNode !== null){
+                    rcwhite([{name: "White", value: childNode.value}]);
+                }
+                
+            }
+
+
         </script>
         <div>
             <h:form id = "idform">
