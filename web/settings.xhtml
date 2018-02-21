@@ -163,40 +163,51 @@ and open the template in the editor.
             
             window.onbeforeunload = function(){
                 //window.event.returnValue = "RetVal";
-                childNode = document.getElementById("idform:idnode");
+                var childNodeNode   = document.getElementById("idform:idnode");
+                var childNodePort   = document.getElementById("idform:idport");
+                var childNodeAddress= document.getElementById("idform:idaddress");
+                var childNodeTimer  = document.getElementById("idform:idtimer");
+                var childNodePir    = document.getElementById("idform:idpir");
+                var childNodeWhite  = document.getElementById("idform:idwhite");
+                rcclose([{name:"Node", value:childNodeNode.value},{name:"Port", value:childNodePort.value},{name: "Address", value: childNodeAddress.value},
+                    {name:"Timer", value:childNodeTimer.value},{name:"Pir", value: childNodePir.value},{name:"White", value: childNodeWhite.value}]);
+                /*
                 if (childNode !== null){
                     rcnode([{name:"Node", value:childNode.value}]);
                 }
                 
                 childNode = document.getElementById("idform:idport");
                 if (childNode !== null){
-                    rcport([{name = "Port", value: childNode.value}]);
+                    rcport([{name: "Port", value: childNode.value}]);
                 }
-               
+                
                 childNode = document.getElementById("idform:idaddress");
                 if (childNode !== null){
                     rcaddress([{name:"Address"}, value:childNode.value]);
                 }
+                
                 childNode = document.getElementById("idform:idtimer");
                 if (childNode !== null){
                     rctimer([{name:"Timer", value: childNode.value}]);
                 }
+                
                 childNode = document.getElementById("idform:idpir");
                 if (childNode !== null){
                     rcpir([{name:"Pir", value: childNode.value}]);
                 }
+                
                 childNode = document.getElementById("idform:idwhite");
                 if (childNode !== null){
                     rcwhite([{name: "White", value: childNode.value}]);
                 }
-                
-            }
+                */
+            };
 
 
         </script>
         <div>
             <h:form id = "idform">
-                
+            <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                 
                 <p:remoteCommand name = "rcnode" process = "@this" action = "#{data.setParams()}" >

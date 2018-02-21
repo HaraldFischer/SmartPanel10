@@ -145,11 +145,21 @@ public class DataBean implements Serializable {
         FacesContext.getCurrentInstance().getMessages().remove();
     }
     
+    public void setOnClose(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        params = fc.getExternalContext().getRequestParameterMap();
+        Node = params.get("Node");
+        Port = params.get("Port");
+        Address= params.get("Address");
+        Timer = params.get("Timer");
+        Pir = params.get("Pir");
+        White = params.get("White");
+    }
+    
     public void setParams(){
         
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
-        
         
         String node = params.get("Node");
         if (node!= null){
@@ -186,7 +196,7 @@ public class DataBean implements Serializable {
         }
 
         closeSocket();
-        initSocket();
+        initSocket();    
     }
     
     public String getPort(){
