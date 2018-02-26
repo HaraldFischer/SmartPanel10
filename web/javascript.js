@@ -79,7 +79,7 @@
                             alert("ColorList Timed Out");
                             reject();
                         }
-                    },100);                    
+                    },200);                    
                                         
                 });
                 

@@ -20,6 +20,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.event.ActionEvent;
 
+
 /**RequestContext.getCurrentInstance().execute("alert('Construct')");
  *Map<String,String> params =
                 FacesContext.getExternalContext().getRequestParameterMap();
@@ -141,11 +142,20 @@ public class DataBean implements Serializable {
        Node=node;
     }
     
-    public void clearParams(){
-        FacesContext.getCurrentInstance().getMessages().remove();
+    public void testGrowl(){
+        addMessage("System Error","Please Try Again Later");
+    }
+    
+    public void addMessage(String summary,String detail){
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        //FacesContext fc = FacesContext.getCurrentInstance();
+        //fc.addMessage(null, new FacesMessage("Successful",  "Your message: "));
+        //fc.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
     }
     
     public void setOnClose(){
+        
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
         Node = params.get("Node");

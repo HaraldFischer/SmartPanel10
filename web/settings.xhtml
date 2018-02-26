@@ -11,15 +11,12 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui" >
     <h:head>
         <link rel="stylesheet" href="style.css" type="text/css"/>
-        <meta http-equiv= "cache-control" content="no-cache"/>
-        <meta http-equiv= "expires" content = "0" />
-        <meta http-equiv= "pragma" content= "no-cache" />
         <title>Settings</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="javascript.js"/>
     </h:head>
     <h:body>
-        <script>
+        <script language = "javascript">
             var prevVal;
             var childNode;
             var i;
@@ -41,6 +38,7 @@ and open the template in the editor.
                     childNode.addEventListener("focus",function(){
                         prevVal = this.value;
                     });
+                    
                 }
                 catch(e){
                     alert("Exception:" + e);
@@ -162,7 +160,8 @@ and open the template in the editor.
             };
             
             window.onbeforeunload = function(){
-                //window.event.returnValue = "RetVal";
+                //window.event.returnValue = "RetVal";RequestContext.getCurrentInstanRequestContext.getCurrentInstance().execute("PF('dlgclose').show();");ce().execute("PF('dlgclose').show();");
+                //dlgclose.show();
                 var childNodeNode   = document.getElementById("idform:idnode");
                 var childNodePort   = document.getElementById("idform:idport");
                 var childNodeAddress= document.getElementById("idform:idaddress");
@@ -208,6 +207,14 @@ and open the template in the editor.
         <div>
             <h:form id = "idform">
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />
+            <p:growl id = "message" showDetail= "true" />
+            <p:commandButton value = "Click" actionListener = "#{data.testGrowl()}" update = "message" >
+                <p:confirm header = "Confirmation" message = "Are You sure?" icon = "ui-icon-alert" />
+            </p:commandButton>
+            <p:confirmDialog widgetVar = "dlgclose" global="true" showEffect="fade" hideEffect="fade" >
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                 
                 <p:remoteCommand name = "rcnode" process = "@this" action = "#{data.setParams()}" >
