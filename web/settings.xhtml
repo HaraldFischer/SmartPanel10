@@ -207,14 +207,25 @@ and open the template in the editor.
         <div>
             <h:form id = "idform">
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />
-            <p:growl id = "message" showDetail= "true" />
+            <!--
+            <p:growl id = "message" showDetail= "true" sticky = "true" />
             <p:commandButton value = "Click" actionListener = "#{data.testGrowl()}" update = "message" >
                 <p:confirm header = "Confirmation" message = "Are You sure?" icon = "ui-icon-alert" />
             </p:commandButton>
+            -->
+            <h:form> 
+                <p:growl id="growl" showDetail="true" sticky="true" />  
+
+                <p:panel>  
+                    <p:commandButton value="Save" actionListener = "#{data.testGrowl}" update="growl" />  
+                </p:panel> 
+            </h:form>   
+            <!--
             <p:confirmDialog widgetVar = "dlgclose" global="true" showEffect="fade" hideEffect="fade" >
                 <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
+            -->
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                 
                 <p:remoteCommand name = "rcnode" process = "@this" action = "#{data.setParams()}" >

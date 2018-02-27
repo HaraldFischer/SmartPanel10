@@ -143,12 +143,16 @@ public class DataBean implements Serializable {
     }
     
     public void testGrowl(){
-        addMessage("System Error","Please Try Again Later");
+        //addMessage("System Error","Please Try Again Later");
+        FacesContext fc = FacesContext.getCurrentInstance();
+        fc.addMessage(null, new FacesMessage("Successful",  "Your message:"));        
     }
     
     public void addMessage(String summary,String detail){
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        //FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        //FacesContext.getCurrentInstance().addMessage(null, message);
+        //FacesContext fc = FacesContext.getCurrentInstance();
+        //fc.addMessage(null, new FacesMessage("Successful",  "Your message:"));
         //FacesContext fc = FacesContext.getCurrentInstance();
         //fc.addMessage(null, new FacesMessage("Successful",  "Your message: "));
         //fc.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
