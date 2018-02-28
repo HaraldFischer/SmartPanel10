@@ -241,3 +241,4 @@
             function clickBtnWhite(){
                 alert("White");
             }
+            

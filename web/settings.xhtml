@@ -160,8 +160,7 @@ and open the template in the editor.
             };
             
             window.onbeforeunload = function(){
-                //window.event.returnValue = "RetVal";RequestContext.getCurrentInstanRequestContext.getCurrentInstance().execute("PF('dlgclose').show();");ce().execute("PF('dlgclose').show();");
-                //dlgclose.show();
+                
                 var childNodeNode   = document.getElementById("idform:idnode");
                 var childNodePort   = document.getElementById("idform:idport");
                 var childNodeAddress= document.getElementById("idform:idaddress");
@@ -170,39 +169,14 @@ and open the template in the editor.
                 var childNodeWhite  = document.getElementById("idform:idwhite");
                 rcclose([{name:"Node", value:childNodeNode.value},{name:"Port", value:childNodePort.value},{name: "Address", value: childNodeAddress.value},
                     {name:"Timer", value:childNodeTimer.value},{name:"Pir", value: childNodePir.value},{name:"White", value: childNodeWhite.value}]);
-                /*
-                if (childNode !== null){
-                    rcnode([{name:"Node", value:childNode.value}]);
-                }
                 
-                childNode = document.getElementById("idform:idport");
-                if (childNode !== null){
-                    rcport([{name: "Port", value: childNode.value}]);
-                }
-                
-                childNode = document.getElementById("idform:idaddress");
-                if (childNode !== null){
-                    rcaddress([{name:"Address"}, value:childNode.value]);
-                }
-                
-                childNode = document.getElementById("idform:idtimer");
-                if (childNode !== null){
-                    rctimer([{name:"Timer", value: childNode.value}]);
-                }
-                
-                childNode = document.getElementById("idform:idpir");
-                if (childNode !== null){
-                    rcpir([{name:"Pir", value: childNode.value}]);
-                }
-                
-                childNode = document.getElementById("idform:idwhite");
-                if (childNode !== null){
-                    rcwhite([{name: "White", value: childNode.value}]);
-                }
-                */
             };
-
-
+            
+            public String getParams(){
+                var elem = document.getElementById("idform:idnode");
+                return elem.value;
+            }
+            
         </script>
         <div>
             <h:form id = "idform">
@@ -214,18 +188,20 @@ and open the template in the editor.
             </p:commandButton>
             -->
             <h:form> 
-                <p:growl id="growl" showDetail="true" sticky="true" />  
+                <!-- <p:growl id="growl" showDetail="true" sticky="true" />  -->
 
                 <p:panel>  
-                    <p:commandButton value="Save" actionListener = "#{data.testGrowl}" update="growl" />  
+                    <p:commandButton  value="Save" actionListener = "#{data.save()}" >  
+                        <f:param name = "Node" value = "getParams()" />  
+                    </p:commandButton>
                 </p:panel> 
             </h:form>   
-            <!--
+            
             <p:confirmDialog widgetVar = "dlgclose" global="true" showEffect="fade" hideEffect="fade" >
                 <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
-            -->
+            
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                 
                 <p:remoteCommand name = "rcnode" process = "@this" action = "#{data.setParams()}" >

@@ -149,13 +149,15 @@ public class DataBean implements Serializable {
     }
     
     public void addMessage(String summary,String detail){
-        //FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        //FacesContext.getCurrentInstance().addMessage(null, message);
-        //FacesContext fc = FacesContext.getCurrentInstance();
-        //fc.addMessage(null, new FacesMessage("Successful",  "Your message:"));
-        //FacesContext fc = FacesContext.getCurrentInstance();
-        //fc.addMessage(null, new FacesMessage("Successful",  "Your message: "));
-        //fc.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
+
+    }
+    
+    public void save(){
+        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        params = fc.getExternalContext().getRequestParameterMap();
+        
+        showMessage(params.get("Node"));        
     }
     
     public void setOnClose(){
