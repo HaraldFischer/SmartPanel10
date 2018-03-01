@@ -191,8 +191,9 @@ and open the template in the editor.
                 <!-- <p:growl id="growl" showDetail="true" sticky="true" />  -->
 
                 <p:panel>  
-                    <p:commandButton  value="Save" actionListener = "#{data.save()}" >  
-                        <f:param name = "Node" value = "getParams()" />  
+                    <p:commandButton type ="submit" value="Save" actionListener = "#{data.save()}" >  
+                        <f:setPropertyActionListener target = "#{data.Node}" value = "document.getElementById('idform:idnode').value" />
+                        <!-- <f:param name = "Node" value = "getParams()" />  -->
                     </p:commandButton>
                 </p:panel> 
             </h:form>   

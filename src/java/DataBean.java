@@ -46,6 +46,7 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
+    //@ManagedProperty(value = "192.168.0.0")
     private String Node="192.168.0.12";
     private String Port="2048";
     private String Address = "0";
@@ -135,11 +136,11 @@ public class DataBean implements Serializable {
     }
         
     public String getNode(){
-        return Node;
+        return this.Node;
     }
     
     public void setNode(String node){
-       Node=node;
+       this.Node=node;
     }
     
     public void testGrowl(){
@@ -154,10 +155,10 @@ public class DataBean implements Serializable {
     
     public void save(){
         
-        FacesContext fc = FacesContext.getCurrentInstance();
-        params = fc.getExternalContext().getRequestParameterMap();
-        
-        showMessage(params.get("Node"));        
+        //FacesContext fc = FacesContext.getCurrentInstance();
+        //params = fc.getExternalContext().getRequestParameterMap();
+        showMessage(Node);
+        //showMessage(params.get("Node"));        
     }
     
     public void setOnClose(){
