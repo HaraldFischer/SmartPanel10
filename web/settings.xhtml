@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui" >
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <title>Settings</title>
@@ -180,28 +181,21 @@ and open the template in the editor.
         </script>
         <div>
             <h:form id = "idform">
+            
+            <h:form>
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />
-            <!--
-            <p:growl id = "message" showDetail= "true" sticky = "true" />
-            <p:commandButton value = "Click" actionListener = "#{data.testGrowl()}" update = "message" >
-                <p:confirm header = "Confirmation" message = "Are You sure?" icon = "ui-icon-alert" />
-            </p:commandButton>
-            -->
-            <h:form> 
-                <!-- <p:growl id="growl" showDetail="true" sticky="true" />  -->
-
-                <p:panel>  
-                    <p:commandButton type ="submit" value="Save" actionListener = "#{data.save()}" >  
-                        <f:setPropertyActionListener target = "#{data.Node}" value = "document.getElementById('idform:idnode').value" />
-                        <!-- <f:param name = "Node" value = "getParams()" />  -->
-                    </p:commandButton>
-                </p:panel> 
-            </h:form>   
+            <p:panel>  
+                <p:commandButton type ="submit" value="Save" actionListener = "#{data.save('192.168.0.19')}" >  
+                    <f:param name = "Node" value = "192.168.0.1" />
+                    <f:param name = "X" value = "${document.getElementById('idform:idnode').value}" />
+                </p:commandButton>
+            </p:panel> 
             
             <p:confirmDialog widgetVar = "dlgclose" global="true" showEffect="fade" hideEffect="fade" >
                 <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
+            </h:form>
             
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                 

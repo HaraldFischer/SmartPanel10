@@ -30,13 +30,14 @@ import javax.faces.event.ActionEvent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
 
 
 @ManagedBean(name = "data")
-@ApplicationScoped
+@ViewScoped
 public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
@@ -46,7 +47,7 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
-    //@ManagedProperty(value = "192.168.0.0")
+    //@ManagedProperty("#{param.Node}")
     private String Node="192.168.0.12";
     private String Port="2048";
     private String Address = "0";
@@ -153,12 +154,12 @@ public class DataBean implements Serializable {
 
     }
     
-    public void save(){
-        
-        //FacesContext fc = FacesContext.getCurrentInstance();
-        //params = fc.getExternalContext().getRequestParameterMap();
-        showMessage(Node);
-        //showMessage(params.get("Node"));        
+    public void save(String node){
+        this.Node = node;
+        FacesContext fc = FacesContext.getCurrentInstance();
+        params = fc.getExternalContext().getRequestParameterMap();
+        //showMessage(Node);
+        showMessage(params.get("X"));        
     }
     
     public void setOnClose(){
