@@ -47,7 +47,7 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
-    //@ManagedProperty("#{param.Node}")
+    //@ManagedProperty("#{Node}")
     private String Node="192.168.0.12";
     private String Port="2048";
     private String Address = "0";

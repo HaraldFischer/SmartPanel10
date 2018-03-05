@@ -8,6 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" 
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
@@ -161,7 +162,7 @@ and open the template in the editor.
             };
             
             window.onbeforeunload = function(){
-                
+                /*
                 var childNodeNode   = document.getElementById("idform:idnode");
                 var childNodePort   = document.getElementById("idform:idport");
                 var childNodeAddress= document.getElementById("idform:idaddress");
@@ -170,7 +171,7 @@ and open the template in the editor.
                 var childNodeWhite  = document.getElementById("idform:idwhite");
                 rcclose([{name:"Node", value:childNodeNode.value},{name:"Port", value:childNodePort.value},{name: "Address", value: childNodeAddress.value},
                     {name:"Timer", value:childNodeTimer.value},{name:"Pir", value: childNodePir.value},{name:"White", value: childNodeWhite.value}]);
-                
+                */
             };
             
             public String getParams(){
@@ -185,9 +186,15 @@ and open the template in the editor.
             <h:form>
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />
             <p:panel>  
-                <p:commandButton type ="submit" value="Save" actionListener = "#{data.save('192.168.0.19')}" >  
+                
+                <p:commandButton type ="submit" value="Save" actionListener = "#{data.save('192.168.0.0')}" >  
+                    <c:set var = "msg" value= "$('idform:idnode').val()" />
+                    
+                    <!--
                     <f:param name = "Node" value = "192.168.0.1" />
-                    <f:param name = "X" value = "${document.getElementById('idform:idnode').value}" />
+                    <f:param name = "X" value = "$('#idform:idnode').val()" />
+                    <f:param name = "Y" value= "getParams()" />
+                    -->
                 </p:commandButton>
             </p:panel> 
             
