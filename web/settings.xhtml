@@ -22,6 +22,8 @@ and open the template in the editor.
             var prevVal;
             var childNode;
             var i;
+            var buffer = "Buffer Value";
+            
             window.onload = function(){
                 
                 try{
@@ -159,6 +161,7 @@ and open the template in the editor.
                     alert("Exception:" + e);
                     $(this).val(prevVal);
                 }
+                
             };
             
             window.onbeforeunload = function(){
@@ -181,14 +184,22 @@ and open the template in the editor.
             
         </script>
         <div>
+            
             <h:form id = "idform">
             
             <h:form>
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />            
+    
                 <p:commandButton type ="submit" value="Save" actionListener = "#{data.save('192.168.0.0')}" >  
-                    <!-- <c:set var = "msg" value = "&lt;%= getParams(); %&gt;" /> -->
-                    <f:param name = "X" value = "$('#idform:idnode')" />
-                    <f:param name = "Node" value = "#{msg}" />
+                    <c:set var = "msg" value = "&lt;%= getParams(); %&gt;" />                                         
+                    <script>
+       
+                    </script>
+                    <f:metadata>
+                        <f:viewParam name = "Node" value = "#{msg}" />
+                    </f:metadata>
+                    <!-- <f:setPropertyActionListener target = "#{data.Node}" value = "#{msg}" /> -->
+                    <!-- <f:param name = "Node" value = "#{requestScope['msg']}" />  -->
                     <!--
                     
                     <f:param name = "Node" value = "192.168.0.1" />
