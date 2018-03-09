@@ -193,12 +193,16 @@ and open the template in the editor.
                 <p:commandButton type ="submit" value="Save" actionListener = "#{data.save('192.168.0.0')}" >  
                     <c:set var = "msg" value = "&lt;%= getParams(); %&gt;" />                                         
                     <script>
-       
+                    
                     </script>
+                    
+                    <!--
+                    <f:param name = "Node" value = "#{msg}" />
                     <f:metadata>
                         <f:viewParam name = "Node" value = "#{msg}" />
                     </f:metadata>
-                    <!-- <f:setPropertyActionListener target = "#{data.Node}" value = "#{msg}" /> -->
+                    -->
+                    <f:setPropertyActionListener target = "#{data.node}" value = "#{msg}" />
                     <!-- <f:param name = "Node" value = "#{requestScope['msg']}" />  -->
                     <!--
                     

@@ -47,8 +47,8 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
-    @ManagedProperty(value = "#{Node}")
-    private String Node = "192.168.0.12";
+    @ManagedProperty(value = "#{node}")
+    private String node = "192.168.0.12";
     private String Port="2048";
     private String Address = "0";
     private String Timer = "0";
@@ -97,7 +97,7 @@ public class DataBean implements Serializable {
     public void initSocket(){
         try{
             closeSocket();
-            ClientSocket = new Socket(Node,Integer.parseInt(Port));
+            ClientSocket = new Socket(node,Integer.parseInt(Port));
             InReader = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
             OutWriter= new DataOutputStream(ClientSocket.getOutputStream());
             ClientSocket.setSoTimeout(1000);
@@ -137,11 +137,11 @@ public class DataBean implements Serializable {
     }
         
     public String getNode(){
-        return this.Node;
+        return this.node;
     }
     
     public void setNode(String node){
-       this.Node=node;
+       this.node=node;
     }
     
     public void testGrowl(){
@@ -155,7 +155,7 @@ public class DataBean implements Serializable {
     }
     
     public void save(String node){
-        this.Node = node;
+        this.node = node;
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
         showMessage(params.get("Node"));        
@@ -165,7 +165,7 @@ public class DataBean implements Serializable {
         
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
-        Node = params.get("Node");
+        node = params.get("Node");
         Port = params.get("Port");
         Address= params.get("Address");
         Timer = params.get("Timer");
@@ -180,7 +180,7 @@ public class DataBean implements Serializable {
         
         String node = params.get("Node");
         if (node!= null){
-            Node = node;
+            this.node = node;
         }
         
         
@@ -386,7 +386,7 @@ public class DataBean implements Serializable {
     
     
     public void loadDefaults(){
-        Node = "192.168.0.12";
+        node = "192.168.0.12";
         Port = "2048";
         Address="0";
         Timer= "0";
@@ -554,7 +554,7 @@ public class DataBean implements Serializable {
        Writer os = null;
         try{
            os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg");
-           os.write("Node:" + Node + "\n");
+           os.write("Node:" + node + "\n");
            os.write("Port:" + Port + "\n");
            os.write("Address:" + Address + "\n");
            os.write("Timer:" + Timer + "\n");
@@ -597,7 +597,7 @@ public class DataBean implements Serializable {
             String str = buffReader.readLine();
             while(str != null){
                 String[] line = str.split(":");
-                if (line[0].equalsIgnoreCase("Node")) Node=line[1];
+                if (line[0].equalsIgnoreCase("Node")) node=line[1];
                 else if (line[0].equalsIgnoreCase("Port")) Port=line[1];
                 else if (line[0].equalsIgnoreCase("Address"))Address=line[1];
                 else if (line[0].equalsIgnoreCase("Pir")) Pir=line[1];
