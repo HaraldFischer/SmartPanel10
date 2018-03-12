@@ -37,7 +37,7 @@ import java.net.Socket;
 
 
 @ManagedBean(name = "data")
-@RequestScoped
+@SessionScoped
 public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
@@ -156,9 +156,11 @@ public class DataBean implements Serializable {
     
     public void save(String node){
         this.node = node;
+        Map<String,Object> pMap = new HashMap();
         FacesContext fc = FacesContext.getCurrentInstance();
-        params = fc.getExternalContext().getRequestParameterMap();
-        showMessage(params.get("Node"));        
+        pMap = fc.getExternalContext().getSessionMap();
+        
+        showMessage(pMap.get("node").toString());        
     }
     
     public void setOnClose(){

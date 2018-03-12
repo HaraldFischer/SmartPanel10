@@ -23,8 +23,14 @@ and open the template in the editor.
             var childNode;
             var i;
             var buffer = "Buffer Value";
+            var session; 
             
             window.onload = function(){
+
+                session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+                session.setAttribute("node",buffer);
+                
+                alert(buffer);
                 
                 try{
                     childNode = document.getElementById('idform:idnode');
@@ -62,9 +68,9 @@ and open the template in the editor.
                             alert("Port must be a Value between 0 and 65535");
                             $(this).val(prevVal);
                         }
-                    });
-                    childNode.addEventListener("focus", function(){
-                       prevVal = this.value; 
+                    });                                           
+                        childNode.addEventListener("focus", function(){
+                        prevVal = this.value; 
                     });
                 }
                 catch(e){
@@ -188,12 +194,12 @@ and open the template in the editor.
             <h:form id = "idform">
             
             <h:form>
+            
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />            
     
                 <p:commandButton type ="submit" value="Save" actionListener = "#{data.save('192.168.0.0')}" >  
                     <c:set var = "msg" value = "&lt;%= getParams(); %&gt;" />                                         
                     <script>
-                    
                     </script>
                     
                     <!--
@@ -202,7 +208,7 @@ and open the template in the editor.
                         <f:viewParam name = "Node" value = "#{msg}" />
                     </f:metadata>
                     -->
-                    <f:setPropertyActionListener target = "#{data.node}" value = "#{msg}" />
+                    <f:setPropertyActionListener target = "#{data.node}" value = "#{sessionScope.node}" />
                     <!-- <f:param name = "Node" value = "#{requestScope['msg']}" />  -->
                     <!--
                     
