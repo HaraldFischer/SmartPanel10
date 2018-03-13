@@ -23,14 +23,8 @@ and open the template in the editor.
             var childNode;
             var i;
             var buffer = "Buffer Value";
-            var session; 
-            
-            window.onload = function(){
 
-                session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-                session.setAttribute("node",buffer);
-                
-                alert(buffer);
+            window.onload = function(){
                 
                 try{
                     childNode = document.getElementById('idform:idnode');
@@ -171,7 +165,7 @@ and open the template in the editor.
             };
             
             window.onbeforeunload = function(){
-                /*
+                
                 var childNodeNode   = document.getElementById("idform:idnode");
                 var childNodePort   = document.getElementById("idform:idport");
                 var childNodeAddress= document.getElementById("idform:idaddress");
@@ -180,7 +174,7 @@ and open the template in the editor.
                 var childNodeWhite  = document.getElementById("idform:idwhite");
                 rcclose([{name:"Node", value:childNodeNode.value},{name:"Port", value:childNodePort.value},{name: "Address", value: childNodeAddress.value},
                     {name:"Timer", value:childNodeTimer.value},{name:"Pir", value: childNodePir.value},{name:"White", value: childNodeWhite.value}]);
-                */
+                
             };
             
             public String getParams(){

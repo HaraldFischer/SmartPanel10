@@ -154,13 +154,13 @@ public class DataBean implements Serializable {
 
     }
     
-    public void save(String node){
-        this.node = node;
-        Map<String,Object> pMap = new HashMap();
+    public void save(String thenode){
+        this.node = thenode;
+        Map<String,String> pMap = new HashMap();
         FacesContext fc = FacesContext.getCurrentInstance();
-        pMap = fc.getExternalContext().getSessionMap();
+        pMap = fc.getExternalContext().getRequestParameterMap();
         
-        showMessage(pMap.get("node").toString());        
+        showMessage(pMap.get("node"));        
     }
     
     public void setOnClose(){
@@ -180,9 +180,9 @@ public class DataBean implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
         
-        String node = params.get("Node");
-        if (node!= null){
-            this.node = node;
+        String thenode = params.get("Node");
+        if (thenode!= null){
+            this.node = thenode;
         }
         
         
