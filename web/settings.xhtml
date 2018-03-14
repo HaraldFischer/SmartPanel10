@@ -23,7 +23,7 @@ and open the template in the editor.
             var childNode;
             var i;
             var buffer = "Buffer Value";
-
+            
             window.onload = function(){
                 
                 try{
@@ -179,7 +179,7 @@ and open the template in the editor.
             
             public String getParams(){
                 var elem = document.getElementById("idform:idnode");
-                return elem.value;
+            FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().put("Node","Node");    return elem.value;
             }
             
         </script>
@@ -191,19 +191,17 @@ and open the template in the editor.
             
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />            
     
-                <p:commandButton type ="submit" value="Save" actionListener = "#{data.save('192.168.0.0')}" >  
-                    <c:set var = "msg" value = "&lt;%= getParams(); %&gt;" />                                         
-                    <script>
-                    </script>
-                    
+                <p:commandButton type ="submit" value="Save" actionListener = "#{data.save()}" >  
+                    <c:set var = "msg" value = "document.getElementById('idnode:idform').value" />                                         
+                    <f:param name = "Node" value= "#{msg}" />
                     <!--
                     <f:param name = "Node" value = "#{msg}" />
                     <f:metadata>
                         <f:viewParam name = "Node" value = "#{msg}" />
                     </f:metadata>
                     -->
-                    <f:setPropertyActionListener target = "#{data.node}" value = "#{sessionScope.node}" />
-                    <!-- <f:param name = "Node" value = "#{requestScope['msg']}" />  -->
+                    <!-- <f:setPropertyActionListener target = "#{data.node}" value = "#{param['idform:idnode']}" />  -->
+                    <!-- <f:param name = "Node" value = "#{param['idnode'].values}" /> -->
                     <!--
                     
                     <f:param name = "Node" value = "192.168.0.1" />
