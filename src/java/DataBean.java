@@ -49,11 +49,16 @@ public class DataBean implements Serializable {
     
     @ManagedProperty(value = "#{node}")
     private String node = "192.168.0.12";
-    private String Port="2048";
-    private String Address = "0";
-    private String Timer = "0";
-    private String Pir = "0";
-    private String White="0";
+    @ManagedProperty(value = "#{port}")
+    private String port="2048";
+    @ManagedProperty(value = "#{address}")
+    private String address = "0";
+    @ManagedProperty(value = "#{timer}")
+    private String timer = "0";
+    @ManagedProperty(value = "#{pir}")
+    private String pir = "0";
+    @ManagedProperty(value = "#{white}")
+    private String white="0";
     
     
     private String Scene0 = "#000000";
@@ -156,9 +161,9 @@ public class DataBean implements Serializable {
     
     public void save(){
         //Map<String,Object> pMap = new HashMap();
-        FacesContext fc = FacesContext.getCurrentInstance();
-        params = fc.getExternalContext().getRequestParameterMap();    
-        showMessage(params.get("Node"));        
+        //FacesContext fc = FacesContext.getCurrentInstance();
+        //params = fc.getExternalContext().getRequestParameterMap();    
+        showMessage(node);        
     }
     
     public void setOnClose(){
@@ -166,11 +171,11 @@ public class DataBean implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         params = fc.getExternalContext().getRequestParameterMap();
         node = params.get("Node");
-        Port = params.get("Port");
-        Address= params.get("Address");
-        Timer = params.get("Timer");
-        Pir = params.get("Pir");
-        White = params.get("White");
+        port = params.get("Port");
+        address= params.get("Address");
+        timer = params.get("Timer");
+        pir = params.get("Pir");
+        white = params.get("White");
     }
     
     public void setParams(){
@@ -184,32 +189,32 @@ public class DataBean implements Serializable {
         }
         
         
-        String port = params.get("Port");
-        if (port!=null){
-            Port = port;
+        String theport = params.get("Port");
+        if (theport!=null){
+            this.port = theport;
         }
         
 
-        String address = params.get("Address");
-        if (address!=null){
-            Address = address;
+        String theaddress = params.get("Address");
+        if (theaddress!=null){
+            this.address = theaddress;
         }
         
 
-        String timer = params.get("Timer");
-        if (timer!=null){
-            Timer = timer;
+        String thetimer = params.get("Timer");
+        if (thetimer!=null){
+            this.timer = thetimer;
         }
 
 
-        String pir = params.get("Pir");
-        if (pir!=null){
-            Pir = pir;
+        String thepir = params.get("Pir");
+        if (thepir!=null){
+            this.pir = thepir;
         }
 
-        String white = params.get("White");
-        if (white!=null){
-            White = white;
+        String thewhite = params.get("White");
+        if (thewhite!=null){
+            this.white = thewhite;
         }
 
         closeSocket();
@@ -217,44 +222,44 @@ public class DataBean implements Serializable {
     }
     
     public String getPort(){
-        return Port;
+        return port;
     }
     
     
     public void setPort(String port){         
-        Port=port;
+        this.port=port;
     }
        
     public String getAddress(){
-        return Address;
+        return this.address;
     }
     
     public void setAddress(String address){
-        Address = address;
+        this.address = address;
     }
     
     public String getTimer(){
-        return Timer;
+        return this.timer;
     }
     
     public void setTimer(String timer){
-        Timer = timer;
+        this.timer = timer;
     }
     
     public String getPir(){
-        return Pir;
+        return this.pir;
     }
     
     public void setPir(String pir){
-        Pir = pir;
+        this.pir = pir;
     }
     
     public String getWhite(){
-        return White;
+        return this.white;
     }
     
     public void setWhite(String white){
-        White = white;
+        this.white = white;
     }
     
     public String getScene0(){
@@ -387,11 +392,11 @@ public class DataBean implements Serializable {
     
     public void loadDefaults(){
         node = "192.168.0.12";
-        Port = "2048";
-        Address="0";
-        Timer= "0";
-        Pir  = "0";
-        White= "0";
+        port = "2048";
+        address="0";
+        timer= "0";
+        pir  = "0";
+        white= "0";
         Scene0 = "#000000";
         Scene1 = "#000000";
         Scene2 = "#000000";
@@ -555,11 +560,11 @@ public class DataBean implements Serializable {
         try{
            os = new FileWriter("/home/hfischer/NetBeansProjects/SmartPanel10v1_7/SmartPanel10.cfg");
            os.write("Node:" + node + "\n");
-           os.write("Port:" + Port + "\n");
-           os.write("Address:" + Address + "\n");
-           os.write("Timer:" + Timer + "\n");
-           os.write("Pir:" + Pir + "\n");
-           os.write("White:" + White + "\n");
+           os.write("Port:" + port + "\n");
+           os.write("Address:" + address + "\n");
+           os.write("Timer:" + timer + "\n");
+           os.write("Pir:" + pir + "\n");
+           os.write("White:" + white + "\n");
            os.write("Scene0:" + Scene0 + "\n");
            os.write("Scene1:" + Scene1 + "\n");
            os.write("Scene2:" + Scene2 + "\n");
@@ -598,11 +603,11 @@ public class DataBean implements Serializable {
             while(str != null){
                 String[] line = str.split(":");
                 if (line[0].equalsIgnoreCase("Node")) node=line[1];
-                else if (line[0].equalsIgnoreCase("Port")) Port=line[1];
-                else if (line[0].equalsIgnoreCase("Address"))Address=line[1];
-                else if (line[0].equalsIgnoreCase("Pir")) Pir=line[1];
-                else if (line[0].equalsIgnoreCase("Timer"))Timer=line[1];
-                else if (line[0].equalsIgnoreCase("White"))White=line[1];
+                else if (line[0].equalsIgnoreCase("Port")) port=line[1];
+                else if (line[0].equalsIgnoreCase("Address"))address=line[1];
+                else if (line[0].equalsIgnoreCase("Pir")) pir=line[1];
+                else if (line[0].equalsIgnoreCase("Timer"))timer=line[1];
+                else if (line[0].equalsIgnoreCase("White"))white=line[1];
                 else if (line[0].equalsIgnoreCase("Scene0")) Scene0=line[1];
                 else if (line[0].equalsIgnoreCase("Scene1")) Scene1=line[1];
                 else if (line[0].equalsIgnoreCase("Scene2")) Scene2=line[1];

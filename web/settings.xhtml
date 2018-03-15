@@ -22,7 +22,7 @@ and open the template in the editor.
             var prevVal;
             var childNode;
             var i;
-            var buffer = "Buffer Value";
+            var buffer = "Buffer Text";
             
             window.onload = function(){
                 
@@ -177,12 +177,16 @@ and open the template in the editor.
                 
             };
             
-            public String getParams(){
-                var elem = document.getElementById("idform:idnode");
-            FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().put("Node","Node");    return elem.value;
+            function getNodeValue(){
+                return document.getElementById('idform:idnode').value;
             }
             
+            function getPortValue(){
+                return document.getElementById('idform:idport').value;
+            }
+           
         </script>
+        
         <div>
             
             <h:form id = "idform">
@@ -190,27 +194,7 @@ and open the template in the editor.
             <h:form>
             
             <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />            
-    
-                <p:commandButton type ="submit" value="Save" actionListener = "#{data.save()}" >  
-                    <c:set var = "msg" value = "document.getElementById('idnode:idform').value" />                                         
-                    <f:param name = "Node" value= "#{msg}" />
-                    <!--
-                    <f:param name = "Node" value = "#{msg}" />
-                    <f:metadata>
-                        <f:viewParam name = "Node" value = "#{msg}" />
-                    </f:metadata>
-                    -->
-                    <!-- <f:setPropertyActionListener target = "#{data.node}" value = "#{param['idform:idnode']}" />  -->
-                    <!-- <f:param name = "Node" value = "#{param['idnode'].values}" /> -->
-                    <!--
-                    
-                    <f:param name = "Node" value = "192.168.0.1" />
-                    <f:param name = "X" value = "$('#idform:idnode').val()" />
-                    <f:param name = "Y" value= "getParams()" />
-                    -->
-                </p:commandButton>
-             
-            
+                
             <p:confirmDialog widgetVar = "dlgclose" global="true" showEffect="fade" hideEffect="fade" >
                 <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
@@ -253,10 +237,19 @@ and open the template in the editor.
                 
                 
             </p:panelGrid>
-          
+
+            <p:commandButton type ="submit" value="Save" actionListener = "#{data.save()}" >  
+
+                <f:setPropertyActionListener target = "#{data.node}"    value = "#{getNodeValue()}" />
+                <f:setPropertyActionListener target = "#{data.port}"    value = "#{getPortValue()}" />
+                <f:setPropertyActionListener target = "#{data.address}" value = "#{getAddresValue()}" />
+                <f:setPropertyActionListener target = "#{data.timer}"   value = "#{getTimerValue()}" />
+                <f:setPropertyActionListener target = "#{data.pir}"     value = "#{getPirValue()}" />
+                <f:setPropertyActionListener target = "#{data.white}"   value = "#{getWhiteValue()}" />
+
+            </p:commandButton>
+             
             </h:form>
-            
-            
         </div>
     </h:body>
 </html>
