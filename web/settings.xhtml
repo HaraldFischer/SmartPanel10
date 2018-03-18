@@ -22,8 +22,7 @@ and open the template in the editor.
             var prevVal;
             var childNode;
             var i;
-            var buffer = "Buffer Text";
-            
+
             window.onload = function(){
                 
                 try{
@@ -32,7 +31,7 @@ and open the template in the editor.
                       var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
                       var match = testNode.test(this.value);
                       if (match === true){
-                          rcnode([{name:"Node",value:this.value}]);                          
+                          
                       }
                       else{
                           alert("Node is not a valid IP Address");
@@ -56,7 +55,7 @@ and open the template in the editor.
                         var testPort = new RegExp("^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$");
                         var match = testPort.test(this.value);
                         if (match === true){
-                            rcport([{name:"Port",value:this.value}]);
+                            
                         }
                         else{
                             alert("Port must be a Value between 0 and 65535");
@@ -78,7 +77,7 @@ and open the template in the editor.
                        var testAddress = new RegExp("^(([0-9][1-9])|([1-9][0-9])|[0-9])$");
                        var match = testAddress.test(this.value);
                        if (match === true){
-                           rcaddress([{name:"Address",value:this.value}]);
+                           
                        }
                        else{
                            alert("Address must be a Value between 0 and 99");
@@ -100,7 +99,7 @@ and open the template in the editor.
                         var testTimer = new RegExp("^[0-9]{1,4}$");
                         var match = testTimer.test(this.value);
                         if (match === true){
-                           rctimer([{name:"Timer",value:this.value}]) ;
+                           
                         }
                         else{
                           alert("Timer must be a Value between 0 and 9999");
@@ -122,7 +121,7 @@ and open the template in the editor.
                         var testPir = new RegExp("^[0-9]{1,4}$");
                         var match = testPir.test(this.value);
                         if (match === true){
-                            rcpir([{name:"Pir",value:this.value}]);
+                            
                         }
                         else{
                             alert("Pir must be a Value between 0 and 9999");
@@ -145,7 +144,7 @@ and open the template in the editor.
                         var str = this.value;
                         var retVal = checkWhite(str);
                         if (retVal === true){
-                            rcwhite([{name:"White",value:this.value}]);
+                            
                         }
                         else{
                             alert("White must be a Value between 0 and 255");
@@ -165,16 +164,17 @@ and open the template in the editor.
             };
             
             window.onbeforeunload = function(){
-                
+                /*
                 var childNodeNode   = document.getElementById("idform:idnode");
                 var childNodePort   = document.getElementById("idform:idport");
                 var childNodeAddress= document.getElementById("idform:idaddress");
                 var childNodeTimer  = document.getElementById("idform:idtimer");
                 var childNodePir    = document.getElementById("idform:idpir");
                 var childNodeWhite  = document.getElementById("idform:idwhite");
+                
                 rcclose([{name:"Node", value:childNodeNode.value},{name:"Port", value:childNodePort.value},{name: "Address", value: childNodeAddress.value},
                     {name:"Timer", value:childNodeTimer.value},{name:"Pir", value: childNodePir.value},{name:"White", value: childNodeWhite.value}]);
-                
+                */
             };
             
             function getNodeValue(){
@@ -184,53 +184,62 @@ and open the template in the editor.
             function getPortValue(){
                 return document.getElementById('idform:idport').value;
             }
-           
+
+            function getAddressValue(){
+                return document.getElementById('idform:idaddress').value;
+            }
+            
+            function getTimerValue(){
+                return document.getElementById('idform:idtimer').value;
+            }
+            
+            function getPirValue(){
+                return document.getElementById('idform:idpir').value;
+            }
+            
+            function getWhiteValue(){
+                return document.getElementById('idform:idwhite').value;
+            }
+            
         </script>
         
         <div>
             
             <h:form id = "idform">
-            
+      
+            <!--
             <h:form>
-            
-            <p:remoteCommand     name = "rcclose" process = "@this" action = "#{data.setOnClose()}" />            
                 
             <p:confirmDialog widgetVar = "dlgclose" global="true" showEffect="fade" hideEffect="fade" >
                 <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
-            </h:form>
-            
-            <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                 
-                <p:remoteCommand name = "rcnode" process = "@this" action = "#{data.setParams()}" >
-                    
-                </p:remoteCommand>        
+            </h:form>
+            -->
+            
+            <p:panelGrid id = "idpanelgrid" columns ="2" styleClass = "settingsgrid">
+                   
                 <h:outputText value="Node:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" >
                 </h:inputText>
-                
-                <p:remoteCommand name = "rcport" process = "@this" action = "#{data.setParams()}" />
+               
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idport" value = "#{data.getPort()}" required = "true" styleClass = "inputfield">
                 </h:inputText>
                 
-                <p:remoteCommand name = "rcaddress" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText  value = "Address:" styleClass="inputfield" />
                 <p:inputText id = "idaddress" value = "#{data.getAddress()}"  styleClass="addresssize">
                 </p:inputText>
-                
-                <p:remoteCommand name = "rctimer" process = "@this" action = "#{data.setParams()}" />
+               
                 <h:outputText value = "Timer:[s]" styleClass = "inputfield" />
                 <h:inputText  id = "idtimer" value = "#{data.getTimer()}" styleClass="inputfield" >
                 </h:inputText>
                 
-                <p:remoteCommand name = "rcpir" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText value = "Pir:[s]" styleClass="inputfield" />
                 <h:inputText id = "idpir" value = "#{data.getPir()}" styleClass = "inputfield" >
                 </h:inputText>
                 
-                <p:remoteCommand name = "rcwhite" process = "@this" action = "#{data.setParams()}" />
                 <h:outputText value = "White" styleClass="inputfield" /> 
                 <h:inputText  id = "idwhite" value = "#{data.getWhite()}" styleClass="inputfield" >
                 </h:inputText>
@@ -238,15 +247,15 @@ and open the template in the editor.
                 
             </p:panelGrid>
 
-            <p:commandButton type ="submit" value="Save" actionListener = "#{data.save()}" >  
+            <p:commandButton id = "idsave" value="Save" actionListener = "#{data.save(event)}" process = "@this">  
 
-                <f:setPropertyActionListener target = "#{data.node}"    value = "#{getNodeValue()}" />
+                <f:setPropertyActionListener target = "#{data.node}"    value = "#{getNodeValue()}" />                
                 <f:setPropertyActionListener target = "#{data.port}"    value = "#{getPortValue()}" />
-                <f:setPropertyActionListener target = "#{data.address}" value = "#{getAddresValue()}" />
+                <f:setPropertyActionListener target = "#{data.address}" value = "#{getAddressValue()}" />
                 <f:setPropertyActionListener target = "#{data.timer}"   value = "#{getTimerValue()}" />
                 <f:setPropertyActionListener target = "#{data.pir}"     value = "#{getPirValue()}" />
                 <f:setPropertyActionListener target = "#{data.white}"   value = "#{getWhiteValue()}" />
-
+                
             </p:commandButton>
              
             </h:form>

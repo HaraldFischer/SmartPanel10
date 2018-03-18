@@ -4,36 +4,18 @@
  * and open the template in the editor.
  */
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import java.io.*;
-import java.nio.ByteBuffer;
 import javax.annotation.PreDestroy;
 import javax.annotation.PostConstruct;
-import org.primefaces.event.CloseEvent;
-import javax.faces.event.ValueChangeEvent;
-import java.nio.channels.FileChannel;
-import javax.swing.JOptionPane;
 import org.primefaces.context.RequestContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.event.ActionEvent;
-
-
-/**RequestContext.getCurrentInstance().execute("alert('Construct')");
- *Map<String,String> params =
-                FacesContext.getExternalContext().getRequestParameterMap();
- * @author hfischer
- */
-
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
+import javax.faces.event.ActionEvent;
 
 
 @ManagedBean(name = "data")
@@ -74,9 +56,6 @@ public class DataBean implements Serializable {
     
     private Socket ClientSocket = null;
     
-    private String AbsolutePath = "";
-    
-    private String Id     = "";
     Map<String,String> params = new HashMap();
     
     public DataBean() {
@@ -84,6 +63,7 @@ public class DataBean implements Serializable {
   
     @PostConstruct
     public void postConstruct(){
+
         boolean success = loadFromFile();
         if (success==false){
             showMessage("Error Reading Configuration File\n Loading Defaults");
@@ -91,6 +71,7 @@ public class DataBean implements Serializable {
         }
         closeSocket();
         initSocket();
+        
     }
     
     @PreDestroy
@@ -102,7 +83,7 @@ public class DataBean implements Serializable {
     public void initSocket(){
         try{
             closeSocket();
-            ClientSocket = new Socket(node,Integer.parseInt(Port));
+            ClientSocket = new Socket(node,Integer.parseInt(port));
             InReader = new BufferedReader(new InputStreamReader(ClientSocket.getInputStream()));
             OutWriter= new DataOutputStream(ClientSocket.getOutputStream());
             ClientSocket.setSoTimeout(1000);
@@ -159,66 +140,8 @@ public class DataBean implements Serializable {
 
     }
     
-    public void save(){
-        //Map<String,Object> pMap = new HashMap();
-        //FacesContext fc = FacesContext.getCurrentInstance();
-        //params = fc.getExternalContext().getRequestParameterMap();    
-        showMessage(node);        
-    }
-    
-    public void setOnClose(){
-        
-        FacesContext fc = FacesContext.getCurrentInstance();
-        params = fc.getExternalContext().getRequestParameterMap();
-        node = params.get("Node");
-        port = params.get("Port");
-        address= params.get("Address");
-        timer = params.get("Timer");
-        pir = params.get("Pir");
-        white = params.get("White");
-    }
-    
-    public void setParams(){
-        
-        FacesContext fc = FacesContext.getCurrentInstance();
-        params = fc.getExternalContext().getRequestParameterMap();
-        
-        String thenode = params.get("Node");
-        if (thenode!= null){
-            this.node = thenode;
-        }
-        
-        
-        String theport = params.get("Port");
-        if (theport!=null){
-            this.port = theport;
-        }
-        
-
-        String theaddress = params.get("Address");
-        if (theaddress!=null){
-            this.address = theaddress;
-        }
-        
-
-        String thetimer = params.get("Timer");
-        if (thetimer!=null){
-            this.timer = thetimer;
-        }
-
-
-        String thepir = params.get("Pir");
-        if (thepir!=null){
-            this.pir = thepir;
-        }
-
-        String thewhite = params.get("White");
-        if (thewhite!=null){
-            this.white = thewhite;
-        }
-
-        closeSocket();
-        initSocket();    
+    public void save(ActionEvent ae){
+        showMessage(node + " " + port + " " + address + " " + timer + " " + pir + " " + white);        
     }
     
     public String getPort(){
