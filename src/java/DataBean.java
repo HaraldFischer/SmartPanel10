@@ -11,15 +11,15 @@ import org.primefaces.context.RequestContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
-import javax.faces.event.ActionEvent;
+import javax.inject.Inject;
 
 
 @ManagedBean(name = "data")
-@SessionScoped
+@RequestScoped
 public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
@@ -140,7 +140,11 @@ public class DataBean implements Serializable {
 
     }
     
-    public void save(ActionEvent ae){
+    public void changed(){
+        showMessage("Changed");
+    }
+    
+    public void save(){
         showMessage(node + " " + port + " " + address + " " + timer + " " + pir + " " + white);        
     }
     

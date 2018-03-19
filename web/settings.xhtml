@@ -222,6 +222,7 @@ and open the template in the editor.
                    
                 <h:outputText value="Node:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" >
+                    
                 </h:inputText>
                
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
@@ -247,15 +248,15 @@ and open the template in the editor.
                 
             </p:panelGrid>
 
-            <p:commandButton id = "idsave" value="Save" actionListener = "#{data.save(event)}" process = "@this">  
-
-                <f:setPropertyActionListener target = "#{data.node}"    value = "#{getNodeValue()}" />                
+            <p:commandButton  type = "submit" value="Save" actionListener = "#{data.save()}" process="@this" update = "idform:idnode" >  
+                
+                <f:setPropertyActionListener target = "#{data.node}"    value = "#{getNodeValue()}" />
                 <f:setPropertyActionListener target = "#{data.port}"    value = "#{getPortValue()}" />
                 <f:setPropertyActionListener target = "#{data.address}" value = "#{getAddressValue()}" />
                 <f:setPropertyActionListener target = "#{data.timer}"   value = "#{getTimerValue()}" />
                 <f:setPropertyActionListener target = "#{data.pir}"     value = "#{getPirValue()}" />
                 <f:setPropertyActionListener target = "#{data.white}"   value = "#{getWhiteValue()}" />
-                
+              
             </p:commandButton>
              
             </h:form>
