@@ -164,17 +164,6 @@ and open the template in the editor.
             };
             
             window.onbeforeunload = function(){
-                /*
-                var childNodeNode   = document.getElementById("idform:idnode");
-                var childNodePort   = document.getElementById("idform:idport");
-                var childNodeAddress= document.getElementById("idform:idaddress");
-                var childNodeTimer  = document.getElementById("idform:idtimer");
-                var childNodePir    = document.getElementById("idform:idpir");
-                var childNodeWhite  = document.getElementById("idform:idwhite");
-                
-                rcclose([{name:"Node", value:childNodeNode.value},{name:"Port", value:childNodePort.value},{name: "Address", value: childNodeAddress.value},
-                    {name:"Timer", value:childNodeTimer.value},{name:"Pir", value: childNodePir.value},{name:"White", value: childNodeWhite.value}]);
-                */
             };
             
             function getNodeValue(){
@@ -206,49 +195,37 @@ and open the template in the editor.
         <div>
             
             <h:form id = "idform">
-      
-            <!--
-            <h:form>
-                
-            <p:confirmDialog widgetVar = "dlgclose" global="true" showEffect="fade" hideEffect="fade" >
-                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-            </p:confirmDialog>
-                
-            </h:form>
-            -->
-            
+                  
             <p:panelGrid id = "idpanelgrid" columns ="2" styleClass = "settingsgrid">
                    
                 <h:outputText value="Node:" styleClass = "inputfield" /> 
-                <h:inputText  id = "idnode" value = "#{data.getNode()}" styleClass = "inputfield" required = "true" >
+                <h:inputText  id = "idnode" value = "#{data.node}"  styleClass = "inputfield" required = "true" >
                     
                 </h:inputText>
                
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
-                <h:inputText  id = "idport" value = "#{data.getPort()}" required = "true" styleClass = "inputfield">
+                <h:inputText  id = "idport" value = "#{data.port}" required = "true" styleClass = "inputfield" >
                 </h:inputText>
                 
                 <h:outputText  value = "Address:" styleClass="inputfield" />
-                <p:inputText id = "idaddress" value = "#{data.getAddress()}"  styleClass="addresssize">
+                <p:inputText id = "idaddress" value = "#{data.address}"  styleClass="addresssize" >
                 </p:inputText>
                
                 <h:outputText value = "Timer:[s]" styleClass = "inputfield" />
-                <h:inputText  id = "idtimer" value = "#{data.getTimer()}" styleClass="inputfield" >
+                <h:inputText  id = "idtimer" value = "#{data.timer}" styleClass="inputfield" >
                 </h:inputText>
                 
                 <h:outputText value = "Pir:[s]" styleClass="inputfield" />
-                <h:inputText id = "idpir" value = "#{data.getPir()}" styleClass = "inputfield" >
+                <h:inputText id = "idpir" value = "#{data.pir}" styleClass = "inputfield" >
                 </h:inputText>
                 
                 <h:outputText value = "White" styleClass="inputfield" /> 
-                <h:inputText  id = "idwhite" value = "#{data.getWhite()}" styleClass="inputfield" >
+                <h:inputText  id = "idwhite" value = "#{data.white}" styleClass="inputfield" >
                 </h:inputText>
-                
-                
+                    
             </p:panelGrid>
-
-            <p:commandButton  type = "submit" value="Save" actionListener = "#{data.save()}" process="@this" update = "idform:idnode" >  
+                        
+                <p:commandButton  id = "idcommand" type = "submit" process = "@this" value="Save"  ajax = "false" actionListener = "#{data.save()}"  >  
                 
                 <f:setPropertyActionListener target = "#{data.node}"    value = "#{getNodeValue()}" />
                 <f:setPropertyActionListener target = "#{data.port}"    value = "#{getPortValue()}" />
@@ -256,9 +233,9 @@ and open the template in the editor.
                 <f:setPropertyActionListener target = "#{data.timer}"   value = "#{getTimerValue()}" />
                 <f:setPropertyActionListener target = "#{data.pir}"     value = "#{getPirValue()}" />
                 <f:setPropertyActionListener target = "#{data.white}"   value = "#{getWhiteValue()}" />
-              
+                
             </p:commandButton>
-             
+                        
             </h:form>
         </div>
     </h:body>

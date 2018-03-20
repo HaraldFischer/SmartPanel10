@@ -11,7 +11,7 @@ import org.primefaces.context.RequestContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
@@ -19,7 +19,7 @@ import javax.inject.Inject;
 
 
 @ManagedBean(name = "data")
-@RequestScoped
+@SessionScoped
 public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
@@ -112,8 +112,21 @@ public class DataBean implements Serializable {
             e.printStackTrace();
         }
     }
-    
         
+    public void testGrowl(){
+        //addMessage("System Error","Please Try Again Later");
+        FacesContext fc = FacesContext.getCurrentInstance();
+        fc.addMessage(null, new FacesMessage("Successful",  "Your message:"));        
+    }
+    
+    public void addMessage(String summary,String detail){
+
+    }
+    
+    public void save(){
+        showMessage(node + " " + port + " " + address + " " + timer + " " + pir + " " + white);        
+    }
+    
     public Socket getSocket(){
         return ClientSocket;
     }
@@ -130,23 +143,6 @@ public class DataBean implements Serializable {
        this.node=node;
     }
     
-    public void testGrowl(){
-        //addMessage("System Error","Please Try Again Later");
-        FacesContext fc = FacesContext.getCurrentInstance();
-        fc.addMessage(null, new FacesMessage("Successful",  "Your message:"));        
-    }
-    
-    public void addMessage(String summary,String detail){
-
-    }
-    
-    public void changed(){
-        showMessage("Changed");
-    }
-    
-    public void save(){
-        showMessage(node + " " + port + " " + address + " " + timer + " " + pir + " " + white);        
-    }
     
     public String getPort(){
         return port;
