@@ -40,6 +40,7 @@ and open the template in the editor.
                       else{
                           alert("Node is not a valid IP Address");
                           $(this).val(prevVal);
+                          
                       }
                     });
                     childNode.addEventListener("focus",function(){
@@ -108,6 +109,7 @@ and open the template in the editor.
                         else{
                           alert("Timer must be a Value between 0 and 9999");
                           $(this).val(prevVal);
+                          
                         }
                     });
                     childNode.addEventListener("focus",function(){
@@ -170,29 +172,6 @@ and open the template in the editor.
             window.onbeforeunload = function(){
             };
             
-            function getNodeValue(){
-                return document.getElementById('idform:idnode').value;
-            }
-            
-            function getPortValue(){
-                return document.getElementById('idform:idport').value;
-            }
-
-            function getAddressValue(){
-                return document.getElementById('idform:idaddress').value;
-            }
-            
-            function getTimerValue(){
-                return document.getElementById('idform:idtimer').value;
-            }
-            
-            function getPirValue(){
-                return document.getElementById('idform:idpir').value;
-            }
-            
-            function getWhiteValue(){
-                return document.getElementById('idform:idwhite').value;
-            }
           
         </script>
         
@@ -202,11 +181,11 @@ and open the template in the editor.
                   
             <p:panelGrid id = "idpanelgrid" columns ="2" styleClass = "settingsgrid">
                    
-                <h:outputText value="Node:" styleClass = "inputfield" /> 
-                <h:inputText  id = "idnode" value = "#{data.node}"  styleClass = "inputfield" required = "true" >
+                <h:outputText value="Node:" styleClass = "inputfield" />                 
+                <h:inputText  id = "idnode" value = "#{data.node}"  styleClass = "inputfield" required = "true" validatorMessage = "Invalid Node" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
                 </h:inputText>
-               
+                
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idport" value = "#{data.port}" required = "true" styleClass = "inputfield" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
