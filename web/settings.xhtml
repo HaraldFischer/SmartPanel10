@@ -184,31 +184,37 @@ and open the template in the editor.
                 <h:outputText value="Node:" styleClass = "inputfield" />                 
                 <h:inputText  id = "idnode" value = "#{data.node}"  styleClass = "inputfield" required = "true" validatorMessage = "Invalid Node" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
+                    <f:ajax event = "blur"   listener = "#{data.save()}" />
                 </h:inputText>
                 
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
                 <h:inputText  id = "idport" value = "#{data.port}" required = "true" styleClass = "inputfield" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
+                    <f:ajax event = "blur"   listener = "#{data.save()}" />
                 </h:inputText>
                 
                 <h:outputText  value = "Address:" styleClass="inputfield" />
                 <p:inputText id = "idaddress" value = "#{data.address}"  styleClass="addresssize" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
+                    <f:ajax event = "blur"   listener = "#{data.save()}" />
                 </p:inputText>
                
                 <h:outputText value = "Timer:[s]" styleClass = "inputfield" />
                 <h:inputText  id = "idtimer" value = "#{data.timer}" styleClass="inputfield" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
+                    <f:ajax event = "blur"   listener = "#{data.save()}" />
                 </h:inputText>
                 
                 <h:outputText value = "Pir:[s]" styleClass="inputfield" />
                 <h:inputText id = "idpir" value = "#{data.pir}" styleClass = "inputfield" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
+                    <f:ajax event = "blur"   listener = "#{data.save()}" />
                 </h:inputText>
                 
                 <h:outputText value = "White" styleClass="inputfield" /> 
                 <h:inputText  id = "idwhite" value = "#{data.white}" styleClass="inputfield" >
                     <f:ajax event = "change" listener = "#{data.save()}" />
+                    <f:ajax event = "blur"   listener = "#{data.save()}" />
                 </h:inputText>
                     
             </p:panelGrid>
