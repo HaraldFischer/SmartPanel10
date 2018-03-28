@@ -15,7 +15,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
-import javax.inject.Inject;
+import javax.faces.event.ValueChangeEvent;
+
 
 
 @ManagedBean(name = "data")
@@ -80,6 +81,12 @@ public class DataBean implements Serializable {
         closeSocket();
     }
 
+    public void valueChange(ValueChangeEvent vce){
+        String value = vce.getNewValue().toString();
+        String comp  = vce.getComponent().toString();
+        showMessage(comp + " : " + value);
+    }
+    
     public void initSocket(){
         try{
             closeSocket();
