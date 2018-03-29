@@ -40,7 +40,6 @@ and open the template in the editor.
                       else{
                           alert("Node is not a valid IP Address");
                           $(this).val(prevVal);
-                          
                       }
                       
                     });
@@ -179,15 +178,16 @@ and open the template in the editor.
         <div>
             
             <h:form id = "idform">
-                  
+            
             <p:panelGrid id = "idpanelgrid" columns ="2" styleClass = "settingsgrid">
                    
                 <h:outputText value="Node:" styleClass = "inputfield" />                 
                 <h:inputText  id = "idnode" value = "#{data.node}" onchange = "submit()" styleClass = "inputfield" required = "true"  valueChangeListener = "#{data.valueChange}" >
+                    
                 </h:inputText>
                 
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
-                <h:inputText  id = "idport" value = "#{data.port}" onchange = "submit()" required = "true" styleClass = "inputfield" valueChangeListener = "#{valueChange}" >
+                <h:inputText  id = "idport" value = "#{data.port}" onchange = "submit()" required = "true" styleClass = "inputfield" valueChangeListener = "#{data.valueChange}" >
                     
                 </h:inputText>
                 
@@ -213,16 +213,6 @@ and open the template in the editor.
                     
             </p:panelGrid>
                 
-                <p:commandButton style = "display:none" id = "idcommand" type = "submit" process = "@this" value="Save"   >  
-                               
-                <f:setPropertyActionListener target = "#{data.node}"    value = "" />
-                <f:setPropertyActionListener target = "#{data.port}"    value = "" />
-                <f:setPropertyActionListener target = "#{data.address}" value = "" />
-                <f:setPropertyActionListener target = "#{data.timer}"   value = "" />
-                <f:setPropertyActionListener target = "#{data.pir}"     value = "" />
-                <f:setPropertyActionListener target = "#{data.white}"   value = "" />
-                
-                </p:commandButton>
                 
             </h:form>
         </div>

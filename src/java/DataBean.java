@@ -16,6 +16,8 @@ import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
 import javax.faces.event.ValueChangeEvent;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
 
 
 
@@ -82,9 +84,38 @@ public class DataBean implements Serializable {
     }
 
     public void valueChange(ValueChangeEvent vce){
-        String value = vce.getNewValue().toString();
-        String comp  = vce.getComponent().toString();
-        showMessage(comp + " : " + value);
+        UIComponent comp1  = vce.getComponent();
+        UIViewRoot view = FacesContext.getCurrentInstance().getViewRoot();
+        UIComponent comp2 = view.findComponent("idform:idnode"); 
+        if (comp1 == comp2){
+            node = vce.getNewValue().toString();
+            
+        }
+        comp2 = view.findComponent("idform:idport");
+        if (comp1 == comp2){
+            port = vce.getNewValue().toString();
+            
+        }
+        comp2 = view.findComponent("idform:idaddress");
+        if (comp1 == comp2){
+            address = vce.getNewValue().toString();
+            
+        }
+        comp2 = view.findComponent("idform:idtimer");
+        if (comp1 == comp2){
+            timer = vce.getNewValue().toString();
+            
+        }
+        comp2 = view.findComponent("idform:idpir");
+        if (comp1 == comp2){
+            pir = vce.getNewValue().toString();
+            
+        }
+        comp2 = view.findComponent("idform:idwhite");
+        if (comp1 == comp2){
+            white = vce.getNewValue().toString();
+            
+        }
     }
     
     public void initSocket(){
@@ -119,21 +150,7 @@ public class DataBean implements Serializable {
             e.printStackTrace();
         }
     }
-        
-    public void testGrowl(){
-        //addMessage("System Error","Please Try Again Later");
-        FacesContext fc = FacesContext.getCurrentInstance();
-        fc.addMessage(null, new FacesMessage("Successful",  "Your message:"));        
-    }
-    
-    public void addMessage(String summary,String detail){
-
-    }
-    
-    public void save(){
-        showMessage(node + " " + port + " " + address + " " + timer + " " + pir + " " + white);        
-    }
-    
+            
     public Socket getSocket(){
         return ClientSocket;
     }
@@ -341,6 +358,7 @@ public class DataBean implements Serializable {
     
     
     public void showMessage(String msg){
+        
         RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Message", msg));
     }
           
