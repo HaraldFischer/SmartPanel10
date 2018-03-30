@@ -18,6 +18,8 @@ import java.net.Socket;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
+import javax.validation.constraints.*;
+
 
 
 
@@ -33,16 +35,22 @@ public class DataBean implements Serializable {
     private DataOutputStream    OutWriter= null;
     
     @ManagedProperty(value = "#{node}")
+    @Pattern(regexp = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$", message = "Node Value Is Invalid")
     private String node = "192.168.0.12";
     @ManagedProperty(value = "#{port}")
+    @Pattern(regexp = "^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$", message = "Port Value Is Invalid")
     private String port="2048";
     @ManagedProperty(value = "#{address}")
+    @Pattern(regexp = "^(([0-9][1-9])|([1-9][0-9])|[0-9])$", message = "Address Value Is Invalid")
     private String address = "0";
     @ManagedProperty(value = "#{timer}")
+    @Pattern(regexp = "^[0-9]{1,4}$", message = "Timer Value Is Invalid")
     private String timer = "0";
     @ManagedProperty(value = "#{pir}")
+    @Pattern(regexp = "^[0-9]{1,4}$", message = "Pir Value IsInvalid")
     private String pir = "0";
     @ManagedProperty(value = "#{white}")
+    @Pattern(regexp = "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", message = "White Value Is Invalid")
     private String white="0";
     
     
@@ -82,13 +90,20 @@ public class DataBean implements Serializable {
         writeToFile();
         closeSocket();
     }
+    
+    public void save(){
+        showMessage("Node:" + node + " Port:" + port + " Address:" + address + " Timer:" + timer + " Pir:" + pir + " White:" + white);
+        
+    }
 
+    
     public void valueChange(ValueChangeEvent vce){
         UIComponent comp1  = vce.getComponent();
         UIViewRoot view = FacesContext.getCurrentInstance().getViewRoot();
         UIComponent comp2 = view.findComponent("idform:idnode"); 
         if (comp1 == comp2){
             node = vce.getNewValue().toString();
+            showMessage("Node:" + node);
             
         }
         comp2 = view.findComponent("idform:idport");
@@ -117,6 +132,7 @@ public class DataBean implements Serializable {
             
         }
     }
+    
     
     public void initSocket(){
         try{
