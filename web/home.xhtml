@@ -23,8 +23,12 @@ and open the template in the editor.
     </h:head>
     <h:body id = "idbody" >
         <script> window.addEventListener("load",startUp,true); </script>
+
+        <p:dialog id = "idmsgdlg" widgetVar = "msgdlg" header = "Message"  dynamic = "true"  >
+            <h:outputText value= "#{data.msgDialog}" />
+        </p:dialog>
+
         <h:form id = "idform" >
-            
             <p:panelGrid id = "idpanelgrid" columns="5" styleClass="grid">
                     <p:column id = "idcolumn0" >
                         <p:remoteCommand id = "idrcgetscene0" name = "rcgetscene0" action = "#{data.getScene0()}" process = "@this" oncomplete = "handleComplete(xhr,status,args)" />
@@ -133,9 +137,9 @@ and open the template in the editor.
                         <h:button value="Timer" styleClass="buttonStyle"    onclick = "clickBtnTimer()" />
                         <h:button value="Pir"   styleClass="buttonStyle"    onclick = "clickBtnPir()" />
                         <h:button value="White" styleClass="buttonStyle"    onclick = "clickBtnWhite()" />
+                        <h:commandButton value= "Click Me" action = "#{data.testDialog()}" />
+                        
             </p:panelGrid> 
-            <!--
-            -->
         </h:form>
     </h:body>
 </html>

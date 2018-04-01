@@ -60,11 +60,13 @@
                if (what === 7) rcsetscene7([{name:'rcsetscene7',value:colorList[7]}]);
                if (what === 8) rcsetscene8([{name:'rcsetscene8',value:colorList[8]}]);
                if (what === 9) rcsetscene9([{name:'rcsetscene9',value:colorList[9]}]);
+               
             }           
             
 
             function startUp(){
                 var count = 0;
+                
                 var p = new Promise(function(resolve,reject){
                     this.loadData();
                     var interval = window.setInterval(function(){
@@ -73,19 +75,19 @@
                             clearInterval(interval);
                             resolve();
                         }
-                        if (count > 50){
+                        else if (count > 50){
                             clearInterval(interval);
                             count = 0;
                             alert("ColorList Timed Out");
                             reject();
                         }
-                    },200);                    
+                    },1000);                    
                                         
                 });
                 
                 p.then(function(){
                     try{
-                        for (i=0;i<10;i++){
+                        for (i = 0;i < colorList.length; i++){
                             str = "colorWell"+i;   
                             color = document.querySelector("#" + str);                   
                             color.value = colorList[i];
@@ -152,7 +154,6 @@
             }
             
             function updateAll(event){
-                //alert("UpdateAll:" + colorList[0]);
                 
             }
             
