@@ -16,8 +16,17 @@ and open the template in the editor.
       <from-view-id>index.xhtml</from-view-id>
       <navigation-case>
          <from-action>index.html</from-action>
-         <from-outcome>page</from-outcome>
+         <from-outcome>success</from-outcome>
          <to-view-id>welcomePrimefaces.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-action>/welcomePrimefaces.xhtml</from-action>
+         <from-outcome>success</from-outcome>
+         <to-view-id>/home.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+          <from-action>#{data.getScene0}</from-action>
+          <to-view-id> /home.xhtml</to-view-id>
       </navigation-case>
    </navigation-rule>
    -->

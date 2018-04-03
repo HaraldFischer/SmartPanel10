@@ -102,15 +102,13 @@ public class DataBean implements Serializable {
     public void save(){
     }
 
-    
+    /*
     public void valueChange(ValueChangeEvent vce){
         UIComponent comp1  = vce.getComponent();
         UIViewRoot view = FacesContext.getCurrentInstance().getViewRoot();
         UIComponent comp2 = view.findComponent("idform:idnode"); 
         if (comp1 == comp2){
             node = vce.getNewValue().toString();
-            showMessage("Node:" + node);
-            
         }
         comp2 = view.findComponent("idform:idport");
         if (comp1 == comp2){
@@ -138,7 +136,7 @@ public class DataBean implements Serializable {
             
         }
     }
-    
+    */
     
     public void initSocket(){
         try{
@@ -150,7 +148,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            //showMessage("Socket Exception:" + e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -170,7 +168,7 @@ public class DataBean implements Serializable {
             }
         }
         catch (Exception e){
-            //showMessage("Socket Exception:" + e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -395,8 +393,7 @@ public class DataBean implements Serializable {
     }
     
     public void showMessage(String msg){
-        
-        RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Message", msg));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Message",  msg));
     }
           
 
