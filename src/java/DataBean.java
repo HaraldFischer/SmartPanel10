@@ -36,6 +36,9 @@ public class DataBean implements Serializable {
     
     private String msgDialog = "Default Message";
     
+    private List<String> msgList = new ArrayList();
+    private List<String> themes  = new ArrayList();
+    
     @ManagedProperty(value = "#{node}")
     @NotNull(message = "Node Must Not Be Null")
     @Pattern(regexp = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$", message = "Node Value Is Invalid")
@@ -82,7 +85,10 @@ public class DataBean implements Serializable {
   
     @PostConstruct
     public void postConstruct(){
-
+        for (int i = 0; i < 100; i++){
+            msgList.add("Item" + i);
+        }
+        initThemes();
         boolean success = loadFromFile();
         if (success==false){
             showMessage("Error Reading Configuration File\n Loading Defaults");
@@ -102,6 +108,20 @@ public class DataBean implements Serializable {
     public void save(){
     }
 
+    public void initThemes(){
+        String str = "String 1";
+        themes.add(str);
+        
+    }
+    
+    public List getThemes(){
+        return themes;
+    } 
+    
+    public void setThemes(List<String> themes){
+        this.themes = themes;
+    }
+    
     /*
     public void valueChange(ValueChangeEvent vce){
         UIComponent comp1  = vce.getComponent();
@@ -137,6 +157,26 @@ public class DataBean implements Serializable {
         }
     }
     */
+    
+    public void setMsgList(ArrayList list){
+        this.msgList = list;
+    }
+    
+    public List getMsgList(){
+        return msgList;
+    }
+    
+    public void addMsgItem(String item){
+        msgList.add(item);
+    }
+    
+    public void removeMsgItem(){
+        if (!msgList.isEmpty()) msgList.remove(msgList.size()-1);
+    }
+    
+    public void clearMsgList(){
+        msgList.clear();
+    }
     
     public void initSocket(){
         try{
