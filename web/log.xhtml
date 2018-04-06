@@ -22,10 +22,12 @@ and open the template in the editor.
 
             </p:messages>
             
-            <h:outputLabel for = "idloglist" value = "Log List" style = "font-weight: bold;font-size:20px;margin: 30px;" />
-            
-            <p:selectOneListbox id = "idloglist" value = "" style = "width: 80%;height: 80%;margin:30px"  >
-                <f:selectItems id = "idselectitems" value = "#{data.msgList}" var = "item" itemValue = "#{item}" itemLabel="#{data.themes[0]}" />
+            <h:outputLabel  value = "Log List" style = "font-weight: bold;font-size:20px;margin: 30px;" />
+            <h:outputLabel for = "idselectitems" />
+            <p:selectOneListbox id = "idloglist" value = "" style = "width: 80%;height: 80%;margin:30px" label = "#{arrows.jpeg}" >
+                <f:selectItems id = "idselectitems" value = "#{data.msgMap}" var = "item" itemLabel="&lt;img src=&quot;arrows.jpeg&quot;&gt;&#160;#{item}"  >
+                    
+                </f:selectItems>
                 
             </p:selectOneListbox>
 

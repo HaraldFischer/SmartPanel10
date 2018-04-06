@@ -37,7 +37,8 @@ public class DataBean implements Serializable {
     private String msgDialog = "Default Message";
     
     private List<String> msgList = new ArrayList();
-    private List<String> themes  = new ArrayList();
+    
+    //private Map<String,String> msgMap = new LinkedHashMap();
     
     @ManagedProperty(value = "#{node}")
     @NotNull(message = "Node Must Not Be Null")
@@ -88,7 +89,7 @@ public class DataBean implements Serializable {
         for (int i = 0; i < 100; i++){
             msgList.add("Item" + i);
         }
-        initThemes();
+        
         boolean success = loadFromFile();
         if (success==false){
             showMessage("Error Reading Configuration File\n Loading Defaults");
@@ -108,19 +109,6 @@ public class DataBean implements Serializable {
     public void save(){
     }
 
-    public void initThemes(){
-        String str = "String 1";
-        themes.add(str);
-        
-    }
-    
-    public List getThemes(){
-        return themes;
-    } 
-    
-    public void setThemes(List<String> themes){
-        this.themes = themes;
-    }
     
     /*
     public void valueChange(ValueChangeEvent vce){
@@ -158,11 +146,11 @@ public class DataBean implements Serializable {
     }
     */
     
-    public void setMsgList(ArrayList list){
+    public void setMsgList(List list){
         this.msgList = list;
     }
     
-    public List getMsgList(){
+    public List<String> getMsgMap(){
         return msgList;
     }
     
