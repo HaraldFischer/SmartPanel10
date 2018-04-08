@@ -15,23 +15,50 @@ and open the template in the editor.
     <h:head>
         <title>Log</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script>
+            function condition(){
+                return true;
+            }
+            
+            function callFunc(str){
+                alert (str);
+            }
+        </script>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form id = "idformlog" style="width: 100%;height: 100%;" >
             <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "true" > 
 
             </p:messages>
             
             <h:outputLabel  value = "Log List" style = "font-weight: bold;font-size:20px;margin: 30px;" />
+            <h:graphicImage value = "arrowup.png" />
+            <h:outputLabel  value = "Request" />
+            <h:graphicImage value = "arrowdown.png" />
+            <h:outputLabel  value = "Response" />
             <h:outputLabel for = "idselectitems" />
-            <p:selectOneListbox id = "idloglist" value = "" style = "width: 80%;height: 80%;margin:30px" label = "#{arrows.jpeg}" >
-                <f:selectItems id = "idselectitems" value = "#{data.msgMap}" var = "item" itemLabel="&lt;img src=&quot;arrows.jpeg&quot;&gt;&#160;#{item}"  >
-                    
-                </f:selectItems>
+            <p:selectOneListbox id = "idloglist" value = "LogList" style = "width: 80%;height: 100%;margin:30px;min-height: 200px" >
+                <!-- <f:selectItems id = "idselectitems" value = "#{data.msgMap}"  var = "item" itemLabel= "&lt;img src=&quot;arrowdown.png&quot;&gt;&#160;#{item}" > -->
+                <c:set var = 'cond' value = '#{data.msgWhat}' />
+                <c:choose>
+                    <c:when test = "${cond == 0}">
+                        <f:selectItems id = "idselectitems0" value = "#{data.msgMap}"  var = "item" itemLabel="&lt;img src=&quot;arrowdown.png&quot;&gt;&#160;#{item}" />    
+                        ${"Condition is true"}
+                    </c:when>
+                    <c:when test = "${cond == 1}">
+                        <f:selectItems id = "idselectitems1" value = "#{data.msgMap}"  var = "item" itemLabel="&lt;img src=&quot;arrowup.png&quot;&gt;&#160;#{item}"  />                                                    
+                        ${"Condition is false"}
+                    </c:when>
+                    <c:otherwise>
+                        ${"Condition is failed"}
+                    </c:otherwise>
+                </c:choose>
                 
             </p:selectOneListbox>
 
-            <p:commandButton value = "Clear List" style = "width: 80%;height: 80%;margin:30px" actionListener = "#{data.clearMsgList()}" />
+            <p:commandButton  value = "Clear List" style = "width: 80%;height: 80%;margin:30px" actionListener = "#{data.clearMsgList()}" update = "@form" >
+                
+            </p:commandButton>
             
         </h:form>
     </h:body>

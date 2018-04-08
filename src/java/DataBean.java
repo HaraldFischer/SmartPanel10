@@ -35,7 +35,7 @@ public class DataBean implements Serializable {
     private DataOutputStream    OutWriter= null;
     
     private String msgDialog = "Default Message";
-    
+    private int msgWhat = 1;
     private List<String> msgList = new ArrayList();
     
     //private Map<String,String> msgMap = new LinkedHashMap();
@@ -109,6 +109,13 @@ public class DataBean implements Serializable {
     public void save(){
     }
 
+    public void setMsgWhat(int msgWhat){
+        this.msgWhat = msgWhat;
+    }
+    
+    public int getMsgWhat(){
+        return this.msgWhat;
+    }
     
     /*
     public void valueChange(ValueChangeEvent vce){
