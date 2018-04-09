@@ -34,11 +34,34 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
-    private String msgDialog = "Default Message";
-    private int msgWhat = 1;
-    private List<String> msgList = new ArrayList();
     
-    //private Map<String,String> msgMap = new LinkedHashMap();
+    private class Message extends Object{
+        
+        private String what = "";
+        private String msg  = "";
+        
+        public Message(){
+            
+        }
+        
+        public void setWhat(String what){
+            this.what = what;
+        }
+        
+        public String getWhat(){
+            return this.what;
+        }
+        
+        public void setMsg(String msg){
+            this.msg = msg;
+        }
+        
+        public String getMsg(){
+            return this.msg;
+        }
+    }
+    
+    private List<Message> msgList = new ArrayList();
     
     @ManagedProperty(value = "#{node}")
     @NotNull(message = "Node Must Not Be Null")
@@ -86,9 +109,20 @@ public class DataBean implements Serializable {
   
     @PostConstruct
     public void postConstruct(){
-        for (int i = 0; i < 100; i++){
-            msgList.add("Item" + i);
+        try{
+            for (int i = 0; i < 100; i++){
+                Message msg = new Message();
+                msg.setWhat("Request");
+                msg.setMsg ("This Is A Test");
+                msgList.add(msg);
+
+            }
         }
+        catch (Exception e){
+            showMessage("Exception:" + e.getMessage());
+        }
+        
+        showMessage("Array Initialized");
         
         boolean success = loadFromFile();
         if (success==false){
@@ -109,59 +143,16 @@ public class DataBean implements Serializable {
     public void save(){
     }
 
-    public void setMsgWhat(int msgWhat){
-        this.msgWhat = msgWhat;
-    }
     
-    public int getMsgWhat(){
-        return this.msgWhat;
-    }
-    
-    /*
-    public void valueChange(ValueChangeEvent vce){
-        UIComponent comp1  = vce.getComponent();
-        UIViewRoot view = FacesContext.getCurrentInstance().getViewRoot();
-        UIComponent comp2 = view.findComponent("idform:idnode"); 
-        if (comp1 == comp2){
-            node = vce.getNewValue().toString();
-        }
-        comp2 = view.findComponent("idform:idport");
-        if (comp1 == comp2){
-            port = vce.getNewValue().toString();
-            
-        }
-        comp2 = view.findComponent("idform:idaddress");
-        if (comp1 == comp2){
-            address = vce.getNewValue().toString();
-            
-        }
-        comp2 = view.findComponent("idform:idtimer");
-        if (comp1 == comp2){
-            timer = vce.getNewValue().toString();
-            
-        }
-        comp2 = view.findComponent("idform:idpir");
-        if (comp1 == comp2){
-            pir = vce.getNewValue().toString();
-            
-        }
-        comp2 = view.findComponent("idform:idwhite");
-        if (comp1 == comp2){
-            white = vce.getNewValue().toString();
-            
-        }
-    }
-    */
-    
-    public void setMsgList(List list){
+    public void setMsgList(List<Message> list){
         this.msgList = list;
     }
     
-    public List<String> getMsgMap(){
+    public List<Message> getMsgList(){
         return msgList;
     }
     
-    public void addMsgItem(String item){
+    public void addMsgItem(Message item){
         msgList.add(item);
     }
     
@@ -215,15 +206,7 @@ public class DataBean implements Serializable {
     public void setSocket(Socket s){
         ClientSocket = s;
     }
-    
-    public void setMsgDialog(String msg){
-        this.msgDialog = msg;
-    }
-    
-    public String getMsgDialog(){
-        return msgDialog;
-    }
-    
+        
     public String getNode(){
         return this.node;
     }
@@ -310,6 +293,7 @@ public class DataBean implements Serializable {
         String str = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("rcsetscene2");
         Scene2 = str;
     }
+    
     public String getScene3(){
         RequestContext context = RequestContext.getCurrentInstance();
         context.addCallbackParam("What", 3);
@@ -421,11 +405,6 @@ public class DataBean implements Serializable {
         Scene9 = "#000000";
     }
     
-    public void testDialog(){
-        RequestContext context = RequestContext.getCurrentInstance();
-        setMsgDialog("This Is A Dialog");
-        context.execute("PF('msgdlg').show();");
-    }
     
     public void showMessage(String msg){
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Message",  msg));
