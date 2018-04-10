@@ -35,15 +35,15 @@ public class DataBean implements Serializable {
     private DataOutputStream    OutWriter= null;
     
     
-    private class Message extends Object{
+    public class MessageItem extends Object{
         
         private String what = "";
         private String msg  = "";
         
-        public Message(){
+        public MessageItem(){
             
         }
-        
+               
         public void setWhat(String what){
             this.what = what;
         }
@@ -61,7 +61,7 @@ public class DataBean implements Serializable {
         }
     }
     
-    private List<Message> msgList = new ArrayList();
+    private List<MessageItem> msgList = new ArrayList();
     
     @ManagedProperty(value = "#{node}")
     @NotNull(message = "Node Must Not Be Null")
@@ -111,18 +111,21 @@ public class DataBean implements Serializable {
     public void postConstruct(){
         try{
             for (int i = 0; i < 100; i++){
-                Message msg = new Message();
-                msg.setWhat("Request");
-                msg.setMsg ("This Is A Test");
+                MessageItem msg = new MessageItem();
+                if (i%2 != 0){
+                    msg.setWhat("Response");
+                    msg.setMsg("This Is A Response");
+                }
+                else{ 
+                    msg.setWhat("Request");
+                    msg.setMsg ("This Is A Request");
+                }
                 msgList.add(msg);
-
             }
         }
         catch (Exception e){
             showMessage("Exception:" + e.getMessage());
         }
-        
-        showMessage("Array Initialized");
         
         boolean success = loadFromFile();
         if (success==false){
@@ -144,15 +147,15 @@ public class DataBean implements Serializable {
     }
 
     
-    public void setMsgList(List<Message> list){
+    public void setMsgList(List<MessageItem> list){
         this.msgList = list;
     }
     
-    public List<Message> getMsgList(){
+    public List<MessageItem> getMsgList(){
         return msgList;
     }
     
-    public void addMsgItem(Message item){
+    public void addMsgItem(MessageItem item){
         msgList.add(item);
     }
     
