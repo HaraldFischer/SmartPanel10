@@ -557,7 +557,7 @@ public class DataBean implements Serializable {
     public void writeToFile(){
        Writer os = null;
         try{
-           os = new FileWriter("/home/pi/applications/SmartPanel10.cfg");
+           os = new FileWriter("SmartPanel10.cfg");
            os.write("Node:" + node + "\n");
            os.write("Port:" + port + "\n");
            os.write("Address:" + address + "\n");
@@ -597,7 +597,7 @@ public class DataBean implements Serializable {
         boolean success = true;
         BufferedReader buffReader = null;
         try{
-            buffReader= new BufferedReader(new FileReader("/home/pi/applications/SmartPanel10.cfg"));
+            buffReader= new BufferedReader(new FileReader("SmartPanel10.cfg"));
             String str = buffReader.readLine();
             while(str != null){
                 String[] line = str.split(":");
