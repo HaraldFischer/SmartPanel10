@@ -75,13 +75,15 @@
                             clearInterval(interval);
                             resolve();
                         }
-                        else if (count > 50){
+                        
+                        else if (count > 200){
                             clearInterval(interval);
                             count = 0;
                             alert("ColorList Timed Out");
                             reject();
+                        
                         }
-                    },1000);                    
+                    },100);                    
                                         
                 });
                 
