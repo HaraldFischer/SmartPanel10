@@ -7,6 +7,7 @@
             var colorList = new Array();
             var color;
             
+            
             function handleComplete(xhr,status,args){
                 if (args.What === 0){
                     colorList[0] = args.Scene0;
@@ -47,6 +48,7 @@
                     var str = "rcgetscene" + i + "()";
                     eval(str);
                 }
+                
             }
             
             function saveData(what){
@@ -65,30 +67,23 @@
             
 
             function startUp(){
-                var count = 0;
-                
+                document.body.style.cursor = 'wait';
                 var p = new Promise(function(resolve,reject){
-                    this.loadData();
+                    loadData();
                     var interval = window.setInterval(function(){
-                        count++;
+                       
                         if (colorList.length >= 10){
                             clearInterval(interval);
                             resolve();
-                        }
+                        }  
                         
-                        else if (count > 200){
-                            clearInterval(interval);
-                            count = 0;
-                            alert("ColorList Timed Out");
-                            reject();
-                        
-                        }
-                    },100);                    
-                                        
+                    },100);
+                    
                 });
                 
                 p.then(function(){
                     try{
+                        document.body.style.cursor = 'default';
                         for (i = 0;i < colorList.length; i++){
                             str = "colorWell"+i;   
                             color = document.querySelector("#" + str);                   
