@@ -67,7 +67,7 @@
             
 
             function startUp(){
-                document.body.style.cursor = 'wait';
+                
                 var p = new Promise(function(resolve,reject){
                     loadData();
                     var interval = window.setInterval(function(){
@@ -83,7 +83,6 @@
                 
                 p.then(function(){
                     try{
-                        document.body.style.cursor = 'default';
                         for (i = 0;i < colorList.length; i++){
                             str = "colorWell"+i;   
                             color = document.querySelector("#" + str);                   
@@ -165,78 +164,4 @@
                 return retVal;
             }
 
-            function buttonClicked(event){
-                var id = event.target.getAttribute('id');
-                
-                if (id === "idform:idbtnscene0"){
-                    rcscene0clicked();
-                }
-                if (id === "idform:idbtnscene1"){
-                    rcscene1clicked();
-                }
-                if (id === "idform:idbtnscene2"){
-                    rcscene2clicked();
-                }
-                if (id === "idform:idbtnscene3"){
-                    rcscene3clicked();
-                }
-                if (id === "idform:idbtnscene4"){
-                    rcscene4clicked();
-                }
-                if (id === "idform:idbtnscene5"){
-                    rcscene5clicked();
-                }
-                if (id === "idform:idbtnscene6"){
-                    rcscene6clicked();
-                }
-                if (id === "idform:idbtnscene7"){
-                    rcscene7clicked();
-                }
-                if (id === "idform:idbtnscene8"){
-                    rcscene8clicked();
-                }
-                if (id === "idform:idbtnscene9"){
-                    rcscene9clicked();
-                }
-            }
-            
-            function sceneComplete(xhr,status,args){
-              
-            }
-            
-            function clickBtnOn(){
-                alert("On");
-            }
-            
-            function clickBtnOff(){
-                alert("Off");
-            }
-            
-            function clickBtnUp(){
-                alert("Up");
-            }
-
-            function clickBtnDown(){
-                alert("Down");
-            }
-            
-            function clickBtnSave(){
-                alert("Save");
-            }
-            
-            function clickBtnLoad(){
-                alert("Load");
-            }
-            
-            function clickBtnTimer(){
-                alert("Timer");
-            }
-            
-            function clickBtnPir(){
-                alert("Pir");
-            }
-            
-            function clickBtnWhite(){
-                alert("White");
-            }
             

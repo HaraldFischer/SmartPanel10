@@ -11,7 +11,7 @@ import org.primefaces.context.RequestContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
@@ -24,7 +24,7 @@ import javax.validation.constraints.*;
 
 
 @ManagedBean(name = "data")
-@RequestScoped
+@SessionScoped
 public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
@@ -109,29 +109,13 @@ public class DataBean implements Serializable {
   
     @PostConstruct
     public void postConstruct(){
-        try{
-            for (int i = 0; i < 100; i++){
-                MessageItem msg = new MessageItem();
-                if (i%2 != 0){
-                    msg.setWhat("Response");
-                    msg.setMsg("This Is A Response");
-                }
-                else{ 
-                    msg.setWhat("Request");
-                    msg.setMsg ("This Is A Request");
-                }
-                msgList.add(msg);
-            }
-        }
-        catch (Exception e){
-            showMessage("Exception:" + e.getMessage());
-        }
         
         boolean success = loadFromFile();
         if (success==false){
             showMessage("Error Reading Configuration File\n Loading Defaults");
             loadDefaults();
         }
+
         closeSocket();
         initSocket();
         
@@ -200,6 +184,110 @@ public class DataBean implements Serializable {
             showMessage("Socket Exception:" + e.getMessage());
             e.printStackTrace();
         }
+    }
+    
+    public void clickButtonOn(){
+        
+        String msg = "smP" + address + "_ON" + "\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(msg);
+        addMsgItem(request);
+        writeOutputStream(msg);
+        String str = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(str);
+        addMsgItem(response);
+        
+    }
+    
+    public void clickButtonOff(){
+        
+        String msg = "smP" + address + "_OF" + "\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(msg);
+        addMsgItem(request);
+        writeOutputStream(msg);
+        String str = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(str);
+        addMsgItem(response);
+        
+    }
+    
+    public void clickButtonUp(){
+        
+        String msg = "smP" + address + "_UP" + "\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(msg);
+        addMsgItem(request);
+        writeOutputStream(msg);
+        String str = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(str);
+        addMsgItem(response);
+        
+    }
+    
+    public void clickButtonDown(){
+        
+        String msg = "smP" + address + "_DN" + "\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(msg);
+        addMsgItem(request);
+        writeOutputStream(msg);
+        String str = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(str);
+        addMsgItem(response);
+        
+    }
+    
+    public void clickButtonSave(){
+        
+    }
+    
+    public void clickButtonLoad(){
+        
+    }
+    
+    public void clickButtonTimer(){
+        
+    }
+    
+    public void clickButtonPir(){
+        
+    }
+    
+    public void clickButtonWhite(){
+        
+    }
+    
+    public void writeOutputStream(String msg){
+        try{
+            OutWriter.writeChars(msg);
+        }
+        catch(Exception e){
+            showMessage("Socket Exception:" + e.getMessage());
+        }
+    }
+    
+    public String readInputStream(){
+        String response = "";
+        try{
+            response = InReader.readLine();
+        }
+        catch(Exception e){
+            showMessage("Socket Exception:" + e.getMessage());
+        }
+        return response;
     }
             
     public Socket getSocket(){
@@ -424,7 +512,7 @@ public class DataBean implements Serializable {
         }
         catch(Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -438,7 +526,7 @@ public class DataBean implements Serializable {
         }
         catch(Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -452,7 +540,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -466,7 +554,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -480,7 +568,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -494,7 +582,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -508,7 +596,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -522,7 +610,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -536,7 +624,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -550,7 +638,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage(e.getMessage());
+            showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
