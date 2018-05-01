@@ -188,7 +188,7 @@ public class DataBean implements Serializable {
     
     public void clickButtonOn(){
         
-        String msg = "smP" + address + "_ON" + "\r\n";
+        String msg = "smP" + address + "_ON;" + "\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(msg);
@@ -204,7 +204,7 @@ public class DataBean implements Serializable {
     
     public void clickButtonOff(){
         
-        String msg = "smP" + address + "_OF" + "\r\n";
+        String msg = "smP" + address + "_OF;" + "\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(msg);
@@ -220,7 +220,7 @@ public class DataBean implements Serializable {
     
     public void clickButtonUp(){
         
-        String msg = "smP" + address + "_UP" + "\r\n";
+        String msg = "smP" + address + "_UP;" + "\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(msg);
@@ -236,7 +236,7 @@ public class DataBean implements Serializable {
     
     public void clickButtonDown(){
         
-        String msg = "smP" + address + "_DN" + "\r\n";
+        String msg = "smP" + address + "_DN;" + "\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(msg);
