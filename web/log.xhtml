@@ -19,7 +19,11 @@ and open the template in the editor.
         </script>
     </h:head>
     <h:body>
-        <h:form id = "idformlog" style="width: 100%;height: 100%;" >
+        <ui:composition template = "commonLayout.xhtml" >
+            <ui:define name = "pagecontent" >
+            Page Content
+            <!--
+            <h:form id = "idformlog" style="width: 100%;height: 100%;" >
             <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "true" > 
 
             </p:messages>
@@ -48,11 +52,15 @@ and open the template in the editor.
                 </c:forEach>
                 
             </p:selectOneListbox>
-
-            <p:commandButton  value = "Clear List" style = "width: 80%;height: 80%;margin:30px" actionListener = "#{data.clearMsgList()}" update = "@form" >
-                
+            
+            <p:commandButton  value = "Clear List" style = "width: 80%;height: 80%;margin:30px" actionListener = "#{data.clearMsgList()}" update = "@form" >            
             </p:commandButton>
             
-        </h:form>
+            </h:form>
+            -->
+        </ui:define>
+        </ui:composition>
+
+        
     </h:body>
 </html>
