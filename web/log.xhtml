@@ -21,8 +21,8 @@ and open the template in the editor.
     <h:body>
         <ui:composition template = "commonLayout.xhtml" >
             <ui:define name = "pagecontent" >
-            Page Content
-            <!--
+            <p:layoutUnit position = "center">
+
             <h:form id = "idformlog" style="width: 100%;height: 100%;" >
             <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "true" > 
 
@@ -34,7 +34,7 @@ and open the template in the editor.
             <h:graphicImage value = "arrowdown.png" />
             <h:outputLabel  value = "Response" />
             <h:outputLabel for = "idselectitems" />
-            <p:selectOneListbox id = "idloglist" value = "LogList" style = "width: 80%;height: 100%;margin:30px;min-height: 200px" >
+            <p:selectOneListbox id = "idloglist" value = "LogList" style = "width: 80%;height: 60%;margin:30px;min-height: 200px" >
                 
                 <c:forEach items = "#{data.msgList}" var = "item" >
                     <c:set var = "condition" value = "#{item.what}" />
@@ -53,11 +53,11 @@ and open the template in the editor.
                 
             </p:selectOneListbox>
             
-            <p:commandButton  value = "Clear List" style = "width: 80%;height: 80%;margin:30px" actionListener = "#{data.clearMsgList()}" update = "@form" >            
+            <p:commandButton  value = "Clear List" style = "width: 80%;height: 10%;margin:30px" actionListener = "#{data.clearMsgList()}" update = "@form" >            
             </p:commandButton>
             
             </h:form>
-            -->
+            </p:layoutUnit>
         </ui:define>
         </ui:composition>
 

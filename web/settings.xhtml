@@ -161,7 +161,9 @@ and open the template in the editor.
         </script>
         
         <div>
-            
+            <ui:composition template = "commonLayout.xhtml" >
+            <ui:define name= "pagecontent" >
+            <p:layoutUnit position= "center">
             <h:form id = "idform">
             <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
             <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "true" > 
@@ -225,6 +227,9 @@ and open the template in the editor.
                 
             </p:commandButton>                
             </h:form>
+            </p:layoutUnit>
+            </ui:define>
+            </ui:composition>
         </div>
     </h:body>
 </html>

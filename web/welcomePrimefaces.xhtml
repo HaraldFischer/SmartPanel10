@@ -19,6 +19,15 @@
 
         <h:body>
             <ui:composition template= "commonLayout.xhtml">
+                <ui:define name = "pagecontent" >
+                    <p:layoutUnit position = "center" >
+                    <p:imageSwitch effect="shuffle" id="fadeEffect" style="border: 100px solid transparent">
+                        <ui:repeat value="#{imagesView.images}" var="image">
+                            <img src="#{image}" style="height:200%;width:100%" />
+                        </ui:repeat>                       
+                    </p:imageSwitch>     
+                    </p:layoutUnit>
+                </ui:define>
             </ui:composition>
             <!--
             <p:layout fullPage="true">

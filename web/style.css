@@ -10,11 +10,11 @@ and open the template in the editor.
 .grid{
     width: 100%;
     height:100%;
-    margin: 0 auto;
+    background-color: blue;
 }
 
 .gridcommand{
-    width: 40%;
+    width: 60%;
     height:300px;
 }
 
@@ -47,13 +47,13 @@ and open the template in the editor.
 }
 
 .buttonStyle{
-    width:  95%;
+    width:  200px;
     height: 50px;
     margin: 10px;
 }
 
 .colorStyle{
-    width: 20%;
+    width: 100%;
     height:10%;
     margin:20px;
 }
