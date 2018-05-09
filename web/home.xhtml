@@ -19,14 +19,13 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script src="javascript.js">
             var color = [];
+            
         </script>
         
     </h:head>
 
     <h:body id = "idbody" >
-        
-        <script> window.addEventListener("load",startUp,false); </script>
-        
+        <script>window.addEventListener('load',startUp,false);</script>
         <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
         <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "false" > 
             
@@ -36,10 +35,12 @@ and open the template in the editor.
             <f:facet name = "" >
                 <h:outputText id = "iddlgmsg" value= "#{data.msgDialog}"  />
             </f:facet>
-        </p:dialog>
+        </p:dialog>        
+       
         <ui:composition template = "commonLayout.xhtml" >
         <ui:define name = "pagecontent" >
         <p:layoutUnit position= "center" >
+            
         <h:form id = "idform" style = "width: 100%;height:100%" >
             <p:panelGrid id = "idpanelgrid" columns="5" style = "width: 100%;height:100px" >
 

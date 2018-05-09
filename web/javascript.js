@@ -67,7 +67,7 @@
             
 
             function startUp(){
-                
+                alert("StartUp");
                 var p = new Promise(function(resolve,reject){
                     loadData();
                     var interval = window.setInterval(function(){
