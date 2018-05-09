@@ -21,11 +21,16 @@ and open the template in the editor.
             var color = [];
             
         </script>
-        
+        <script>
+            function loadFunction(){
+                alert("Called");
+            }
+            window.addEventListener("load", loadFunction, false);
+        </script>
     </h:head>
 
     <h:body id = "idbody" >
-        <script>window.addEventListener('load',startUp,false);</script>
+        
         <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
         <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "false" > 
             
