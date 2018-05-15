@@ -18,25 +18,17 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script src="javascript.js" />
-        <script type = "text/javascript">
+        <script language = "javascript">
         
             var color = [];
-            window.onload =  startUp();
             
         </script>
         <script>
-            function loadFunction(){
-                alert("loadFunction");
-            }
             
         </script>
     </h:head>
 
-    <h:body id = "idbody" onload = "loadFunction()"  >
-        <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
-        <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "false" > 
-            
-        </p:messages>
+    <h:body id = "idbody" >
         
         <p:dialog id = "idmsgdlg" widgetVar = "msgdlg" header = "Message"  dynamic = "true"  >
             <f:facet name = "" >
@@ -46,9 +38,23 @@ and open the template in the editor.
        
         <ui:composition template = "commonLayout.xhtml" >
         <ui:define name = "pagecontent" >
+
+            <script src="javascript.js" />
+            <script>
+                
+                jQuery(document).ready(function(){
+                    startUp();
+                });
+                
+            </script>
         <p:layoutUnit position= "center" >
             
         <h:form id = "idform" style = "width: 100%;height:100%" >
+            <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="8000" /> 
+            <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "false" > 
+            
+            </p:messages>
+
             <p:panelGrid id = "idpanelgrid" columns="5" style = "width: 100%;height:100px" >
 
                     <p:column id = "idcolumn0" >

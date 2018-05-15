@@ -65,27 +65,27 @@ public class DataBean implements Serializable {
     
     @ManagedProperty(value = "#{node}")
     @NotNull(message = "Node Must Not Be Null")
-    @Pattern(regexp = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$", message = "Node Value Is Invalid")
+    @Pattern(regexp = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$", message = "Node Value must be a valid IP Address")
     private String node = "192.168.0.12";
     @ManagedProperty(value = "#{port}")
     @NotNull(message = "Port Must Not Be Null")
-    @Pattern(regexp = "^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$", message = "Port Value Is Invalid")
+    @Pattern(regexp = "^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$", message = "Port Value must be 0 - 65535")
     private String port="2048";
     @ManagedProperty(value = "#{address}")
     @NotNull(message = "Address Must Not Be Null")
-    @Pattern(regexp = "^(([0-9][1-9])|([1-9][0-9])|[0-9])$", message = "Address Value Is Invalid")
+    @Pattern(regexp = "^(([0-9][1-9])|([1-9][0-9])|[0-9])$", message = "Address Value must be 0 - 99")
     private String address = "0";
     @ManagedProperty(value = "#{timer}")
     @NotNull(message = "Timer Must Not Be Null")
-    @Pattern(regexp = "^[0-9]{1,4}$", message = "Timer Value Is Invalid")
+    @Pattern(regexp = "^[0-9]{1,4}$", message = "Timer Value must be 0 - 9999")
     private String timer = "0";
     @ManagedProperty(value = "#{pir}")
     @NotNull(message = "Pir Must Not Be Null")
-    @Pattern(regexp = "^[0-9]{1,4}$", message = "Pir Value IsInvalid")
+    @Pattern(regexp = "^[0-9]{1,4}$", message = "Pir Value must be 0 - 9999")
     private String pir = "0";
     @ManagedProperty(value = "#{white}")
     @NotNull(message = "White Must Not Be Null")
-    @Pattern(regexp = "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", message = "White Value Is Invalid")
+    @Pattern(regexp = "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", message = "White Value must be 0 - 255")
     private String white="0";
     
     
