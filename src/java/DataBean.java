@@ -498,7 +498,7 @@ public class DataBean implements Serializable {
     
     
     public void showMessage(String msg){
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Message",  msg));
+        FacesContext.getCurrentInstance().addMessage("idmessages", new FacesMessage(FacesMessage.SEVERITY_INFO, "Message",  msg));
     }
           
 
