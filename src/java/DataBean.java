@@ -19,7 +19,7 @@ import javax.faces.event.ValueChangeEvent;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.validation.constraints.*;
-
+ 
 
 
 
@@ -33,7 +33,6 @@ public class DataBean implements Serializable {
     private static final long serialVersionUID = 0L;
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
-    
     
     public class MessageItem extends Object{
         
@@ -61,6 +60,7 @@ public class DataBean implements Serializable {
         }
     }
     
+    private List<String> errMsg = new ArrayList();
     private List<MessageItem> msgList = new ArrayList();
     
     @ManagedProperty(value = "#{node}")
@@ -112,7 +112,8 @@ public class DataBean implements Serializable {
         
         boolean success = loadFromFile();
         if (success==false){
-            showMessage("Error Reading Configuration File\n Loading Defaults");
+            errMsg.add("Error Reading Configuration File\n Loading Defaults");
+            //showMessage("Error Reading Configuration File\n Loading Defaults");
             loadDefaults();
         }
 
@@ -127,7 +128,8 @@ public class DataBean implements Serializable {
         closeSocket();
     }
     
-    public void save(){
+    public void save(){        
+        //initSocket();
     }
 
     
@@ -161,7 +163,8 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
+            errMsg.add("Socket Exception:" + e.getMessage());
+            //showMessage("Socket Exception:" + e.getMessage());
         }
     }
     
@@ -496,9 +499,18 @@ public class DataBean implements Serializable {
         Scene9 = "#000000";
     }
     
+    public void postMessage(){
+        if (errMsg.size() != 0){
+            for (int i = 0; i < errMsg.size(); i++){
+                showMessage(errMsg.get(i));
+            }
+            errMsg.clear();
+        }
+    }
     
     public void showMessage(String msg){
-        FacesContext.getCurrentInstance().addMessage("idmessages", new FacesMessage(FacesMessage.SEVERITY_INFO, "Message",  msg));
+            
+         FacesContext.getCurrentInstance().addMessage("idmessages", new FacesMessage(FacesMessage.SEVERITY_INFO, "Message",  msg));
     }
           
 

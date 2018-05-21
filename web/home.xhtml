@@ -50,11 +50,13 @@ and open the template in the editor.
         <p:layoutUnit position= "center" >
             
         <h:form id = "idform" style = "width: 100%;height:100%" >
-            
+            <script>
+                ${data.postMessage()};
+            </script>
             <p:growl id="idmsg" showDetail="true" autoUpdate="false" life="4000" /> 
             
             <p:messages id = "idmessages" showDetail = "true"  closable = "true" autoUpdate= "false" > 
-            
+                
             </p:messages>
 
             <p:panelGrid id = "idpanelgrid" columns="5" style = "width: 100%;height:100px" >
