@@ -128,10 +128,13 @@ public class DataBean implements Serializable {
         closeSocket();
     }
     
-    public void save(){        
-        //initSocket();
+    public void updateData(){
+        initSocket();
     }
-
+    
+    public void save(){        
+        
+    }
     
     public void setMsgList(List<MessageItem> list){
         this.msgList = list;
@@ -163,7 +166,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            errMsg.add("Socket Exception:" + e.getMessage());
+            errMsg.add("Socket Exception:" + e.getMessage() + " " + "Node:" + node + " " + "Port:" + port );
             //showMessage("Socket Exception:" + e.getMessage());
         }
     }
@@ -184,7 +187,7 @@ public class DataBean implements Serializable {
             }
         }
         catch (Exception e){
-            showMessage("Socket Exception:" + e.getMessage());
+            //showMessage("Socket Exception:" + e.getMessage() + " " + "Node:" + node + " " + "Port:" + port );
             e.printStackTrace();
         }
     }

@@ -18,25 +18,28 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="javascript.js"/>
         <script>
-            
+            $(document).ready(function(){
+                alert("Document Ready");
+            });
         </script>
     </h:head>
     <h:body>
         <script type = "text/javascript" >
             var childNode;
-            var i;
-            
+            /*
             window.onload = function(){
-                
+                alert("OnLoad");
                 try{
                     childNode = document.getElementById('idform:idnode');
                     childNode.addEventListener('blur',function(){
+                      alert("Node");
                       var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
                       var match = testNode.test(this.value);
                       if (match === true){
                           
                       }
                       else{
+                          
                       }
                       
                     });
@@ -154,22 +157,33 @@ and open the template in the editor.
                 
             };
             
-            window.onbeforeunload = function(){
-            };
-            
-          
+            window.addEventListener('beforeunload', function(event){
+                event.preventDefault();
+                $(data.update());
+            }); 
+            */
         </script>
         
         <div>
             <ui:composition template = "commonLayout.xhtml" >
             <ui:define name= "pagecontent" >
+                <script>
+                    window.onload = function(){
+                        
+                    }
+                    window.onbeforeunload = function(){
+                        ${data.updateData()};
+                        var confirmClose = confirm('Close?');
+                        return confirmClose;
+                    }
+                </script>
             <p:layoutUnit position= "center">
             <h:form id = "idform">
             <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
             <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "true" > 
 
             </p:messages>
-            
+
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                    
                 <h:outputText value="Node:" styleClass = "inputfield" />                 
