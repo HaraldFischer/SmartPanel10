@@ -173,8 +173,7 @@ and open the template in the editor.
                     }
                     window.onbeforeunload = function(){
                         ${data.updateData()};
-                        var confirmClose = confirm('Close?');
-                        return confirmClose;
+                        return null;
                     }
                 </script>
             <p:layoutUnit position= "center">
