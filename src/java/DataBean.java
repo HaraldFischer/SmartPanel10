@@ -129,10 +129,11 @@ public class DataBean implements Serializable {
     }
     
     public void updateData(){
+        showMessage("Update");
         initSocket();
     }
     
-    public void save(){        
+    public void save(){ 
         
     }
     
@@ -166,7 +167,7 @@ public class DataBean implements Serializable {
         }
         catch (Exception e){
             e.printStackTrace();
-            errMsg.add("Socket Exception:" + e.getMessage() + " " + "Node:" + node + " " + "Port:" + port );
+            errMsg.add("Init Socket Exception:" + e.getMessage() + " " + "Node:" + node + " " + "Port:" + port );
             //showMessage("Socket Exception:" + e.getMessage());
         }
     }
@@ -281,7 +282,7 @@ public class DataBean implements Serializable {
             OutWriter.writeChars(msg);
         }
         catch(Exception e){
-            showMessage("Socket Exception:" + e.getMessage());
+            showMessage("Write Socket Exception:" + e.getMessage());
         }
     }
     
@@ -291,7 +292,7 @@ public class DataBean implements Serializable {
             response = InReader.readLine();
         }
         catch(Exception e){
-            showMessage("Socket Exception:" + e.getMessage());
+            showMessage("Read Socket Exception:" + e.getMessage());
         }
         return response;
     }

@@ -18,163 +18,33 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="javascript.js"/>
         <script>
-            $(document).ready(function(){
-                alert("Document Ready");
-            });
         </script>
     </h:head>
     <h:body>
         <script type = "text/javascript" >
-            var childNode;
-            /*
-            window.onload = function(){
-                alert("OnLoad");
-                try{
-                    childNode = document.getElementById('idform:idnode');
-                    childNode.addEventListener('blur',function(){
-                      alert("Node");
-                      var testNode = new RegExp("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
-                      var match = testNode.test(this.value);
-                      if (match === true){
-                          
-                      }
-                      else{
-                          
-                      }
-                      
-                    });
-                    childNode.addEventListener("focus",function(){
-                    });
-                    
-                }
-                catch(e){
-                    alert("Exception:" + e);
-                }
-            
-            
-                try{
-                    childNode = document.getElementById('idform:idport');
-                    childNode.addEventListener('blur',function(){
-                        var testPort = new RegExp("^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$");
-                        var match = testPort.test(this.value);
-                        if (match === true){
-                            
-                        }
-                        else{
-                        }
-                    });                                           
-                    
-                    childNode.addEventListener("focus", function(){
-                    
-                    });
-                }
-                catch(e){
-                    alert("Exception:" + e);
-                    
-                }
-           
-                try{
-                    childNode = document.getElementById('idform:idaddress');
-                    childNode.addEventListener('blur',function(){
-                       var testAddress = new RegExp("^(([0-9][1-9])|([1-9][0-9])|[0-9])$");
-                       var match = testAddress.test(this.value);
-                       if (match === true){
-                           
-                       }
-                       else{
-                    
-                       }
-                    });
-                    childNode.addEventListener("focus", function(){
-                    
-                    });
-                }
-                catch(e){
-                    alert("Exception:" + e);
-                    
-                }
-                
-                try{
-                    childNode = document.getElementById('idform:idtimer');
-                    childNode.addEventListener('blur',function(){
-                        var testTimer = new RegExp("^[0-9]{1,4}$");
-                        var match = testTimer.test(this.value);
-                        if (match === true){
-                           
-                        }
-                        else{
-                          
-                        }
-                    });
-                    childNode.addEventListener("focus",function(){
-                        
-                    });
-                }
-                catch(e){
-                    alert("Exception:" + e);
-                    
-                }
-               
-                try{
-                    childNode = document.getElementById('idform:idpir');
-                    childNode.addEventListener('blur',function(){
-                        var testPir = new RegExp("^[0-9]{1,4}$");
-                        var match = testPir.test(this.value);
-                        if (match === true){
-                            
-                        }
-                        else{
-                        }
-                    });
-                    childNode.addEventListener("focus", function(){
-                    });
-                }
-                catch(e){
-                    alert("Exception:" + e);
-                }  
-
-                try{
-                    childNode = document.getElementById('idform:idwhite');
-                    childNode.addEventListener('blur',function(){
-                        
-                        var str = this.value;
-                        var retVal = checkWhite(str);
-                        if (retVal === true){
-                            
-                        }
-                        else{
-                        }
-                        
-                    });
-                    childNode.addEventListener("focus", function(){
-
-                    });
-                }
-                catch(e){
-                    alert("Exception:" + e);
-
-                }
-                
-            };
-            
-            window.addEventListener('beforeunload', function(event){
-                event.preventDefault();
-                $(data.update());
-            }); 
-            */
         </script>
         
         <div>
             <ui:composition template = "commonLayout.xhtml" >
             <ui:define name= "pagecontent" >
                 <script>
+                    
                     window.onload = function(){
-                        
+                    
                     }
-                    window.onbeforeunload = function(){
-                        ${data.updateData()};
-                        return null;
+                    
+                    window.onbeforeunload = function(event){
+                        event.returnValue = 'Returnvalue';
+                        //var conf = confirm("Dialog");
+                        return event.returnValue;
                     }
+                    
+                    window.onunload = function(){
+                        //${data.updateData()};
+                        //return "Unload";
+                    };
+                                               
+                    
                 </script>
             <p:layoutUnit position= "center">
             <h:form id = "idform">
