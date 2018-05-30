@@ -18,6 +18,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="javascript.js"/>
         <script>
+            
         </script>
     </h:head>
     <h:body>
@@ -27,25 +28,20 @@ and open the template in the editor.
         <div>
             <ui:composition template = "commonLayout.xhtml" >
             <ui:define name= "pagecontent" >
+
                 <script>
                     
                     window.onload = function(){
-                    
-                    }
-                    
-                    window.onbeforeunload = function(event){
-                        event.returnValue = 'Returnvalue';
-                        //var conf = confirm("Dialog");
-                        return event.returnValue;
-                    }
-                    
-                    window.onunload = function(){
-                        //${data.updateData()};
-                        //return "Unload";
                     };
-                                               
+
+                    window.onbeforeunload = function(event){
+                        var retVal = event.returnValue;// confirm("Yes/No");
+                        //showMessage(event.returnValue);
+                        return retVal;
+                    };                                                                     
                     
                 </script>
+                
             <p:layoutUnit position= "center">
             <h:form id = "idform">
             <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
