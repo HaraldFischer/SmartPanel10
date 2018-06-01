@@ -18,28 +18,30 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="javascript.js"/>
         <script>
-            
         </script>
     </h:head>
+    
     <h:body>
         <script type = "text/javascript" >
         </script>
+        <c:set var = "count" value = "0" scope = "application" />
         
         <div>
             <ui:composition template = "commonLayout.xhtml" >
             <ui:define name= "pagecontent" >
-
+                
                 <script>
-                    
                     window.onload = function(){
                     };
-
-                    window.onbeforeunload = function(event){
-                        var retVal = event.returnValue;// confirm("Yes/No");
-                        //showMessage(event.returnValue);
-                        return retVal;
-                    };                                                                     
                     
+                    window.onbeforeunload = function(){
+                        
+                        var counter = ${count};
+                        if (counter !== ""){ 
+                            ${data.showMessage(counter)};
+                        }
+                        ${count} = "";
+                    };
                 </script>
                 
             <p:layoutUnit position= "center">
