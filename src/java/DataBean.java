@@ -128,8 +128,10 @@ public class DataBean implements Serializable {
         closeSocket();
     }
     
-    public void updateData(){        
+    public boolean updateData(){        
         initSocket();
+        
+        return true;
     }
     
     public void save(){ 

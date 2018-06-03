@@ -24,7 +24,6 @@ and open the template in the editor.
     <h:body>
         <script type = "text/javascript" >
         </script>
-        <c:set var = "count" value = "0" scope = "application" />
         
         <div>
             <ui:composition template = "commonLayout.xhtml" >
@@ -32,16 +31,21 @@ and open the template in the editor.
                 
                 <script>
                     window.onload = function(){
+                        
                     };
                     
-                    window.onbeforeunload = function(){
-                        
-                        var counter = ${count};
-                        if (counter !== ""){ 
-                            ${data.showMessage(counter)};
-                        }
-                        ${count} = "";
+                    window.onbeforeunload = function(e){
+                        var retVal = e.returnValue;
+                        confirm("Yes/No");
+                        ${data.showMessage(retVal)};
+                        return retVal;
                     };
+                    
+                    window.onunload = function(e){
+                        confirm();
+                        return false;
+                    };
+                    
                 </script>
                 
             <p:layoutUnit position= "center">
