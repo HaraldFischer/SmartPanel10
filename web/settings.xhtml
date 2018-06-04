@@ -19,6 +19,7 @@ and open the template in the editor.
         <script src="javascript.js"/>
         <script>
         </script>
+        
     </h:head>
     
     <h:body>
@@ -30,20 +31,21 @@ and open the template in the editor.
             <ui:define name= "pagecontent" >
                 
                 <script>
+
                     window.onload = function(){
-                        
                     };
                     
                     window.onbeforeunload = function(e){
-                        var retVal = e.returnValue;
-                        confirm("Yes/No");
-                        ${data.showMessage(retVal)};
-                        return retVal;
+                        if (typeof e === 'undefined'){
+                            ${data.showMessage("Undefined")};
+                            return null;
+                        }
+                        
+                        return "UpdateData";
                     };
                     
                     window.onunload = function(e){
-                        confirm();
-                        return false;
+                        
                     };
                     
                 </script>

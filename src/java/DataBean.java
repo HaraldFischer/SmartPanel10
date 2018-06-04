@@ -128,10 +128,9 @@ public class DataBean implements Serializable {
         closeSocket();
     }
     
-    public boolean updateData(){        
+    public String updateData(){        
         initSocket();
-        
-        return true;
+        return "UpdateData";
     }
     
     public void save(){ 
