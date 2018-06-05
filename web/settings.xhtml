@@ -36,6 +36,7 @@ and open the template in the editor.
                     };
                     
                     window.onbeforeunload = function(e){
+                        
                         if (typeof e === 'undefined'){
                             ${data.showMessage("Undefined")};
                             return null;
@@ -43,7 +44,7 @@ and open the template in the editor.
                         
                         else{
                             
-                            return "UpdateData";
+                            return '';
                         }
                     };
                     

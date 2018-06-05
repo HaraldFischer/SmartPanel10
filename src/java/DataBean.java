@@ -130,7 +130,7 @@ public class DataBean implements Serializable {
     
     public String updateData(){        
         initSocket();
-        return "UpdateData";
+        return "Message";
     }
     
     public void save(){ 
