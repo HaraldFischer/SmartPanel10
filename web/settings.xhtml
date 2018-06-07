@@ -29,12 +29,39 @@ and open the template in the editor.
         <div>
             <ui:composition template = "commonLayout.xhtml" >
             <ui:define name= "pagecontent" >
-                
+            <h:form>
+            <p:confirmDialog id = "idconfirm"   message = "Are You Sure?" header = "Leave Page" widgetVar = "confirm" >
+                <p:commandButton value = "Exit And Save" styleClass = "ui-confirmdialog-yes"/>
+                <p:commandButton value = "Exit Without Save" styleClass = "ui-confirmdialog-no"/>
+            </p:confirmDialog>                                 
+            <p:dialog id = "idmsgdlg" widgetVar = "msgdlg" modal = "true" header = "Message"  dynamic = "true"   >
+                <h:outputText id = "iddlgmsg" value= "PrimeFaces Dialog"  />                
+            </p:dialog>        
+            </h:form>    
                 <script>
-
-                    window.onload = function(){
-                    };
                     
+                    
+                    var modal = null;
+                    
+                    window.onload = function(){
+                    
+                    modal = new Promise(new function(resolve,reject){
+                       if (true){
+                           resolve();
+                       }
+                       else{
+                           reject();
+                       }
+                    });
+                    
+                    modal.then(function (val){
+                        
+                    }, function(error){
+                    
+                    });
+                    };
+
+                                        
                     window.onbeforeunload = function(e){
                         
                         if (typeof e === 'undefined'){
@@ -42,10 +69,8 @@ and open the template in the editor.
                             return null;
                         }
                         
-                        else{
-                            
-                            return '';
-                        }
+                        var retVal = PF('confirm').show();
+                        return;
                     };
                     
                     
@@ -103,7 +128,7 @@ and open the template in the editor.
                 <h:message for = "idwhite" id = "idoutwhite" style="color: red" />
                 
             </p:panelGrid>
-                
+            <p:commandButton value = "Save" type = "button" onclick = "PF('msgdlg').show()" />
             <p:commandButton style = "display:none" id = "idcommand" type = "submit" process = "@this" value="Save"   >  
                                
                 <f:setPropertyActionListener target = "#{data.node}"    value = "" />
