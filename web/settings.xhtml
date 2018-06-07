@@ -44,35 +44,40 @@ and open the template in the editor.
                     var modal = null;
                     
                     window.onload = function(){
-                    
-                    modal = new Promise(new function(resolve,reject){
-                       if (true){
-                           resolve();
-                       }
-                       else{
-                           reject();
-                       }
-                    });
-                    
-                    modal.then(function (val){
-                        
-                    }, function(error){
-                    
-                    });
+                        createPromise();
                     };
 
                                         
                     window.onbeforeunload = function(e){
                         
                         if (typeof e === 'undefined'){
-                            ${data.showMessage("Undefined")};
                             return null;
                         }
                         
                         var retVal = PF('confirm').show();
+                        Promise.all([modal]);
                         return;
                     };
                     
+                    function createPromise(){
+                        
+                        modal = new Promise(new function(resolve,reject){
+                           if (true){
+                               resolve();
+                           }
+                           else{
+                               reject();
+                           }
+                        });
+
+                        modal.then(function (val){
+
+                        }, function(error){
+
+                        });
+                        
+                        return modal;
+                    }
                     
                 </script>
                 
