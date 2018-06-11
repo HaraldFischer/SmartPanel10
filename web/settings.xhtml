@@ -50,6 +50,19 @@ and open the template in the editor.
                     var whichBtn =  0;
                     
                     function clickSave(){
+
+                        $ajax({
+                            url : 'test.js',
+                            type: 'post',
+                            dataType: 'script',
+                            success: function(){
+                                alert("Success")
+                            },
+                            fail: function(){
+                                alert("Fail");
+                            }
+                        });
+                        
                         alert("Save");
                     }
                     
@@ -67,13 +80,24 @@ and open the template in the editor.
                         if (typeof e === 'undefined'){
                             return null;
                         }
-                        
-                        var retVal = PF('confirm').show();
-                        
-                        
-                        return null;
+                        //var retVal = PF('confirm').show();
+                        return PF('confirm').show();
                     };
                     
+                    function callFunc(){
+                        alert("Called");
+                        return true;
+                    }
+                    
+                    window.onunload = function(e){
+                        
+                    }
+                    
+                    /*
+                    $(window).on('beforeunload', function(e){
+                        var retVal = PF('confirm').show();
+                    });
+                    */
                     /*
                     $(function(){
                         $(window).bind('beforeunload',function(){
@@ -86,7 +110,7 @@ and open the template in the editor.
                     function createPromise(){
                         
                         modal = new Promise(new function(resolve,reject){
-                            if (whichBtn != 0) resolve();
+                            if (true) resolve();
                             else reject();
                         });
                         
