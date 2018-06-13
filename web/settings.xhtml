@@ -47,22 +47,9 @@ and open the template in the editor.
                     
                     
                     var modal    =  null;
-                    var whichBtn =  0;
+                    var flag =  false;
                     
                     function clickSave(){
-
-                        $ajax({
-                            url : 'test.js',
-                            type: 'post',
-                            dataType: 'script',
-                            success: function(){
-                                alert("Success")
-                            },
-                            fail: function(){
-                                alert("Fail");
-                            }
-                        });
-                        
                         alert("Save");
                     }
                     
@@ -80,44 +67,30 @@ and open the template in the editor.
                         if (typeof e === 'undefined'){
                             return null;
                         }
+                       
                         //var retVal = PF('confirm').show();
-                        return PF('confirm').show();
+                        //Promise.all([modal]);
+                        return null; //PF('confirm').show();
                     };
                     
                     function callFunc(){
-                        alert("Called");
-                        return true;
                     }
                     
                     window.onunload = function(e){
                         
-                    }
+                    };
                     
-                    /*
-                    $(window).on('beforeunload', function(e){
-                        var retVal = PF('confirm').show();
-                    });
-                    */
-                    /*
-                    $(function(){
-                        $(window).bind('beforeunload',function(){
-                            var retVal = PF('confirm').show();
-                            setTimeout(5000);
-                        });
-                    });
-                    */
                    
                     function createPromise(){
                         
                         modal = new Promise(new function(resolve,reject){
-                            if (true) resolve();
-                            else reject();
+                            setTimeout(resolve, 3000,'');
                         });
                         
                         modal.then(function (val){
-                           
+                           alert("Promise");
                         }, function(error){
-                            
+                            alert("Error");
                         });
                         
                         return modal;
@@ -177,7 +150,7 @@ and open the template in the editor.
                 <h:message for = "idwhite" id = "idoutwhite" style="color: red" />
                 
             </p:panelGrid>
-            <p:commandButton value = "Save" type = "button" onclick = "PF('confirm').show()" />
+            <p:commandButton value = "Save" type = "button" onclick = "callFunc()" />
             <p:commandButton style = "display:none" id = "idcommand" type = "submit" process = "@this" value="Save"   >  
                                
                 <f:setPropertyActionListener target = "#{data.node}"    value = "" />
