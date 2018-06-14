@@ -61,23 +61,40 @@ and open the template in the editor.
                         createPromise();
                     };
 
-                                  
                     window.onbeforeunload = function(e){
-                        
+
                         if (typeof e === 'undefined'){
                             return null;
                         }
-                       
+
                         //var retVal = PF('confirm').show();
-                        //Promise.all([modal]);
+                        $.ajax({
+                            type:'POST',
+                            async:false,
+                            url: 'test.js',
+                            success: function(){
+                                ${data.showMessage("Success")};
+                            },
+                            error: function(){
+                                ${data.showMessage("Error")};
+                            },
+                            complete: function(){
+                                ${data.showMessage("Complete")};
+                            }  
+                        });
                         return null; //PF('confirm').show();
                     };
                     
+                    
                     function callFunc(){
+                        PF('confirm').show();
                     }
                     
                     window.onunload = function(e){
-                        
+                        if (typeof e === 'undefined'){
+                            return null;
+                        }
+                        ${data.showMessage("Unload")};
                     };
                     
                    

@@ -7,4 +7,5 @@
 
 function test(){
     alert("Test Called");
+    return true;
 }
