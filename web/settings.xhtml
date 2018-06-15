@@ -32,10 +32,11 @@ and open the template in the editor.
             <h:form>
                 
             <p:confirmDialog id = "idconfirm"   message = "Are You Sure?" header = "Leave Page" widgetVar = "confirm"  >
-                <p:commandButton id = "idsavebtn" value = "Exit And Save" styleClass = "ui-confirmdialog-yes" onclick = "clickSave()" >
+                <p:commandButton id = "idsavebtn" value = "Exit And Save" styleClass = "ui-confirmdialog-yes" widgetVar = "savebtn">
                 </p:commandButton>
-                <p:commandButton value = "Exit Without Save" styleClass = "ui-confirmdialog-no" onclick = "clickCancel()" >
+                <p:commandButton value = "Exit Without Save" styleClass = "ui-confirmdialog-no" widgetVar = "cancelbtn" >
                 </p:commandButton>
+                
             </p:confirmDialog>
                 
             <p:dialog id = "idmsgdlg" widgetVar = "msgdlg" modal = "true" header = "Message"  dynamic = "true"   >
@@ -50,69 +51,58 @@ and open the template in the editor.
                     var flag =  false;
                     
                     function clickSave(){
-                        alert("Save");
+                        
                     }
                     
                     function clickCancel(){
-                        alert("Cancel");
+                        
                     }
                     
                     window.onload = function(){
-                        createPromise();
-                    };
-
-                    window.onbeforeunload = function(e){
-
-                        if (typeof e === 'undefined'){
-                            return null;
-                        }
-
-                        //var retVal = PF('confirm').show();
-                        $.ajax({
-                            type:'POST',
-                            async:false,
-                            url: 'test.js',
-                            success: function(){
-                                ${data.showMessage("Success")};
-                            },
-                            error: function(){
-                                ${data.showMessage("Error")};
-                            },
-                            complete: function(){
-                                ${data.showMessage("Complete")};
-                            }  
-                        });
-                        return null; //PF('confirm').show();
+          
                     };
                     
+                    window.onbeforeunload = function(){
+                        waitForUnload();
+                    };
                     
                     function callFunc(){
-                        PF('confirm').show();
-                    }
-                    
-                    window.onunload = function(e){
-                        if (typeof e === 'undefined'){
-                            return null;
-                        }
-                        ${data.showMessage("Unload")};
+                        
                     };
                     
-                   
+                    var waitForUnload = function(){
+                        return new Promise(function(resolve,reject){
+                           
+                           window.onunload = function() {
+                               ${data.showMessage("Unload")};
+                               resolve();
+                           };
+                        });
+                    };
+                   /*
                     function createPromise(){
-                        
-                        modal = new Promise(new function(resolve,reject){
-                            setTimeout(resolve, 3000,'');
+                        var p = null;
+                            
+                            modal = new Promise(new function(resolve,reject){
+                                PF('confirm').show();
+                                PF('savebtn').click(function(){
+                                    p = Promise.resolve("Save Clicked");
+                                });
+                                PF('cancelbtn').click(function(){
+                                    p = Promise.reject("Cancel Clicked");
+                                });
+                            
                         });
                         
-                        modal.then(function (val){
-                           alert("Promise");
-                        }, function(error){
-                            alert("Error");
+                        p.then(function(){
+                            clickSave();
                         });
+                        
+                        
                         
                         return modal;
                     }
-                    
+                    */
                 </script>
                 
             <p:layoutUnit position= "center">
