@@ -34,6 +34,16 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
+    private boolean changed = false;
+    
+    public void setChanged(boolean c){
+        this.changed = c;
+    }
+    
+    public boolean getChanged(){
+        return this.changed;
+    }
+    
     public class MessageItem extends Object{
         
         private String what = "";
@@ -128,8 +138,9 @@ public class DataBean implements Serializable {
         closeSocket();
     }
     
-    public String updateData(){        
-        initSocket();
+    public String updateData(ValueChangeEvent event){        
+        this.changed = true;
+        showMessage("Changed");
         return "Message";
     }
     
