@@ -134,7 +134,7 @@ public class DataBean implements Serializable {
     }
     
     public void save(){ 
-        
+       
     }
     
     public void setMsgList(List<MessageItem> list){

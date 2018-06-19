@@ -51,7 +51,7 @@ and open the template in the editor.
                     var flag =  false;
                     
                     function clickSave(){
-                        
+                        //flag = false;
                     }
                     
                     function clickCancel(){
@@ -59,50 +59,20 @@ and open the template in the editor.
                     }
                     
                     window.onload = function(){
-          
+                        flag = true;
                     };
                     
                     window.onbeforeunload = function(){
-                        waitForUnload();
-                    };
+                        if (flag === false){
+                            return null;
+                        }
+                        else return "";
+                    };                    
                     
-                    function callFunc(){
-                        
-                    };
-                    
-                    var waitForUnload = function(){
-                        return new Promise(function(resolve,reject){
-                           
-                           window.onunload = function() {
-                               ${data.showMessage("Unload")};
-                               resolve();
-                           };
-                        });
-                    };
-                   /*
-                    function createPromise(){
-                        var p = null;
-                            
-                            modal = new Promise(new function(resolve,reject){
-                                PF('confirm').show();
-                                PF('savebtn').click(function(){
-                                    p = Promise.resolve("Save Clicked");
-                                });
-                                PF('cancelbtn').click(function(){
-                                    p = Promise.reject("Cancel Clicked");
-                                });
-                            
-                        });
-                        
-                        p.then(function(){
-                            clickSave();
-                        });
-                        
-                        
-                        
-                        return modal;
+                    function valChanged(event){
+                        flag = true;
                     }
-                    */
+                    
                 </script>
                 
             <p:layoutUnit position= "center">
@@ -115,35 +85,35 @@ and open the template in the editor.
             <p:panelGrid id = "idpanelgrid" columns ="3" styleClass = "settingsgrid">
                    
                 <h:outputText value="Node:" styleClass = "inputfield" />                 
-                <h:inputText  id = "idnode" value = "#{data.node}"  styleClass = "inputfield" required = "true" requiredMessage = "Node Must Not Be Empty" >
+                <h:inputText  id = "idnode" value = "#{data.node}"  styleClass = "inputfield" required = "true" requiredMessage = "Node Must Not Be Empty"   >
                     <p:ajax  update = "idoutnode"   listener = "#{data.save()}"  />
                     <f:validateBean />
                 </h:inputText>
                 <h:message for = "idnode" id = "idoutnode" style="color: red"   />
                 
                 <h:outputText  value = "Port:" styleClass = "inputfield" /> 
-                <h:inputText  id = "idport" value = "#{data.port}" required = "true" requiredMessage = "Port Must Not Be Empty" styleClass = "inputfield"  >
+                <h:inputText  id = "idport" value = "#{data.port}" required = "true" requiredMessage = "Port Must Not Be Empty" styleClass = "inputfield" >
                     <p:ajax   update = "idoutport" listener = "#{data.save()}" />
                     <f:validateBean />
                 </h:inputText>
                 <h:message for = "idport" id = "idoutport" style="color: red" />
                 
                 <h:outputText  value = "Address:" styleClass="inputfield" />
-                <p:inputText id = "idaddress" value = "#{data.address}"  required = "true" requiredMessage = "Address Must Not Be Empty" styleClass="addresssize"  >
+                <p:inputText id = "idaddress" value = "#{data.address}"  required = "true" requiredMessage = "Address Must Not Be Empty" styleClass="addresssize" >
                     <p:ajax   update = "idoutaddress" listener = "#{data.save()}" />
                     <f:validateBean />
                 </p:inputText>
                 <h:message for = "idaddress" id = "idoutaddress" style="color: red" />
                
                 <h:outputText value = "Timer:[s]" styleClass = "inputfield" />
-                <h:inputText  id = "idtimer" value = "#{data.timer}" required = "true" requiredMessage = "Timer Must Not Be Empty" styleClass="inputfield"  >
+                <h:inputText  id = "idtimer" value = "#{data.timer}" required = "true" requiredMessage = "Timer Must Not Be Empty" styleClass="inputfield" >
                     <p:ajax   update = "idouttimer" listener = "#{data.save()}" />
                     <f:validateBean />
                 </h:inputText>
                 <h:message for = "idtimer" id = "idouttimer" style="color: red" />
                 
                 <h:outputText value = "Pir:[s]" styleClass="inputfield" />
-                <h:inputText id = "idpir" value = "#{data.pir}" required = "true" requiredMessage = "Pir Must Not Be Empty" styleClass = "inputfield"  >
+                <h:inputText id = "idpir" value = "#{data.pir}" required = "true" requiredMessage = "Pir Must Not Be Empty" styleClass = "inputfield" >
                     <p:ajax   update = "idoutpir" listener = "#{data.save()}" />
                     <f:validateBean />
                 </h:inputText>
@@ -157,7 +127,9 @@ and open the template in the editor.
                 <h:message for = "idwhite" id = "idoutwhite" style="color: red" />
                 
             </p:panelGrid>
-            <p:commandButton value = "Save" type = "button" onclick = "callFunc()" />
+            <br>
+            </br>
+            <p:commandButton value = "Save" type = "button" onclick = "clickSave()" style = "width: 20%; height: 50px" />
             <p:commandButton style = "display:none" id = "idcommand" type = "submit" process = "@this" value="Save"   >  
                                
                 <f:setPropertyActionListener target = "#{data.node}"    value = "" />
