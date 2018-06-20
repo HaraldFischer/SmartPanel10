@@ -34,6 +34,7 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
+    @ManagedProperty(value = "#{changed}")
     private boolean changed = false;
     
     public void setChanged(boolean c){
@@ -140,7 +141,7 @@ public class DataBean implements Serializable {
     
     public String updateData(ValueChangeEvent event){        
         this.changed = true;
-        showMessage("Changed");
+        //showMessage("Changed");
         return "Message";
     }
     
