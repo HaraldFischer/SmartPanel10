@@ -34,16 +34,6 @@ public class DataBean implements Serializable {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     
-    @ManagedProperty(value = "#{changed}")
-    private boolean changed = false;
-    
-    public void setChanged(boolean c){
-        this.changed = c;
-    }
-    
-    public boolean getChanged(){
-        return this.changed;
-    }
     
     public class MessageItem extends Object{
         
@@ -139,10 +129,11 @@ public class DataBean implements Serializable {
         closeSocket();
     }
     
-    public String updateData(ValueChangeEvent event){        
-        this.changed = true;
-        //showMessage("Changed");
-        return "Message";
+    public void reConnect(){ 
+        showMessage("Re-Connect");
+        closeSocket();
+        initSocket();
+        postMessage();
     }
     
     public void save(){ 
@@ -200,6 +191,7 @@ public class DataBean implements Serializable {
             }
         }
         catch (Exception e){
+            errMsg.add("Close Socket Exception:" + e.getMessage() + node + " " + port);
             //showMessage("Socket Exception:" + e.getMessage() + " " + "Node:" + node + " " + "Port:" + port );
             e.printStackTrace();
         }
