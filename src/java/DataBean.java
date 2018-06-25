@@ -33,7 +33,7 @@ public class DataBean implements Serializable {
     private static final long serialVersionUID = 0L;
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
-    
+    public boolean              isDirty  = false;
     
     public class MessageItem extends Object{
         
@@ -125,7 +125,7 @@ public class DataBean implements Serializable {
     
     @PreDestroy
     public void preDestroy(){
-        writeToFile();
+        this.writeToFile();
         closeSocket();
     }
     

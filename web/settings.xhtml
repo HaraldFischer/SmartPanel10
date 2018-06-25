@@ -45,11 +45,21 @@ and open the template in the editor.
                 
             </h:form>    
                 <script>
-                                        
+                    
+                    var isDirty = true;
+                    
                     window.onload = function(){
                         
                     };
-                                
+                    
+                    window.onbeforeunload = function(event){
+                        if (typeof event === 'undefined'){
+                            event = window.event;
+                        }
+                        
+                        if (isDirty === false) return null;
+                        else return "IsDirty";
+                    };
                     
                 </script>
                 
