@@ -19,6 +19,8 @@ import javax.faces.event.ValueChangeEvent;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.validation.constraints.*;
+import javax.faces.context.ExternalContext;
+import javax.servlet.ServletContext;
  
 
 
@@ -663,9 +665,31 @@ public class DataBean implements Serializable {
     }
     
     public void writeToFile(){
-       Writer os = null;
+        OutputStream os = null;
         try{
-           os = new FileWriter("SmartPanel10.cfg");
+           Properties properties = new Properties();
+           properties.setProperty("Node", node);
+           properties.setProperty("Port", port);
+           properties.setProperty("Address", address);
+           properties.setProperty("Timer", timer);
+           properties.setProperty("Pir", pir);
+           properties.setProperty("White", white);
+           properties.setProperty("Scene0", Scene0);
+           properties.setProperty("Scene1", Scene1);
+           properties.setProperty("Scene2", Scene2);
+           properties.setProperty("Scene3", Scene3);
+           properties.setProperty("Scene4", Scene4);
+           properties.setProperty("Scene5", Scene5);
+           properties.setProperty("Scene6", Scene6);
+           properties.setProperty("Scene7", Scene7);
+           properties.setProperty("Scene8", Scene8);
+           properties.setProperty("Scene9", Scene9);
+           ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+           os = new FileOutputStream(context.getRealPath("/WEB-INF/SmartPanel10.cfg"));
+           properties.store(os, "SmartPanel10 Data");
+           
+           /*
+           os = new FileWriter("/home/user/NetBeansProjects/SmartPanel10v1_7/web/WEB-INF/SmartPanel10.cfg");
            os.write("Node:" + node + "\n");
            os.write("Port:" + port + "\n");
            os.write("Address:" + address + "\n");
@@ -683,6 +707,7 @@ public class DataBean implements Serializable {
            os.write("Scene8:" + Scene8 + "\n");
            os.write("Scene9:" + Scene9 + "\n");
            os.flush();
+           */
         }
         catch(Exception e){
           e.printStackTrace();
@@ -705,7 +730,28 @@ public class DataBean implements Serializable {
         boolean success = true;
         BufferedReader buffReader = null;
         try{
-            buffReader= new BufferedReader(new FileReader("SmartPanel10.cfg"));
+           ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+           Properties properties = new Properties();
+           properties.load(externalContext.getResourceAsStream("/WEB-INF/SmartPanel10.cfg"));
+           node = properties.getProperty("Node", "192.168.0.11");
+           port = properties.getProperty("Port", "2048");
+           address = properties.getProperty("Address", "0");
+           pir = properties.getProperty("Pir", "0");
+           timer = properties.getProperty("Timer", "0");
+           white = properties.getProperty("White", "0");
+           Scene0= properties.getProperty("Scene0", "FF0000");
+           Scene1= properties.getProperty("Scene1", "FF0000");
+           Scene2= properties.getProperty("Scene2", "FF0000");
+           Scene3= properties.getProperty("Scene3", "FF0000");
+           Scene4= properties.getProperty("Scene4", "FF0000");
+           Scene5= properties.getProperty("Scene5", "FF0000");
+           Scene6= properties.getProperty("Scene6", "FF0000");
+           Scene7= properties.getProperty("Scene7", "FF0000");
+           Scene8= properties.getProperty("Scene8", "FF0000");
+           Scene9= properties.getProperty("Scene9", "FF0000");
+           
+            /*
+            buffReader= new BufferedReader(new FileReader("/home/user/NetBeansProjects/SmartPanel10v1_7/web/WEB-INF/SmartPanel10.cfg"));
             String str = buffReader.readLine();
             while(str != null){
                 String[] line = str.split(":");
@@ -728,7 +774,7 @@ public class DataBean implements Serializable {
                 else;
                 str = buffReader.readLine();
             }
-
+            */
         }
         catch(IOException ioe){
             success = false;
