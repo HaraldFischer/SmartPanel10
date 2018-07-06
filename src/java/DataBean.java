@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import com.sun.media.jfxmedia.logging.Logger;
 import java.io.*;
 import javax.annotation.PreDestroy;
 import javax.annotation.PostConstruct;
@@ -12,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
@@ -20,13 +22,12 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.validation.constraints.*;
 import javax.faces.context.ExternalContext;
-import javax.servlet.ServletContext;
- 
+import javax.servlet.ServletContext; 
 
 
 
 @ManagedBean(name = "data")
-@SessionScoped
+@ApplicationScoped
 public class DataBean implements Serializable {
     /**
      * Creates a new instance of DataBean
@@ -111,7 +112,7 @@ public class DataBean implements Serializable {
     }
   
     @PostConstruct
-    public void postConstruct(){
+    public void initDataBean(){
         
         boolean success = loadFromFile();
         if (success==false){
@@ -119,18 +120,18 @@ public class DataBean implements Serializable {
             //showMessage("Error Reading Configuration File\n Loading Defaults");
             loadDefaults();
         }
-
+        
         closeSocket();
         initSocket();
         
     }
     
     @PreDestroy
-    public void preDestroy(){
-        this.writeToFile();
+    public void closeDataBean(){
+        writeToFile();
         closeSocket();
     }
-    
+        
     public void reConnect(){ 
         showMessage("Re-Connect");
         closeSocket();
@@ -666,6 +667,7 @@ public class DataBean implements Serializable {
     
     public void writeToFile(){
         OutputStream os = null;
+        
         try{
            Properties properties = new Properties();
            properties.setProperty("Node", node);
@@ -685,29 +687,9 @@ public class DataBean implements Serializable {
            properties.setProperty("Scene8", Scene8);
            properties.setProperty("Scene9", Scene9);
            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-           os = new FileOutputStream(context.getRealPath("/WEB-INF/SmartPanel10.cfg"));
+           os = new FileOutputStream(context.getRealPath("/WEB-INF/SmartPanel10.cfg"));         
            properties.store(os, "SmartPanel10 Data");
            
-           /*
-           os = new FileWriter("/home/user/NetBeansProjects/SmartPanel10v1_7/web/WEB-INF/SmartPanel10.cfg");
-           os.write("Node:" + node + "\n");
-           os.write("Port:" + port + "\n");
-           os.write("Address:" + address + "\n");
-           os.write("Timer:" + timer + "\n");
-           os.write("Pir:" + pir + "\n");
-           os.write("White:" + white + "\n");
-           os.write("Scene0:" + Scene0 + "\n");
-           os.write("Scene1:" + Scene1 + "\n");
-           os.write("Scene2:" + Scene2 + "\n");
-           os.write("Scene3:" + Scene3 + "\n");
-           os.write("Scene4:" + Scene4 + "\n");
-           os.write("Scene5:" + Scene5 + "\n");
-           os.write("Scene6:" + Scene6 + "\n");
-           os.write("Scene7:" + Scene7 + "\n");
-           os.write("Scene8:" + Scene8 + "\n");
-           os.write("Scene9:" + Scene9 + "\n");
-           os.flush();
-           */
         }
         catch(Exception e){
           e.printStackTrace();
@@ -739,48 +721,24 @@ public class DataBean implements Serializable {
            pir = properties.getProperty("Pir", "0");
            timer = properties.getProperty("Timer", "0");
            white = properties.getProperty("White", "0");
-           Scene0= properties.getProperty("Scene0", "FF0000");
-           Scene1= properties.getProperty("Scene1", "FF0000");
-           Scene2= properties.getProperty("Scene2", "FF0000");
-           Scene3= properties.getProperty("Scene3", "FF0000");
-           Scene4= properties.getProperty("Scene4", "FF0000");
-           Scene5= properties.getProperty("Scene5", "FF0000");
-           Scene6= properties.getProperty("Scene6", "FF0000");
-           Scene7= properties.getProperty("Scene7", "FF0000");
-           Scene8= properties.getProperty("Scene8", "FF0000");
-           Scene9= properties.getProperty("Scene9", "FF0000");
-           
-            /*
-            buffReader= new BufferedReader(new FileReader("/home/user/NetBeansProjects/SmartPanel10v1_7/web/WEB-INF/SmartPanel10.cfg"));
-            String str = buffReader.readLine();
-            while(str != null){
-                String[] line = str.split(":");
-                if (line[0].equalsIgnoreCase("Node")) node=line[1];
-                else if (line[0].equalsIgnoreCase("Port")) port=line[1];
-                else if (line[0].equalsIgnoreCase("Address"))address=line[1];
-                else if (line[0].equalsIgnoreCase("Pir")) pir=line[1];
-                else if (line[0].equalsIgnoreCase("Timer"))timer=line[1];
-                else if (line[0].equalsIgnoreCase("White"))white=line[1];
-                else if (line[0].equalsIgnoreCase("Scene0")) Scene0=line[1];
-                else if (line[0].equalsIgnoreCase("Scene1")) Scene1=line[1];
-                else if (line[0].equalsIgnoreCase("Scene2")) Scene2=line[1];
-                else if (line[0].equalsIgnoreCase("Scene3")) Scene3=line[1];
-                else if (line[0].equalsIgnoreCase("Scene4")) Scene4=line[1];
-                else if (line[0].equalsIgnoreCase("Scene5")) Scene5=line[1];
-                else if (line[0].equalsIgnoreCase("Scene6")) Scene6=line[1];
-                else if (line[0].equalsIgnoreCase("Scene7")) Scene7=line[1];
-                else if (line[0].equalsIgnoreCase("Scene8")) Scene8=line[1];
-                else if (line[0].equalsIgnoreCase("Scene9")) Scene9=line[1];
-                else;
-                str = buffReader.readLine();
-            }
-            */
+           Scene0= properties.getProperty("Scene0", "000000");
+           Scene1= properties.getProperty("Scene1", "000000");
+           Scene2= properties.getProperty("Scene2", "000000");
+           Scene3= properties.getProperty("Scene3", "000000");
+           Scene4= properties.getProperty("Scene4", "000000");
+           Scene5= properties.getProperty("Scene5", "000000");
+           Scene6= properties.getProperty("Scene6", "000000");
+           Scene7= properties.getProperty("Scene7", "000000");
+           Scene8= properties.getProperty("Scene8", "000000");
+           Scene9= properties.getProperty("Scene9", "000000");           
         }
+        
         catch(IOException ioe){
             success = false;
             ioe.printStackTrace();
             showMessage(ioe.getMessage());
         }
+        
         finally{
             try{
                 if (buffReader!=null) buffReader.close();
