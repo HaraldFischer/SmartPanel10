@@ -33,7 +33,7 @@ public class DataBean implements Serializable {
      * Creates a new instance of DataBean
      */
     
-    private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 1L;
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     public boolean              isDirty  = false;
