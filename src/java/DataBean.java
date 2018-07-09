@@ -23,12 +23,12 @@ import javax.faces.component.UIViewRoot;
 import javax.validation.constraints.*;
 import javax.faces.context.ExternalContext;
 import javax.servlet.ServletContext; 
-
+import org.springframework.context.annotation.Bean;
 
 
 @ManagedBean(name = "data")
 @ApplicationScoped
-public class DataBean implements Serializable {
+public class DataBean {
     /**
      * Creates a new instance of DataBean
      */
@@ -125,7 +125,7 @@ public class DataBean implements Serializable {
         initSocket();
         
     }
-    
+        
     @PreDestroy
     public void closeDataBean(){
         writeToFile();
