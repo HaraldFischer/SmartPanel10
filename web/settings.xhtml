@@ -32,7 +32,7 @@ and open the template in the editor.
             <h:form>
                 
             <p:confirmDialog id = "idconfirm"   message = "Are You Sure?" header = "Leave Page" widgetVar = "confirm"  >
-                <p:commandButton id = "idsavebtn" value = "Exit And Save" styleClass = "ui-confirmdialog-yes" widgetVar = "savebtn">
+                <p:commandButton id = "idsavebtn" value = "Exit And Save" styleClass = "ui-confirmdialog-yes" widgetVar = "savebtn" onclick= "Yes()">
                 </p:commandButton>
                 <p:commandButton value = "Exit Without Save" styleClass = "ui-confirmdialog-no" widgetVar = "cancelbtn" >
                 </p:commandButton>
@@ -51,16 +51,30 @@ and open the template in the editor.
                     window.onload = function(){
                         
                     };
+                                        
+                    window.onbeforeunload = function(e){
+                        return "";
+                    };
                     
+                    
+                    /*
                     window.onbeforeunload = function(event){
                         if (typeof event === 'undefined'){
                             event = window.event;
                         }
                         
-                        if (isDirty === false) return null;
-                        else return "IsDirty";
+                        
+                        var retVal = PF('confirm').show();
+                        
+                        function Yes(){
+                            
+                        }
+                        
+                        function No(){
+                        }
+                          
                     };
-                    
+                    */
                 </script>
                 
             <p:layoutUnit position= "center">

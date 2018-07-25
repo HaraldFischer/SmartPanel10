@@ -133,14 +133,14 @@ public class DataBean {
     }
         
     public void reConnect(){ 
-        showMessage("Re-Connect");
+        errMsg.add("Re-Connect");
         closeSocket();
         initSocket();
         postMessage();
     }
     
     public void save(){ 
-       
+       //isDirty = true;
     }
     
     public void setMsgList(List<MessageItem> list){
@@ -520,23 +520,62 @@ public class DataBean {
     }
     
     public void showMessage(String msg){
-            
+         
          FacesContext.getCurrentInstance().addMessage("idmessages", new FacesMessage(FacesMessage.SEVERITY_INFO, "Message",  msg));
     }
           
-
+    public String getRed(String scene){
+        String var = scene.substring(1,3);
+        return var;
+    }
+    
+    public String getGreen(String scene){
+        String var = scene.substring(3,5);
+        return var;
+    }
+    
+    public String getBlue(String scene){
+        String var = scene.substring(5,7);
+        return var;
+    }
+    
+    public void sceneClicked(String scene){
+        String str = null;
+        String in  = null;
+        String colorVal = null;
+        colorVal = getRed(scene);
+    }
+    
     public void scene0Clicked(){
-        String in = null;
-        try{
-            String str = Scene0 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        String str = null;
+        String in  = null;
+
+        String colorVal = Scene0.substring(1,3);
+        str = "smP" + address + "_CR" + colorVal + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
+        writeOutputStream(str);
+        in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
+        
+        colorVal = Scene0.substring(3,5);
+        str = "smP" + address + "_CR" + colorVal + ";\r\n";
+        request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
+        writeOutputStream(str);
+        in = readInputStream();
+        response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
+        
     }
     
     public void scene1Clicked(){
