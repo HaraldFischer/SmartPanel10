@@ -542,166 +542,63 @@ public class DataBean {
     public void sceneClicked(String scene){
         String str = null;
         String in  = null;
-        String colorVal = null;
-        colorVal = getRed(scene);
-    }
-    
-    public void scene0Clicked(){
-        String str = null;
-        String in  = null;
-
-        String colorVal = Scene0.substring(1,3);
-        str = "smP" + address + "_CR" + colorVal + ";\r\n";
+        
+        String colorRed     = getRed(scene);
+        String colorGreen   = getGreen(scene);
+        String colorBlue    = getBlue(scene);
+        
+        str = "smP" + address + "_CR" + colorRed + colorGreen + colorBlue +";\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(str);
         addMsgItem(request);
+        
         writeOutputStream(str);
         in = readInputStream();
         MessageItem response = new MessageItem();
         response.setWhat("Response");
         response.setMsg(in);
         addMsgItem(response);
-        
-        colorVal = Scene0.substring(3,5);
-        str = "smP" + address + "_CR" + colorVal + ";\r\n";
-        request = new MessageItem();
-        request.setWhat("Request");
-        request.setMsg(str);
-        addMsgItem(request);
-        writeOutputStream(str);
-        in = readInputStream();
-        response = new MessageItem();
-        response.setWhat("Response");
-        response.setMsg(in);
-        addMsgItem(response);
-        
+    }
+    
+    public void scene0Clicked(){
+        sceneClicked(Scene0);
     }
     
     public void scene1Clicked(){
-        String in = null;
-        try{
-            String str = Scene1 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene1);
     }
     
     public void scene2Clicked(){
-        String in = null;
-        try{
-            String str = Scene2 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene2);
     }
     
     public void scene3Clicked(){
-        String in = null;
-        try{
-            String str = Scene3 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene3);
     }
     
     public void scene4Clicked(){
-        String in = null;
-        try{
-            String str = Scene4 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene4);
     }
     
     public void scene5Clicked(){
-        String in = null;
-        try{
-            String str = Scene5 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene5);
     }
     
     public void scene6Clicked(){
-        String in = null;
-        try{
-            String str = Scene6 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene6);
     }
     
     public void scene7Clicked(){
-        String in = null;
-        try{
-            String str = Scene7 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene7);
     }
     
     public void scene8Clicked(){
-        String in = null;
-        try{
-            String str = Scene8 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene8);
     }
     
     public void scene9Clicked(){
-        String in = null;
-        try{
-            String str = Scene9 + "\r\n";
-            OutWriter.writeChars(str);
-            OutWriter.flush();
-            in = InReader.readLine();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            showMessage("Socket Exception:" + e.getMessage());
-        }
+        sceneClicked(Scene9);
     }
     
     public void writeToFile(){
