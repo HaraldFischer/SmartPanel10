@@ -35,7 +35,7 @@ and open the template in the editor.
             <h:outputLabel  value = "Response" />
             <h:outputLabel for = "idselectitems" />
             <c:set var = "size" value = "10"/>
-            <p:selectOneListbox id = "idloglist" value = "LogList" style = "width: 80%;height: 600px; margin: 30px" >
+            <p:selectOneListbox id = "idloglist" value = "LogList" style = "width: 80%;height: 600px; margin: 30px" scrollHeight = "600" >
                 <c:forEach items = "#{data.msgList}" var = "item" >
                     <c:set var = "condition" value = "#{item.what}" />
                     <c:choose>
