@@ -285,8 +285,13 @@ public class DataBean {
     }
     
     public void writeOutputStream(String msg){
+        
         try{
-            OutWriter.writeChars(msg);
+            for (int i = 0; i < msg.length(); i++){
+               if (i%2 != 0){
+                OutWriter.writeChar(msg.charAt(i));
+               }
+            }
         }
         catch(Exception e){
             showMessage("Write Socket Exception:" + e.getMessage());
