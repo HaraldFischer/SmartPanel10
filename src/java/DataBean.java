@@ -17,6 +17,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.net.Socket;
+import java.nio.charset.Charset;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
@@ -287,11 +288,8 @@ public class DataBean {
     public void writeOutputStream(String msg){
         
         try{
-            for (int i = 0; i < msg.length(); i++){
-               if (i%2 != 0){
-                OutWriter.writeChar(msg.charAt(i));
-               }
-            }
+            String str = new String(msg.getBytes(),Charset.forName("US-ASCII"));
+            OutWriter.write(str.getBytes(Charset.forName("US-ASCII")));
         }
         catch(Exception e){
             showMessage("Write Socket Exception:" + e.getMessage());
