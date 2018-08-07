@@ -43,6 +43,8 @@ and open the template in the editor.
                 <h:outputText id = "iddlgmsg" value= "PrimeFaces Dialog"  />                
             </p:dialog>
                 
+            <link type = "text/css" rel = "stylesheet" href = "style.css" />
+            
             </h:form>    
                 <script>
                     
@@ -57,24 +59,6 @@ and open the template in the editor.
                     };
                     
                     
-                    /*
-                    window.onbeforeunload = function(event){
-                        if (typeof event === 'undefined'){
-                            event = window.event;
-                        }
-                        
-                        
-                        var retVal = PF('confirm').show();
-                        
-                        function Yes(){
-                            
-                        }
-                        
-                        function No(){
-                        }
-                          
-                    };
-                    */
                 </script>
                 
             <p:layoutUnit position= "center">
@@ -101,7 +85,7 @@ and open the template in the editor.
                 <h:message for = "idport" id = "idoutport" style="color: red" />
                 
                 <h:outputText  value = "Address:" styleClass="inputfield" />
-                <p:inputText id = "idaddress" value = "#{data.address}"  required = "true" requiredMessage = "Address Must Not Be Empty" styleClass="addresssize" >
+                <p:inputText id = "idaddress" value = "#{data.address}"  required = "true" requiredMessage = "Address Must Not Be Empty" styleClass = "inputfield" >
                     <p:ajax   update = "idoutaddress" listener = "#{data.save()}" />
                     <f:validateBean />
                 </p:inputText>

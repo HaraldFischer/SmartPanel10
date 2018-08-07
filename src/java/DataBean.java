@@ -604,6 +604,51 @@ public class DataBean {
         sceneClicked(Scene9);
     }
     
+    public void uploadClicked(String scene){
+        
+    }
+    
+    public void upload0Clicked(){
+        
+    }
+    
+    public void upload1Clicked(){
+        
+    }
+    
+    public void upload2Clicked(){
+        
+    }
+    
+    public void upload3Clicked(){
+        
+    }
+    
+    public void upload4Clicked(){
+        
+    }
+    
+    public void upload5Clicked(){
+        
+    }
+    
+    public void upload6Clicked(){
+        
+    }
+    
+    public void upload7Clicked(){
+        
+    }
+    
+    public void upload8Clicked(){
+        
+    }
+    
+    public void upload9Clicked(){
+        
+    }
+    
+    
     public void writeToFile(){
         OutputStream os = null;
         
