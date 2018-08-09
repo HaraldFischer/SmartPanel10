@@ -274,15 +274,49 @@ public class DataBean {
     }
     
     public void clickButtonTimer(){
+        String str = "smP" + address + "_TI" + timer + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
         
+        writeOutputStream(str);
+        String in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
     }
     
     public void clickButtonPir(){
+        //String val = String.format("%-04s",pir);
+        String str = "smP" + address + "_PI" + pir + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
         
+        writeOutputStream(str);
+        String in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
     }
     
     public void clickButtonWhite(){
+        String str = "smP" + address + "_CW" + white + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
         
+        writeOutputStream(str);
+        String in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
     }
     
     public void writeOutputStream(String msg){
@@ -543,25 +577,7 @@ public class DataBean {
     }
     
     public void sceneClicked(String scene){
-        String str = null;
-        String in  = null;
-        
-        String colorRed     = getRed(scene);
-        String colorGreen   = getGreen(scene);
-        String colorBlue    = getBlue(scene);
-        
-        str = "smP" + address + "_CR" + colorRed + colorGreen + colorBlue +";\r\n";
-        MessageItem request = new MessageItem();
-        request.setWhat("Request");
-        request.setMsg(str);
-        addMsgItem(request);
-        
-        writeOutputStream(str);
-        in = readInputStream();
-        MessageItem response = new MessageItem();
-        response.setWhat("Response");
-        response.setMsg(in);
-        addMsgItem(response);
+
     }
     
     public void scene0Clicked(){
@@ -605,47 +621,91 @@ public class DataBean {
     }
     
     public void uploadClicked(String scene){
+        String str = null;
+        String in  = null;
         
+        String colorRed     = getRed(scene);
+        String colorGreen   = getGreen(scene);
+        String colorBlue    = getBlue(scene);
+        
+        str = "smP" + address + "_CR" + colorRed + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
+        
+        writeOutputStream(str);
+        in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
+        
+        str = "smP" + address + "_CR" + colorGreen + ";\r\n";
+        request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
+        
+        writeOutputStream(str);
+        in = readInputStream();
+        response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
+        
+        str = "smP" + address + "_CR" + colorBlue + ";\r\n";
+        request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
+        
+        writeOutputStream(str);
+        in = readInputStream();
+        response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
     }
     
     public void upload0Clicked(){
-        
+        uploadClicked(Scene0);
     }
     
     public void upload1Clicked(){
-        
+        uploadClicked(Scene1);
     }
     
     public void upload2Clicked(){
-        
+        uploadClicked(Scene2);
     }
     
     public void upload3Clicked(){
-        
+        uploadClicked(Scene3);
     }
     
     public void upload4Clicked(){
-        
+        uploadClicked(Scene4);
     }
     
     public void upload5Clicked(){
-        
+        uploadClicked(Scene5);
     }
     
     public void upload6Clicked(){
-        
+        uploadClicked(Scene6);
     }
     
     public void upload7Clicked(){
-        
+        uploadClicked(Scene7);
     }
     
     public void upload8Clicked(){
-        
+        uploadClicked(Scene8);
     }
     
     public void upload9Clicked(){
-        
+        uploadClicked(Scene9);
     }
     
     
