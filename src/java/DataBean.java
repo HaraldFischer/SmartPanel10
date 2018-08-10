@@ -274,7 +274,8 @@ public class DataBean {
     }
     
     public void clickButtonTimer(){
-        String str = "smP" + address + "_TI" + timer + ";\r\n";
+        String val = String.format("%04d", Integer.parseInt(timer));
+        String str = "smP" + address + "_TI" + val + ";\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(str);
@@ -289,8 +290,8 @@ public class DataBean {
     }
     
     public void clickButtonPir(){
-        //String val = String.format("%-04s",pir);
-        String str = "smP" + address + "_PI" + pir + ";\r\n";
+        String val = String.format("%04d",Integer.parseInt(pir));
+        String str = "smP" + address + "_PI" + val + ";\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(str);
@@ -305,7 +306,8 @@ public class DataBean {
     }
     
     public void clickButtonWhite(){
-        String str = "smP" + address + "_CW" + white + ";\r\n";
+        String val = Integer.toHexString(Integer.parseInt(white));
+        String str = "smP" + address + "_CW" + val + ";\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(str);
@@ -576,48 +578,90 @@ public class DataBean {
         return var;
     }
     
-    public void sceneClicked(String scene){
-
+    public void sceneClicked(int scene){
+        String val = null;
+        if (scene == 0){
+            val = String.format("%02d", 0);
+        }
+        else if (scene == 1){
+            val = String.format("%02d", 1);
+        }
+        else if (scene == 2){
+            val = String.format("%02d", 2);
+        }
+        else if (scene == 3){
+            val = String.format("%02d", 3);
+        }
+        else if (scene == 4){
+            val = String.format("%02d", 4);
+        }
+        else if (scene == 5){
+            val = String.format("%02d", 5);
+        }
+        else if (scene == 6){
+            val = String.format("%02d", 6);
+        }
+        else if (scene == 7){
+            val = String.format("%02d", 7);
+        }
+        else if (scene == 8){
+            val = String.format("%02d", 8);
+        }
+        else if (scene == 9){
+            val = String.format("%02d", 9);
+        }
+        
+        String str = "smP" + address + "_SL" + val + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(str);
+        addMsgItem(request);
+        
+        String in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
     }
     
     public void scene0Clicked(){
-        sceneClicked(Scene0);
+        sceneClicked(0);
     }
     
     public void scene1Clicked(){
-        sceneClicked(Scene1);
+        sceneClicked(1);
     }
     
     public void scene2Clicked(){
-        sceneClicked(Scene2);
+        sceneClicked(2);
     }
     
     public void scene3Clicked(){
-        sceneClicked(Scene3);
+        sceneClicked(3);
     }
     
     public void scene4Clicked(){
-        sceneClicked(Scene4);
+        sceneClicked(4);
     }
     
     public void scene5Clicked(){
-        sceneClicked(Scene5);
+        sceneClicked(5);
     }
     
     public void scene6Clicked(){
-        sceneClicked(Scene6);
+        sceneClicked(6);
     }
     
     public void scene7Clicked(){
-        sceneClicked(Scene7);
+        sceneClicked(7);
     }
     
     public void scene8Clicked(){
-        sceneClicked(Scene8);
+        sceneClicked(8);
     }
     
     public void scene9Clicked(){
-        sceneClicked(Scene9);
+        sceneClicked(9);
     }
     
     public void uploadClicked(String scene){
