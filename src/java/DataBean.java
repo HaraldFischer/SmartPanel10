@@ -266,7 +266,8 @@ public class DataBean {
     }
     
     public void clickButtonSave(){
-        
+        showMessage("Button Save");
+        String msg = "smP" + address + "_SL" + ";\r\n";
     }
     
     public void clickButtonLoad(){
@@ -685,7 +686,7 @@ public class DataBean {
         response.setMsg(in);
         addMsgItem(response);
         
-        str = "smP" + address + "_CR" + colorGreen + ";\r\n";
+        str = "smP" + address + "_CG" + colorGreen + ";\r\n";
         request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(str);
@@ -698,7 +699,7 @@ public class DataBean {
         response.setMsg(in);
         addMsgItem(response);
         
-        str = "smP" + address + "_CR" + colorBlue + ";\r\n";
+        str = "smP" + address + "_CB" + colorBlue + ";\r\n";
         request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(str);
