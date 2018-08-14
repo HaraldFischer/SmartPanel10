@@ -265,13 +265,32 @@ public class DataBean {
         
     }
     
-    public void clickButtonSave(){
-        showMessage("Button Save");
-        String msg = "smP" + address + "_SL" + ";\r\n";
+    public void clickButtonSave(int i){
+        String msg = "smP" + address + "_SL" + "0" + i + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(msg);
+        addMsgItem(request);
+        writeOutputStream(msg);
+        String in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
     }
     
-    public void clickButtonLoad(){
-        
+    public void clickButtonLoad(int i){
+        String msg = "smP" + address + "_SS" + "0" + i + ";\r\n";
+        MessageItem request = new MessageItem();
+        request.setWhat("Request");
+        request.setMsg(msg);
+        addMsgItem(request);
+        writeOutputStream(msg);
+        String in = readInputStream();
+        MessageItem response = new MessageItem();
+        response.setWhat("Response");
+        response.setMsg(in);
+        addMsgItem(response);
     }
     
     public void clickButtonTimer(){

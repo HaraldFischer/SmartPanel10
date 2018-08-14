@@ -181,23 +181,38 @@ and open the template in the editor.
                         <h:commandButton value="Off"   style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOff()}" />
                         <h:commandButton value="Up"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonUp()}" />
                         <h:commandButton value="Down"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonDown()}" />
-                        <h:commandButton id = "idtrigger" value="Save"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonSave()}" />
-                        <h:commandButton value="Load"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonLoad()}" />
+                        <h:commandButton id = "idtriggersave" value="Save"  style = "width:90%;height:50px"    />
+                        <h:commandButton id = "idtriggerload" value="Load"  style = "width:90%;height:50px"    />
                         <h:commandButton value="Timer" style = "width:90%;height:50px"    actionListener = "#{data.clickButtonTimer()}" />
                         <h:commandButton value="Pir"   style = "width:90%;height:50px"    actionListener = "#{data.clickButtonPir()}" />
                         <h:commandButton value="White" style = "width:90%;height:50px"    actionListener = "#{data.clickButtonWhite()}" />
-                        <p:menu overlay="true" trigger = "idtrigger" my = "left top">
+                        <p:menu overlay="true" trigger = "idtriggersave" my = "left top">
                             <p:submenu>
-                                <p:menuitem value = "Scene 1" onclick = "alert('Click 1')" />
-                                <p:menuitem value = "Scene 2" onclick = "alert('Click 2')" />
-                                <p:menuitem value = "Scene 3" onclick = "alert('Click 3')"/>
-                                <p:menuitem value = "Scene 4" onclick = "alert('Click 4')"/>
-                                <p:menuitem value = "Scene 5" onclick = "alert('Click 5')"/>
-                                <p:menuitem value = "Scene 6" onclick = "alert('Click 6')"/>
-                                <p:menuitem value = "Scene 7" onclick = "alert('Click 7')"/>
-                                <p:menuitem value = "Scene 8" onclick = "alert('Click 8')"/>
-                                <p:menuitem value = "Scene 9" onclick = "alert('Click 9')"/>
+                                <p:menuitem value = "Scene 1"   actionListener = "#{data.clickButtonSave(0)}" />
+                                <p:menuitem value = "Scene 2"   actionListener = "#{data.clickButtonSave(1)}" />
+                                <p:menuitem value = "Scene 3"   actionListener = "#{data.clickButtonSave(2)}" />
+                                <p:menuitem value = "Scene 4"   actionListener = "#{data.clickButtonSave(3)}" />
+                                <p:menuitem value = "Scene 5"   actionListener = "#{data.clickButtonSave(4)}" />
+                                <p:menuitem value = "Scene 6"   actionListener = "#{data.clickButtonSave(5)}" />
+                                <p:menuitem value = "Scene 7"   actionListener = "#{data.clickButtonSave(6)}" />
+                                <p:menuitem value = "Scene 8"   actionListener = "#{data.clickButtonSave(7)}" />
+                                <p:menuitem value = "Scene 9"   actionListener = "#{data.clickButtonSave(8)}" />
+                                <p:menuitem value = "Scene 10"  actionListener = "#{data.clickButtonSave(9)}" />
                             </p:submenu>
+                        </p:menu>
+                        <p:menu overlay = "true" trigger = "idtriggerload" my = "left top">
+                            <p:submenu>
+                                <p:menuitem value = "Scene 1"   actionListener = "#{data.clickButtonLoad(0)}" />
+                                <p:menuitem value = "Scene 2"   actionListener = "#{data.clickButtonLoad(1)}" />
+                                <p:menuitem value = "Scene 3"   actionListener = "#{data.clickButtonLoad(2)}" />
+                                <p:menuitem value = "Scene 4"   actionListener = "#{data.clickButtonLoad(3)}" />
+                                <p:menuitem value = "Scene 5"   actionListener = "#{data.clickButtonLoad(4)}" />
+                                <p:menuitem value = "Scene 6"   actionListener = "#{data.clickButtonLoad(5)}" />
+                                <p:menuitem value = "Scene 7"   actionListener = "#{data.clickButtonLoad(6)}" />
+                                <p:menuitem value = "Scene 8"   actionListener = "#{data.clickButtonLoad(7)}" />
+                                <p:menuitem value = "Scene 9"   actionListener = "#{data.clickButtonLoad(8)}" />
+                                <p:menuitem value = "Scene 10"  actionListener = "#{data.clickButtonLoad(9)}" />                                
+                            </p:submenu>                            
                         </p:menu>
             </p:panelGrid>
         </h:form>
