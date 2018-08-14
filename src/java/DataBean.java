@@ -266,7 +266,7 @@ public class DataBean {
     }
     
     public void clickButtonSave(int i){
-        String msg = "smP" + address + "_SL" + "0" + i + ";\r\n";
+        String msg = "smP" + address + "_SS" + "0" + i + ";\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(msg);
@@ -280,7 +280,7 @@ public class DataBean {
     }
     
     public void clickButtonLoad(int i){
-        String msg = "smP" + address + "_SS" + "0" + i + ";\r\n";
+        String msg = "smP" + address + "_SL" + "0" + i + ";\r\n";
         MessageItem request = new MessageItem();
         request.setWhat("Request");
         request.setMsg(msg);

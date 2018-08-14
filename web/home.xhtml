@@ -174,7 +174,7 @@ and open the template in the editor.
                     </p:column>
 
             </p:panelGrid>
-            
+            <h:panelGroup>
             <p:panelGrid columns ="3" style = "width: 50%;height: 40%">
             
                         <h:commandButton value="On"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOn()}" />
@@ -215,6 +215,13 @@ and open the template in the editor.
                             </p:submenu>                            
                         </p:menu>
             </p:panelGrid>
+            <div align = "right">
+            <p:panelGrid columns = "1" columnClasses = "text-align:right" style = "margin: 20px">
+                <h:inputHidden id="txt2" value="Slider" />
+                <p:slider for="txt2" style="width: 200px" displayTemplate="Set ratio" />   
+            </p:panelGrid>
+            </div>
+            </h:panelGroup>
         </h:form>
         </p:layoutUnit>
         </ui:define>
