@@ -215,10 +215,14 @@ and open the template in the editor.
                             </p:submenu>                            
                         </p:menu>
             </p:panelGrid>
-            <div align = "right">
-            <p:panelGrid columns = "1" columnClasses = "text-align:right" style = "margin: 20px">
-                <h:inputHidden id="txt2" value="Slider" />
-                <p:slider for="txt2" style="width: 200px" displayTemplate="Set ratio" />   
+            <br></br>
+            <div align = "bottom">
+            <p:panelGrid columns = "1" columnClasses = "text-align:right" style = "width: 50%;height:100px">
+                <h:outputText id="output" value="Set ratio Master Slider to #{data.slider} %" />
+                <h:inputHidden id="txt" value="#{data.slider}" />
+                <p:slider for="txt" display = "output" displayTemplate="Set ratio Master Slider to {value}%" >
+                    
+                </p:slider>
             </p:panelGrid>
             </div>
             </h:panelGroup>

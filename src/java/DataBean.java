@@ -38,6 +38,7 @@ public class DataBean {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     public boolean              isDirty  = false;
+    public String               slider   = "20";
     
     public class MessageItem extends Object{
         
@@ -201,6 +202,17 @@ public class DataBean {
         }
     }
     
+    public void setSlider(String sliderpos){
+        slider = sliderpos;
+    }
+    
+    public String getSlider(){
+        return slider;
+    }
+    
+    public void onSlideEnd(){
+        
+    }
     public void clickButtonOn(){
         
         String msg = "smP" + address + "_ON;" + "\r\n";
@@ -557,6 +569,7 @@ public class DataBean {
         timer= "0";
         pir  = "0";
         white= "0";
+        slider="0";
         Scene0 = "#000000";
         Scene1 = "#000000";
         Scene2 = "#000000";
@@ -784,6 +797,7 @@ public class DataBean {
            properties.setProperty("Timer", timer);
            properties.setProperty("Pir", pir);
            properties.setProperty("White", white);
+           properties.setProperty("Master", slider);
            properties.setProperty("Scene0", Scene0);
            properties.setProperty("Scene1", Scene1);
            properties.setProperty("Scene2", Scene2);
@@ -829,6 +843,7 @@ public class DataBean {
            pir = properties.getProperty("Pir", "0");
            timer = properties.getProperty("Timer", "0");
            white = properties.getProperty("White", "0");
+           slider= properties.getProperty("Master","0");
            Scene0= properties.getProperty("Scene0", "000000");
            Scene1= properties.getProperty("Scene1", "000000");
            Scene2= properties.getProperty("Scene2", "000000");
