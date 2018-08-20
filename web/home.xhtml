@@ -58,6 +58,17 @@ and open the template in the editor.
             <p:messages id = "idmessages" showDetail = "true"  closable = "true" autoUpdate= "false" > 
                 
             </p:messages>
+            <c:set var = "selectedScene" value = "0" />
+            <p:menu overlay = "true" trigger = "idtriggersaveload" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.saveScene}" >
+                        <f:attribute name = "sceneNumber" value ="#{selectedScene}" />
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.loadScene}" >
+                        <f:attribute name = "sceneNumber" value ="#{selectedScene}" />
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
 
             <p:panelGrid id = "idpanelgrid" columns="5" style = "width: 100%;height:100px" >
 
@@ -67,9 +78,10 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene0" name = "rcsetscene0" actionListener = "#{data.setScene0()}" process = "@this" />
                         <input type="color" id="colorWell0" style="width:100%;height:50px;margin:0px" ></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene0" value="Scene 1" style="width: 50%;height: 50px" actionListener = "#{data.scene0Clicked()}" ></h:commandButton>
+                        <h:commandButton id = "idtriggersaveload" value="Scene 1" style="width: 50%;height: 50px" ></h:commandButton>
                         <h:commandButton id = "idbtnupload0" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload0Clicked()}" />
                     </p:column>
+                
 
                     <p:column>
                         
@@ -177,17 +189,17 @@ and open the template in the editor.
             <h:panelGroup>
             <p:panelGrid columns ="3" style = "width: 50%;height: 40%">
             
-                        <h:commandButton value="On"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOn()}" />
-                        <h:commandButton value="Off"   style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOff()}" />
-                        <h:commandButton value="Up"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonUp()}" />
-                        <h:commandButton value="Down"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonDown()}" />
-                        <h:commandButton id = "idtriggersave" value="Save"  style = "width:90%;height:50px"    />
-                        <h:commandButton id = "idtriggerload" value="Load"  style = "width:90%;height:50px"    />
-                        <h:commandButton value="Timer" style = "width:90%;height:50px"    actionListener = "#{data.clickButtonTimer()}" />
-                        <h:commandButton value="Pir"   style = "width:90%;height:50px"    actionListener = "#{data.clickButtonPir()}" />
-                        <h:commandButton value="White" style = "width:90%;height:50px"    actionListener = "#{data.clickButtonWhite()}" />
+                        <h:commandButton value="On"     style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOn()}" />
+                        <h:commandButton value="Up"     style = "width:90%;height:50px"    actionListener = "#{data.clickButtonUp()}" />
+                        <h:commandButton value="Save"   id = "idtriggersave"  style = "width:90%;height:50px" />
+                        <h:commandButton value="Off"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOff()}" />
+                        <h:commandButton value="Down"   style = "width:90%;height:50px"    actionListener = "#{data.clickButtonDown()}" />
+                        <h:commandButton value="Load"   id = "idtriggerload" style = "width:90%;height:50px" />
+                        <h:commandButton value="Timer"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonTimer()}" />
+                        <h:commandButton value="Pir"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonPir()}" />
+                        <h:commandButton value="White"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonWhite()}" />
                         <p:menu overlay="true" trigger = "idtriggersave" my = "left top">
-                            <p:submenu>
+                            <p:submenu label = "Available Scenes" >
                                 <p:menuitem value = "Scene 1"   actionListener = "#{data.clickButtonSave(0)}" />
                                 <p:menuitem value = "Scene 2"   actionListener = "#{data.clickButtonSave(1)}" />
                                 <p:menuitem value = "Scene 3"   actionListener = "#{data.clickButtonSave(2)}" />
@@ -201,7 +213,7 @@ and open the template in the editor.
                             </p:submenu>
                         </p:menu>
                         <p:menu overlay = "true" trigger = "idtriggerload" my = "left top">
-                            <p:submenu>
+                            <p:submenu label = "Available Scenes">
                                 <p:menuitem value = "Scene 1"   actionListener = "#{data.clickButtonLoad(0)}" />
                                 <p:menuitem value = "Scene 2"   actionListener = "#{data.clickButtonLoad(1)}" />
                                 <p:menuitem value = "Scene 3"   actionListener = "#{data.clickButtonLoad(2)}" />
@@ -217,12 +229,14 @@ and open the template in the editor.
             </p:panelGrid>
             <br></br>
             <div align = "bottom">
-            <p:panelGrid columns = "1" columnClasses = "text-align:right" style = "width: 50%;height:100px">
+            <p:panelGrid columns = "1" columnClasses = "text-align:right" style = "width: 50%;height:150px">
                 <h:outputText id="output" value="Set ratio Master Slider to #{data.slider} %" />
                 <h:inputHidden id="txt" value="#{data.slider}" />
-                <p:slider for="txt" display = "output" displayTemplate="Set ratio Master Slider to {value}%" >
-                    
+                <p:slider for="txt" display = "output" displayTemplate="Set ratio Master Slider to {value}%" >   
+                    <p:ajax event = "slideEnd" process = "#{data.onInputChanged(event)}" >                        
+                    </p:ajax>
                 </p:slider>
+                <p:commandButton value = "Submit Master Ratio" actionListener = "#{data.onMasterRatio()}" />
             </p:panelGrid>
             </div>
             </h:panelGroup>

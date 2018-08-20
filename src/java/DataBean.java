@@ -25,7 +25,8 @@ import javax.validation.constraints.*;
 import javax.faces.context.ExternalContext;
 import javax.servlet.ServletContext; 
 import org.springframework.context.annotation.Bean;
-
+import org.primefaces.event.SlideEndEvent;
+import javax.faces.event.ActionEvent;
 
 @ManagedBean(name = "data")
 @ApplicationScoped
@@ -210,9 +211,20 @@ public class DataBean {
         return slider;
     }
     
-    public void onSlideEnd(){
+    public void onMasterRatio(){
         
     }
+    
+    public void onInputChanged(ValueChangeEvent event) {
+        if (event != null){
+            slider = String.valueOf(event.getNewValue());            
+        }
+    }
+    
+    public void onSlideEnd(SlideEndEvent event){
+        
+    }
+    
     public void clickButtonOn(){
         
         String msg = "smP" + address + "_ON;" + "\r\n";
@@ -657,6 +669,14 @@ public class DataBean {
         addMsgItem(response);
     }
     
+    public void saveScene(ActionEvent event){
+        int selVal = (int) event.getComponent().getAttributes().get("sceneNumber");
+        showMessage(String.valueOf(selVal));
+    }
+    
+    public void loadScene(ActionEvent event){
+        
+    }
     public void scene0Clicked(){
         sceneClicked(0);
     }
