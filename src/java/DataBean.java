@@ -623,7 +623,7 @@ public class DataBean {
         return var;
     }
     
-    public void sceneClicked(int scene){
+    public void sceneClicked(int scene,String what){
         String val = null;
         if (scene == 0){
             val = String.format("%02d", 0);
@@ -656,66 +656,35 @@ public class DataBean {
             val = String.format("%02d", 9);
         }
         
-        String str = "smP" + address + "_SL" + val + ";\r\n";
-        MessageItem request = new MessageItem();
-        request.setWhat("Request");
-        request.setMsg(str);
-        addMsgItem(request);
-        
-        String in = readInputStream();
-        MessageItem response = new MessageItem();
-        response.setWhat("Response");
-        response.setMsg(in);
-        addMsgItem(response);
+        if (what.equals("Load")){
+            String str = "smP" + address + "_SL" + val + ";\r\n";
+            MessageItem request = new MessageItem();
+            request.setWhat("Request");
+            request.setMsg(str);
+            addMsgItem(request);
+
+            String in = readInputStream();
+            MessageItem response = new MessageItem();
+            response.setWhat("Response");
+            response.setMsg(in);
+            addMsgItem(response);
+        }
+        else if (what.equals("Save")){
+            String str  = "smP" + address + "_SS" + val + ";\r\n";
+            MessageItem request = new MessageItem();
+            request.what = "Request";
+            request.setMsg(str);
+            addMsgItem(request);
+            
+            String in = readInputStream();
+            MessageItem response = new MessageItem();
+            response.what = "Response";
+            response.setMsg(in);
+            addMsgItem(response);
+        }
     }
     
-    public void saveScene(ActionEvent event){
-        int selVal = (int) event.getComponent().getAttributes().get("sceneNumber");
-        showMessage(String.valueOf(selVal));
-    }
     
-    public void loadScene(ActionEvent event){
-        
-    }
-    public void scene0Clicked(){
-        sceneClicked(0);
-    }
-    
-    public void scene1Clicked(){
-        sceneClicked(1);
-    }
-    
-    public void scene2Clicked(){
-        sceneClicked(2);
-    }
-    
-    public void scene3Clicked(){
-        sceneClicked(3);
-    }
-    
-    public void scene4Clicked(){
-        sceneClicked(4);
-    }
-    
-    public void scene5Clicked(){
-        sceneClicked(5);
-    }
-    
-    public void scene6Clicked(){
-        sceneClicked(6);
-    }
-    
-    public void scene7Clicked(){
-        sceneClicked(7);
-    }
-    
-    public void scene8Clicked(){
-        sceneClicked(8);
-    }
-    
-    public void scene9Clicked(){
-        sceneClicked(9);
-    }
     
     public void uploadClicked(String scene){
         String str = null;

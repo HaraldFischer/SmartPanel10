@@ -58,18 +58,97 @@ and open the template in the editor.
             <p:messages id = "idmessages" showDetail = "true"  closable = "true" autoUpdate= "false" > 
                 
             </p:messages>
-            <c:set var = "selectedScene" value = "0" />
-            <p:menu overlay = "true" trigger = "idtriggersaveload" >
+            
+            <p:menu overlay = "true" trigger = "idtriggersaveload0" >
                 <p:submenu label = "Action">
-                    <p:menuitem value = "Load" actionListener  = "#{data.saveScene}" >
-                        <f:attribute name = "sceneNumber" value ="#{selectedScene}" />
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(0,'Load')}" >
                     </p:menuitem>
-                    <p:menuitem value = "Save" actionListener  = "#{data.loadScene}" >
-                        <f:attribute name = "sceneNumber" value ="#{selectedScene}" />
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(0,'Save')}" >
                     </p:menuitem>
                 </p:submenu>
             </p:menu>
 
+            <p:menu overlay = "true" trigger = "idtriggersaveload1" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(1,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(1,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+            
+            <p:menu overlay = "true" trigger = "idtriggersaveload2" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(2,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(2,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+
+            <p:menu overlay = "true" trigger = "idtriggersaveload3" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(3,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(3,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+
+            <p:menu overlay = "true" trigger = "idtriggersaveload4" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(4,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(4,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+            
+            <p:menu overlay = "true" trigger = "idtriggersaveload5" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(5,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(5,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+
+            <p:menu overlay = "true" trigger = "idtriggersaveload6" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(6,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(6,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+            
+            <p:menu overlay = "true" trigger = "idtriggersaveload7" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(7,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(7,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+            
+            <p:menu overlay = "true" trigger = "idtriggersaveload8" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(8,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(8,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+
+            <p:menu overlay = "true" trigger = "idtriggersaveload9" >
+                <p:submenu label = "Action">
+                    <p:menuitem value = "Load" actionListener  = "#{data.sceneClicked(9,'Load')}" >
+                    </p:menuitem>
+                    <p:menuitem value = "Save" actionListener  = "#{data.sceneClicked(9,'Save')}" >
+                    </p:menuitem>
+                </p:submenu>
+            </p:menu>
+            
             <p:panelGrid id = "idpanelgrid" columns="5" style = "width: 100%;height:100px" >
 
                     <p:column id = "idcolumn0" >
@@ -78,7 +157,9 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene0" name = "rcsetscene0" actionListener = "#{data.setScene0()}" process = "@this" />
                         <input type="color" id="colorWell0" style="width:100%;height:50px;margin:0px" ></input>
                         <br></br>
-                        <h:commandButton id = "idtriggersaveload" value="Scene 1" style="width: 50%;height: 50px" ></h:commandButton>
+                        <h:commandButton id = "idtriggersaveload0" value="Scene 1" style="width: 50%;height: 50px" >
+                            
+                        </h:commandButton>
                         <h:commandButton id = "idbtnupload0" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload0Clicked()}" />
                     </p:column>
                 
@@ -89,7 +170,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene1" name = "rcsetscene1" actionListener = "#{data.setScene1()}" process = "@this" />
                         <input type="color" id="colorWell1" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene1" value= "Scene 2" style="width: 50%;height: 50px" actionListener = "#{data.scene1Clicked()}"/>
+                        <h:commandButton id = "idtriggersaveload1" value= "Scene 2" style="width: 50%;height: 50px" />
                         <h:commandButton id = "idbtnupload1" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload1Clicked}" />
                         
                     </p:column>
@@ -101,7 +182,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene2" name = "rcsetscene2" actionListener = "#{data.setScene2()}" process = "@this" />
                         <input type="color" id="colorWell2" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene2" value="Scene 3" style = "width: 50%;height: 50px" actionListener = "#{data.scene2Clicked()}" />
+                        <h:commandButton id = "idtriggersaveload2" value="Scene 3" style = "width: 50%;height: 50px"  />
                         <h:commandButton id = "idbtnupload2" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload2Clicked()}" />
                         
                     </p:column>
@@ -113,7 +194,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene3" name = "rcsetscene3" actionListener = "#{data.setScene3()}" process = "@this" />
                         <input type="color" id="colorWell3" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene3" value="Scene 4" style = "width: 50%;height: 50px" actionListener = "#{data.scene3Clicked()}" />
+                        <h:commandButton id = "idtriggersaveload3" value="Scene 4" style = "width: 50%;height: 50px" />
                         <h:commandButton id = "idbtnupload3" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload3Clicked()}" />
                     </p:column>
                 
@@ -123,7 +204,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene4" name = "rcsetscene4" actionListener = "#{data.setScene4()}" process = "@this" />
                         <input type="color" id="colorWell4" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene4" value="Scene 5" style = "width: 50%;height: 50px" actionListener = "#{data.scene4Clicked()}" />
+                        <h:commandButton id = "idtriggersaveload4" value="Scene 5" style = "width: 50%;height: 50px" />
                         <h:commandButton id = "idbtnupload4" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload4Clicked()}" />
                         
                     </p:column>
@@ -135,7 +216,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene5" name = "rcsetscene5" actionListener = "#{data.setScene5()}" process = "@this" />
                         <input type="color" id="colorWell5" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene5" value="Scene 6" style = "width: 50%;height: 50px" actionListener = "#{data.scene5Clicked()}" />
+                        <h:commandButton id = "idtriggersaveload5" value="Scene 6" style = "width: 50%;height: 50px" actionListener = "#{data.scene5Clicked()}" />
                         <h:commandButton id = "idbtnupload5" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload5Clicked()}" />
                         
                     </p:column>
@@ -147,7 +228,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene6" name = "rcsetscene6" actionListener = "#{data.setScene6()}" process = "@this" />
                         <input type="color" id="colorWell6" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene6" value="Scene 7" style = "width: 50%;height: 50px" actionListener = "#{data.scene6Clicked()}" />
+                        <h:commandButton id = "idtriggersaveload6" value="Scene 7" style = "width: 50%;height: 50px" />
                         <h:commandButton id = "idbtnupload6" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload6Clicked()}" />
                         
                     </p:column>
@@ -158,7 +239,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene7" name = "rcsetscene7" actionListener = "#{data.setScene7()}" process = "@this" />
                         <input type="color" id="colorWell7" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene7" value="Scene 8" style =" width: 50%;height: 50px" actionListener = "#{data.scene7Clicked()}" />
+                        <h:commandButton id = "idtriggersaveload7" value="Scene 8" style =" width: 50%;height: 50px"  />
                         <h:commandButton id = "idbtnupload7" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload7Clicked()}" />
                         
                     </p:column>
@@ -169,7 +250,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene8" name = "rcsetscene8" actionListener = "#{data.setScene8()}" process = "@this" />
                         <input type="color" id="colorWell8" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene8" value="Scene 9" style = "width: 50%;height: 50px" actionListener = "#{data.scene8Clicked()}" />
+                        <h:commandButton id = "idtriggersaveload8" value="Scene 9" style = "width: 50%;height: 50px" />
                         <h:commandButton id = "idbtnupload8" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload8Clicked()}" />
                         
                     </p:column>
@@ -180,7 +261,7 @@ and open the template in the editor.
                         <p:remoteCommand id = "idrcsetscene9" name = "rcsetscene9" actionListener = "#{data.setScene9()}" process = "@this" />
                         <input type="color" id="colorWell9" style="width:100%;height:50px;margin:0px"></input>
                         <br></br>
-                        <h:commandButton id = "idbtnscene9" value="Scene 10" style = "width: 50%;height: 50px" actionListener = "#{data.scene9Clicked()}"/>
+                        <h:commandButton id = "idtriggersaveload9" value="Scene 10" style = "width: 50%;height: 50px" />
                         <h:commandButton id = "idbtnupload9" value= "Upload"  style="width: 50%;height: 50px" actionListener = "#{data.upload9Clicked()}" />
                         
                     </p:column>
@@ -191,41 +272,14 @@ and open the template in the editor.
             
                         <h:commandButton value="On"     style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOn()}" />
                         <h:commandButton value="Up"     style = "width:90%;height:50px"    actionListener = "#{data.clickButtonUp()}" />
-                        <h:commandButton value="Save"   id = "idtriggersave"  style = "width:90%;height:50px" />
+                        <h:commandButton value=""       disabled = "true" style = "width:90%;height:50px" />
                         <h:commandButton value="Off"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonOff()}" />
                         <h:commandButton value="Down"   style = "width:90%;height:50px"    actionListener = "#{data.clickButtonDown()}" />
-                        <h:commandButton value="Load"   id = "idtriggerload" style = "width:90%;height:50px" />
+                        <h:commandButton value=""       disabled = "true" style = "width:90%;height:50px" />
                         <h:commandButton value="Timer"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonTimer()}" />
                         <h:commandButton value="Pir"    style = "width:90%;height:50px"    actionListener = "#{data.clickButtonPir()}" />
                         <h:commandButton value="White"  style = "width:90%;height:50px"    actionListener = "#{data.clickButtonWhite()}" />
-                        <p:menu overlay="true" trigger = "idtriggersave" my = "left top">
-                            <p:submenu label = "Available Scenes" >
-                                <p:menuitem value = "Scene 1"   actionListener = "#{data.clickButtonSave(0)}" />
-                                <p:menuitem value = "Scene 2"   actionListener = "#{data.clickButtonSave(1)}" />
-                                <p:menuitem value = "Scene 3"   actionListener = "#{data.clickButtonSave(2)}" />
-                                <p:menuitem value = "Scene 4"   actionListener = "#{data.clickButtonSave(3)}" />
-                                <p:menuitem value = "Scene 5"   actionListener = "#{data.clickButtonSave(4)}" />
-                                <p:menuitem value = "Scene 6"   actionListener = "#{data.clickButtonSave(5)}" />
-                                <p:menuitem value = "Scene 7"   actionListener = "#{data.clickButtonSave(6)}" />
-                                <p:menuitem value = "Scene 8"   actionListener = "#{data.clickButtonSave(7)}" />
-                                <p:menuitem value = "Scene 9"   actionListener = "#{data.clickButtonSave(8)}" />
-                                <p:menuitem value = "Scene 10"  actionListener = "#{data.clickButtonSave(9)}" />
-                            </p:submenu>
-                        </p:menu>
-                        <p:menu overlay = "true" trigger = "idtriggerload" my = "left top">
-                            <p:submenu label = "Available Scenes">
-                                <p:menuitem value = "Scene 1"   actionListener = "#{data.clickButtonLoad(0)}" />
-                                <p:menuitem value = "Scene 2"   actionListener = "#{data.clickButtonLoad(1)}" />
-                                <p:menuitem value = "Scene 3"   actionListener = "#{data.clickButtonLoad(2)}" />
-                                <p:menuitem value = "Scene 4"   actionListener = "#{data.clickButtonLoad(3)}" />
-                                <p:menuitem value = "Scene 5"   actionListener = "#{data.clickButtonLoad(4)}" />
-                                <p:menuitem value = "Scene 6"   actionListener = "#{data.clickButtonLoad(5)}" />
-                                <p:menuitem value = "Scene 7"   actionListener = "#{data.clickButtonLoad(6)}" />
-                                <p:menuitem value = "Scene 8"   actionListener = "#{data.clickButtonLoad(7)}" />
-                                <p:menuitem value = "Scene 9"   actionListener = "#{data.clickButtonLoad(8)}" />
-                                <p:menuitem value = "Scene 10"  actionListener = "#{data.clickButtonLoad(9)}" />                                
-                            </p:submenu>                            
-                        </p:menu>
+                        
             </p:panelGrid>
             <br></br>
             <div align = "bottom">
