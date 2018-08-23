@@ -212,7 +212,8 @@ public class DataBean {
     }
     
     public void onMasterRatio(){
-        
+        String value = slider;
+        showMessage(value);
     }
     
     public void onInputChanged(ValueChangeEvent event) {
