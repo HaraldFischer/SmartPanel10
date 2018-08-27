@@ -663,6 +663,7 @@ public class DataBean {
             request.setWhat("Request");
             request.setMsg(str);
             addMsgItem(request);
+            writeOutputStream(str);
 
             String in = readInputStream();
             MessageItem response = new MessageItem();
@@ -676,6 +677,7 @@ public class DataBean {
             request.what = "Request";
             request.setMsg(str);
             addMsgItem(request);
+            writeOutputStream(str);
             
             String in = readInputStream();
             MessageItem response = new MessageItem();
