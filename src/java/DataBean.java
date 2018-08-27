@@ -39,7 +39,7 @@ public class DataBean {
     private BufferedReader      InReader = null;
     private DataOutputStream    OutWriter= null;
     public boolean              isDirty  = false;
-    public String               slider   = "20";
+    public String               slider   = "0";
     
     public class MessageItem extends Object{
         
@@ -213,7 +213,7 @@ public class DataBean {
     
     public void onMasterRatio(){
         String value = slider;
-        showMessage(value);
+        
     }
     
     public void onInputChanged(ValueChangeEvent event) {
